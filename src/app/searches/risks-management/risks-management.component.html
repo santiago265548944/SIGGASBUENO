@@ -1,0 +1,56 @@
+<div style="width: 100%;">
+  <jqxExpander [width]="'100%'" [expanded]="tipoRiesgoExpanded" (onExpanded)="onZonaTipoExpanded($event)">
+    <div>
+      Tipo Riesgo
+    </div>
+    <div>
+      <div class='app-riesgos-content'>
+        <label style="width: 30%;">Departamento:</label>
+        <select style="width: 65%;" [(ngModel)]="deparmentSelected" (ngModelChange)="onDeparmentSelectChanged($event)">
+          <option *ngFor="let department of departments" [ngValue]="department">{{department.text}}</option>
+        </select>
+      </div>
+      <div>
+        <label style="width: 30%;">Localidad:</label>
+        <select style="width: 65%;" [(ngModel)]="localidadSelected">
+          <option *ngFor="let localidad of localidades" [ngValue]="localidad">{{localidad.text}}</option>
+        </select>
+      </div>
+      <div class="app-risk-mng-div-button">
+        <input type="button" value="Aceptar" (click)="onAceptarTipoRiesgoClickHandler()"/>
+      </div>
+    </div>
+  </jqxExpander>
+</div>
+<div style="width: 100%;">
+  <jqxExpander [width]="'100%'" [expanded]="!tipoRiesgoExpanded" (onExpanded)="onZonaRiesgoExpanded($event)">
+      <div>
+        Zona Riesgo
+      </div>
+      <div>
+        <div>
+          <input type="radio" name="tipoRiesgo" value="ZonaRiesgo" class="app-risk-mng-radio" [(ngModel)]="radioOptionSelected"/><label>Selección de polígono</label>
+        </div>
+        <div>
+            <input type="radio" name="tipoRiesgo" value="ActualizaRiesgos" class="app-risk-mng-radio" [(ngModel)]="radioOptionSelected"/><label>Actualizar información riesgo</label>
+        </div>
+        <div class="app-risk-mng-div-button">
+          <input type="button" value="Aceptar" (click)="onAceptarZonaRiesgoClickHandler()"/>
+        </div>
+      </div>
+  </jqxExpander>
+</div>
+<div style="width: 100%;">
+  <jqxExpander [width]="'100%'" [expanded]='resultsExpanded' (onCollapsed)="onManejoRiesgosCollapsed($event)">
+      <div>
+        Manejo Riesgos
+      </div>
+      <div>
+          <jqxDataTable [width]="'99%'" [height]="200" [source]="dataAdapter"
+              [columns]="dataTableColumns" [pageable]="false" [columnsResize]="true" #jqxDataTable>
+          </jqxDataTable>
+      </div>
+  </jqxExpander>
+</div>
+<jqxLoader #jqxLoader [imagePosition]="'top'" [height]="50" [text]="progressMessage">
+</jqxLoader>

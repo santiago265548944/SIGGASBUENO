@@ -1,0 +1,29 @@
+.container-activity {
+    height: 100%;
+    padding: 10px 5px;
+    box-sizing: border-box;
+}
+
+label {
+    width: 40%;
+    font-size: 12px;
+}
+
+input, select, textarea {
+    width: 59%;
+}
+
+.container-observation {
+    display: flex;
+    align-items: center;
+}
+
+.container-observation label {
+    width: 41%;
+}
+
+.button-execute {
+    width: inherit;
+    margin-top: 5px;
+    float: right;
+}

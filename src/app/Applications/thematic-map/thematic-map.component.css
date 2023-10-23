@@ -1,0 +1,14 @@
+.tematico {
+  padding-block-end: 15px;
+  padding: 3%;
+}
+
+.parametro {
+  padding-block-end: 10%;
+  padding: 3% 4%;
+  height: 100px !important;
+}
+
+.contenedor {
+  margin-bottom: 1%;
+}

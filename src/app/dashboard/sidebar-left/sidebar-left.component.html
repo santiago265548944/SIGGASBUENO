@@ -1,0 +1,24 @@
+<div class="sidebar-left" [ngStyle]="{'height': height}">
+  <div class="cuadro-seleccion">
+      <div class="cuadro-centrado">
+          <input type="radio" name="options" id="departamento" value="1" [(ngModel)]="option" (ngModelChange)="cargarTabla()">
+          <label for="departamento">Departamento</label>
+
+          <br>
+
+          <input type="radio" name="options" id="contratista" value="2" [(ngModel)]="option" (ngModelChange)="cargarTabla()">
+          <label for="contratista">Contratista</label>
+      </div>
+  </div>
+
+  <div class="cuadro-tabla">
+      <jqxDataTable [width]="'99%'" [height]="'99%'" [source]="dataAdapter" [columns]="dataTableColumns"
+          [pageable]="false" [columnsResize]="true" (onRowSelect)="tableOnRowSelect($event)"
+          style="text-align: center; margin-bottom: 5px;">
+      </jqxDataTable>
+  </div>
+
+  <div class="cuadro-longitud">
+      <h3 *ngIf="longAsignada">{{ longAsignada }}m</h3>
+  </div>
+</div>

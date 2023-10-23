@@ -1,0 +1,19 @@
+<div class="container-center">
+  <div class="inline-form-text">
+    Tabla
+  </div>
+  <div class="inline-form-control">
+    <jqxListBox #jqxListBox [source]='tableValues' [checkboxes]="true" [width]="200"
+      [height]="200">
+    </jqxListBox>
+
+  </div>
+</div>
+
+
+<div class="container-fluid-modal" style="height: 30px;">
+  <div class="form-row" style="text-align: center; align-content:center; margin-bottom: 5px; margin-top: 5px">
+    <button type="button" (click)="executeSave()">Aceptar</button>
+    <button type="button" (click)="executeCancel()">Cancelar</button>
+  </div>
+</div>

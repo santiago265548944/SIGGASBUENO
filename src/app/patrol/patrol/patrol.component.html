@@ -1,0 +1,68 @@
+<div class="contenedor-patrulleros">
+
+  <div class="patrulleros">
+    <label>Lista de Patrulleros</label>
+
+    <table>
+      <tr *ngFor="let patrulleros of listarPatrulleros;let i = index" tabindex="0">
+        <td (click)="seleccionDePatrullero()">{{i + 1}} - {{patrulleros.NOM_PATRULLERO}}</td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+<div class="contenedor">
+  <div class="espacio">
+    <input type="radio" id="activo" name="valor" value="1" [checked]="checkAct" (click)="verificarRadioButt(null)">
+    <label style="margin-right: 5%;">Activo</label>
+
+    <input type="radio" id="inactivo" name="valor" value="0" [checked]="checkInAct" (click)="verificarRadioButt(null)">
+    <label>Inactivo</label>
+  </div>
+
+  <div class="espacio">
+    <label style="width: 40%;">Código asignado</label>
+    <input style="width: 58%;" type="text" [(ngModel)]="codigo" readonly>
+  </div>
+
+  <div class="espacio">
+    <label style="width: 40%;">Nombre</label>
+    <input style="width: 58%;" type="text" [(ngModel)]="nombre">
+  </div>
+
+  <div class="espacio">
+    <label style="width: 40%;">Identificación</label>
+    <input style="width: 58%;" type="number" [(ngModel)]="id" [disabled]="bloqueoIdentificacion">
+  </div>
+
+  <div class="espacio">
+    <label style="width: 40%;">Contratista</label>
+    <select style="width: 58%;" [(ngModel)]="contratista" [disabled]="bloqueoContratista">
+      <option></option>
+      <option *ngFor="let cont of listarContratistas" [ngValue]="cont" [selected]="selectContra === cont.NOM_CONTRATISTA">
+        {{ cont.NOM_CONTRATISTA }}
+      </option>
+    </select>
+  </div>
+
+  <div class="espacio">
+    <label style="width: 40%;">Usuario Movil</label>
+    <input style="width: 58%;" type="text" [(ngModel)]="usuarioMovil" autocomplete="new-password">
+  </div>
+
+  <div>
+    <label style="width: 40%;">Contraseña</label>
+    <input style="width: 58%;" type="password" [(ngModel)]="contrasena" autocomplete="new-password">
+  </div>
+</div>
+
+<br><br>
+
+<div>
+  <input type="button" value="Adicionar" style="margin-left: 0.5%;" (click)="nuevoPatrullero()" [disabled]="botonAdicionar">
+  <input type="button" value="Modificar" (click)="modificarPatrullero()" [disabled]="botonModificar">
+  <input type="button" value="Cancelar" style="float: right; margin-right: 2%;" *ngIf="botonC" (click)="onCancelar()">
+
+  <!-- <input type="button" value="Res. Contraseña" style="float: right; margin-right: 1%;" *ngIf="botonR" (click)="restablecerContra()"> -->
+</div>

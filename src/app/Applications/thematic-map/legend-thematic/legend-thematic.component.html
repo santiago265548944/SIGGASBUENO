@@ -1,0 +1,7 @@
+<div>
+  <div *ngFor="let legendItem of legendList" style="display: flex; margin: 5px">
+    <canvas width="20" height="20" [style.background]="legendItem.COLOR">s</canvas>
+    &nbsp;&nbsp;
+    <div>{{legendItem.NOMBRE}}</div>
+  </div>
+</div>

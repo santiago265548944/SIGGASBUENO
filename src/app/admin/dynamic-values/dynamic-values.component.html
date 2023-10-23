@@ -1,0 +1,88 @@
+<div class="container-center">
+  <div class="inline-form-text">
+    Nombre de la tabla
+  </div>
+  <div class="inline-form-control">
+    <select style="width: 160px;" [(ngModel)]="model.TABLENAME" (change)="onTableChange()">
+      <option *ngFor="let tableValue of tableValues" [ngValue]="tableValue.Code">{{tableValue.Value}}</option>
+    </select>
+  </div>
+</div>
+
+<div class="container-center">
+    <div class="inline-form-text">
+      Nombre del campo
+    </div>
+    <div class="inline-form-control">
+      <select style="width: 160px;" [(ngModel)]="model.FIELDNAME">
+        <option *ngFor="let fielNameValue of fielNameValues" [ngValue]="fielNameValue.Code">{{fielNameValue.Value}}</option>
+      </select>
+    </div>
+  </div>
+
+<div class="container-center">
+  <div class="inline-form-text">
+    Método
+  </div>
+  <div class="inline-form-control">
+    <select style="width: 160px;" [(ngModel)]="model.VALUEMETHOD">
+      <option *ngFor="let methodValue of methodValues" [ngValue]="methodValue.Code">{{methodValue.Value}}</option>
+    </select>
+  </div>
+</div>
+
+<div class="container-center">
+  <div class="inline-form-text">
+    Valor
+  </div>
+  <div class="inline-form-control">
+    <div style="display: flex">
+      <input type="text" style="width: 135px;" [(ngModel)]="model.VALUEINFO">
+      <button type="button" style="width: 25px;" (click)="editValueInfo()">...</button>
+    </div>
+  </div>
+</div>
+
+<div class="container-center">
+  <div class="inline-form-text">
+    Creación
+  </div>
+  <div class="inline-form-control">
+    <input type="checkbox" [(ngModel)]="model.ON_CREATE" />
+  </div>
+</div>
+
+<div class="container-center">
+  <div class="inline-form-text">
+    Cambio
+  </div>
+  <div class="inline-form-control">
+    <input type="checkbox" [(ngModel)]="model.ON_CHANGE" />
+  </div>
+</div>
+
+<div class="container-center">
+  <div class="inline-form-text">
+    Cambio Geométrico
+  </div>
+  <div class="inline-form-control">
+    <input type="checkbox" [(ngModel)]="model.ON_CHANGEGEO" />
+  </div>
+</div>
+
+<div class="container-center">
+    <div class="inline-form-text">
+      Peso
+    </div>
+    <div class="inline-form-control">
+      <jqxNumberInput [inputMode]="'simple'" [width]="158" [height]="20" [(ngModel)]='model.RUN_WEIGHT' [decimalDigits]="0">
+      </jqxNumberInput>
+    </div>
+  </div>
+
+<div class="container-fluid-modal" style="height: 30px;">
+  <div class="form-row" style="text-align: center; align-content:center; margin-bottom: 5px; margin-top: 5px">
+    <button type="button" (click)="executeSave()">Aceptar</button>
+    <button type="button" (click)="executeCancel()">Cancelar</button>
+  </div>
+</div>

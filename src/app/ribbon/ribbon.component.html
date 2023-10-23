@@ -1,0 +1,1913 @@
+<div class="extra-commands">
+   <span (click)="executeFullScreen()">Pantalla Completa</span> &nbsp;
+   <span (click)="logOut()">Logout</span>
+</div>
+
+<jqxRibbon
+   #ribbonReference
+   [height]="121"
+   [animationType]="'fade'"
+   [selectionMode]="'click'"
+   [position]="'top'"
+   [mode]="'default'"
+   [theme]="'demoTheme'"
+   [selectedIndex]="0"
+   [width]="'100%'"
+>
+   <ul>
+      <li id="fileItem" [hidden]="isOptionHidden('Invisible')">
+         <jqxDropDownButton
+            id="fileItemButton"
+            #fileItemButton
+            [width]="120"
+            [height]="26"
+            [arrowSize]="0"
+            [dropDownWidth]="150"
+            [theme]="'demoTheme'"
+            [disabled]="isOptionDisabled('Invisible')"
+         >
+            <div style="height: 110px">
+               <ul style="list-style-type: none; margin: 0px; padding: 3px">
+                  <li [hidden]="isOptionHidden('BarButtonItemExportMap')">
+                     <jqxButton
+                        class="button"
+                        [theme]="'demoTheme'"
+                        (click)="openPrintMap()"
+                        [disabled]="isOptionDisabled('BarButtonItemExportMap')"
+                     >
+                        <div class="icon SaveImage"></div>
+                        Exportar Mapa
+                     </jqxButton>
+                  </li>
+                  <li>
+                     <jqxButton class="button" [theme]="'demoTheme'" (click)="openChangePassword()">
+                        <div class="icon SaveSelectionImage"></div>
+                        Cambio Contraseña
+                     </jqxButton>
+                  </li>
+                  <li [hidden]="isOptionHidden('BarButtonItemManager')">
+                     <jqxButton
+                        class="button"
+                        [theme]="'demoTheme'"
+                        (click)="openAdmin()"
+                        [disabled]="isOptionDisabled('BarButtonItemManager')"
+                     >
+                        <div class="icon folder"></div>
+                        Administración
+                     </jqxButton>
+                  </li>
+                  <li>
+                     <jqxButton class="button" [theme]="'demoTheme'" (click)="logOut()">
+                        <div class="icon close"></div>
+                        Salir
+                     </jqxButton>
+                  </li>
+               </ul>
+            </div>
+         </jqxDropDownButton>
+      </li>
+      <li>Principal</li>
+      <li>Consultas</li>
+      <li>Dibujos</li>
+      <li>Aplicaciones</li>
+      <li>Redes</li>
+      <li>Estaciones</li>
+      <li>Mantenimiento</li>
+      <li></li>
+      <!--aqui va patrullaje-->
+   </ul>
+   <div>
+      <div style="overflow: hidden"></div>
+      <!-- Principal -->
+      <div style="overflow: hidden" id="content">
+         <div class="scrollDiv">
+            <div style="position: absolute">
+               <div class="scrollButtonLeft" (click)="scrollLeft('content')"></div>
+            </div>
+            <div style="position: absolute; right: 0">
+               <div class="scrollButtonRight" (click)="scrollRight('content')"></div>
+            </div>
+         </div>
+
+         <table
+            class="buttonHolderTable"
+            style="height: 100%"
+            [hidden]="isOptionHidden('ribbonPageGroupNavigation')"
+         >
+            <tr>
+               <td class="bigTd" [hidden]="isOptionHidden('barButtonItemZoomIn')">
+                  <jqxButton
+                     class="button left buttonWithout"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="zoomInWithRectangle()"
+                     [disabled]="isOptionDisabled('barButtonItemZoomIn')"
+                  >
+                     <img class="img" src="assets/images/acercar.png" />
+                  </jqxButton>
+                  Acercar
+               </td>
+               <td class="bigTd" [hidden]="isOptionHidden('barButtonItemZoomOut')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="zoomOutWithRectangle()"
+                     [disabled]="isOptionDisabled('barButtonItemZoomOut')"
+                  >
+                     <img class="img" src="assets/images/alejar.png" />
+                  </jqxButton>
+                  Alejar
+               </td>
+               <td class="bigTd" [hidden]="isOptionHidden('barButtonItemPan')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="pan()"
+                     [disabled]="isOptionDisabled('barButtonItemPan')"
+                  >
+                     <img class="img" src="assets/images/desplazar.png" />
+                  </jqxButton>
+                  Desplazar
+               </td>
+               <td class="bigTd" [hidden]="isOptionHidden('barButtonItemFullExtent')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="executeFullExtent()"
+                     [disabled]="isOptionDisabled('barButtonItemFullExtent')"
+                  >
+                     <img class="img" src="assets/images/vista_total.png" />
+                  </jqxButton>
+                  Vista Total
+               </td>
+               <td class="bigTd" [hidden]="isOptionHidden('barButtonItemRefresh')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="executeRefresh()"
+                     [disabled]="isOptionDisabled('barButtonItemRefresh')"
+                  >
+                     <img class="img" src="assets/images/refrescar.png" />
+                  </jqxButton>
+                  Refrescar
+               </td>
+               <td class="bigTd">
+                  <div class="sectionSeparator"></div>
+               </td>
+               <td class="bigTd" [hidden]="isOptionHidden('barButtonItemFixedZoomOut')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="zoomOut()"
+                     [disabled]="isOptionDisabled('barButtonItemFixedZoomOut')"
+                  >
+                     <img class="img" src="assets/images/alejamiento_fijo.png" />
+                  </jqxButton>
+                  Alejamiento Fijo
+               </td>
+               <td class="bigTd" [hidden]="isOptionHidden('barButtonItemFixedZoomIn')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="zoomIn()"
+                     [disabled]="isOptionDisabled('barButtonItemFixedZoomIn')"
+                  >
+                     <img class="img" src="assets/images/acercamiento_fijo.png" />
+                  </jqxButton>
+                  Acercamiento Fijo
+               </td>
+               <td class="bigTd" [hidden]="isOptionHidden('barButtonItemXYCoordinates')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openXYCoordinate()"
+                     [disabled]="isOptionDisabled('barButtonItemXYCoordinates')"
+                  >
+                     <img class="img" src="assets/images/acercar_coordenada.png" />
+                  </jqxButton>
+                  Acercar Coordenada
+               </td>
+               <td class="bigTd" [hidden]="isOptionHidden('barButtonItemPreviousExtent')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="executePreviousExtent()"
+                     [disabled]="isOptionDisabled('barButtonItemPreviousExtent')"
+                  >
+                     <img class="img" src="assets/images/vista_anterior.png" />
+                  </jqxButton>
+                  Vista Anterior
+               </td>
+               <td class="bigTd" [hidden]="isOptionHidden('barButtonItemNextExtent')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="executeNextExtent()"
+                     [disabled]="isOptionDisabled('barButtonItemNextExtent')"
+                  >
+                     <img class="img" src="assets/images/vista_siguiente.png" />
+                  </jqxButton>
+                  Vista Siguiente
+               </td>
+               <td class="bigTd">
+                  <div class="sectionSeparator"></div>
+               </td>
+               <td class="bigTd" [hidden]="isOptionHidden('barButtonItemZoomLocation')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openGeoZoom()"
+                     [disabled]="isOptionDisabled('barButtonItemZoomLocation')"
+                  >
+                     <img class="img" src="assets/images/acercamiento_geografico.png" />
+                  </jqxButton>
+                  Acercamiento Geográfico
+               </td>
+               <td class="bigTd" [hidden]="isOptionHidden('barButtonItemSetAOI')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="executeSetAI()"
+                     [disabled]="isOptionDisabled('barButtonItemSetAOI')"
+                  >
+                     <img class="img" [src]="_urlAI" />
+                  </jqxButton>
+                  Fijar Área de Interés
+               </td>
+               <td class="bigTd" [hidden]="isOptionHidden('barButtonItemAdminBookmark')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openAddBookmark()"
+                     [disabled]="isOptionDisabled('barButtonItemAdminBookmark')"
+                  >
+                     <img class="img" src="assets/images/marcadores.png" />
+                  </jqxButton>
+                  Marcadores
+               </td>
+               <!-- <td class="bigTd">
+            <jqxButton class='button left' [theme]="'demoTheme'" [width]="36" [height]="36">
+              <img class="img" src="assets/images/manejo_de_marcadores.png" />
+            </jqxButton>
+            Manejo de Marcadores
+          </td> -->
+               <td class="bigTd" [hidden]="isOptionHidden('barButtonItemOverview')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="showOverViewMap()"
+                     [disabled]="isOptionDisabled('barButtonItemOverview')"
+                  >
+                     <img class="img" src="assets/images/vista_general.png" />
+                  </jqxButton>
+                  Vista General
+               </td>
+               <td class="bigTd" [hidden]="isOptionHidden('barButtonItemTOC')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="showTOC()"
+                     [disabled]="isOptionDisabled('barButtonItemTOC')"
+                  >
+                     <img class="img" src="assets/images/toc.png" />
+                  </jqxButton>
+                  TOC
+               </td>
+               <td class="bigTd">
+                  <div class="sectionSeparator"></div>
+               </td>
+               <td class="bigTd" [hidden]="isOptionHidden('ribbonPageGroupBaseMaps')">
+                  <div style="overflow: scroll; overflow-x: hidden; height: 85px; width: 265px">
+                     <div id="basemapGallery"></div>
+                  </div>
+               </td>
+            </tr>
+         </table>
+         <div class="sectionSeparator"></div>
+      </div>
+
+      <!-- Consultas -->
+      <div style="overflow: hidden" id="div2">
+         <div class="scrollDiv">
+            <div style="position: absolute">
+               <div class="scrollButtonLeft" (click)="scrollLeft('div2')"></div>
+            </div>
+            <div style="position: absolute; right: 0">
+               <div class="scrollButtonRight" (click)="scrollRight('div2')"></div>
+            </div>
+         </div>
+
+         <table class="buttonHolderTable" style="height: 100%">
+            <tr>
+               <td
+                  class="bigTd"
+                  [hidden]="
+                     isOptionHiddenByNames(['ribbonPageGroupSelection', 'barButtonItemSelection'])
+                  "
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openSelect()"
+                     [disabled]="
+                        isOptionDisabledByNames([
+                           'ribbonPageGroupSelection',
+                           'barButtonItemSelection'
+                        ])
+                     "
+                  >
+                     <img class="img" src="assets/images/seleccionar.png" />
+                  </jqxButton>
+                  Seleccionar
+               </td>
+               <td class="bigTd" [hidden]="isOptionHidden('ribbonPageGroupSelection')">
+                  <div class="sectionSeparator"></div>
+               </td>
+               <td
+                  class="bigTd"
+                  [hidden]="
+                     isOptionHiddenByNames([
+                        'ribbonPageGroupSelection',
+                        'barButtonItemRectangleSelection'
+                     ])
+                  "
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="executeSelectWithRectangle()"
+                     [disabled]="
+                        isOptionDisabledByNames([
+                           'ribbonPageGroupSelection',
+                           'barButtonItemRectangleSelection'
+                        ])
+                     "
+                  >
+                     <img class="img" src="assets/images/seleccionar_rectangulo.png" />
+                  </jqxButton>
+                  Seleccionar con Rectángulo
+               </td>
+               <td
+                  class="bigTd"
+                  [hidden]="
+                     isOptionHiddenByNames([
+                        'ribbonPageGroupSelection',
+                        'barButtonItemLineSelection'
+                     ])
+                  "
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="executeSelectWithLine()"
+                     [disabled]="
+                        isOptionDisabledByNames([
+                           'ribbonPageGroupSelection',
+                           'barButtonItemLineSelection'
+                        ])
+                     "
+                  >
+                     <img class="img" src="assets/images/seleccionar_linea.png" />
+                  </jqxButton>
+                  Seleccionar con Línea
+               </td>
+               <td
+                  class="bigTd"
+                  [hidden]="
+                     isOptionHiddenByNames([
+                        'ribbonPageGroupSelection',
+                        'barButtonItemCircleSelection'
+                     ])
+                  "
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="executeSelectWithCircle()"
+                     [disabled]="
+                        isOptionDisabledByNames([
+                           'ribbonPageGroupSelection',
+                           'barButtonItemCircleSelection'
+                        ])
+                     "
+                  >
+                     <img class="img" src="assets/images/seleccionar_circulo.png" />
+                  </jqxButton>
+                  Seleccionar con Círculo
+               </td>
+               <td
+                  class="bigTd"
+                  [hidden]="
+                     isOptionHiddenByNames([
+                        'ribbonPageGroupSelection',
+                        'barButtonItemPolygonSelection'
+                     ])
+                  "
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="executeSelectWithPolygon()"
+                     [disabled]="
+                        isOptionDisabledByNames([
+                           'ribbonPageGroupSelection',
+                           'barButtonItemPolygonSelection'
+                        ])
+                     "
+                  >
+                     <img class="img" src="assets/images/seleccionar_poligono.png" />
+                  </jqxButton>
+                  Seleccionar con Polígono
+               </td>
+               <td class="bigTd" [hidden]="isOptionHidden('ribbonPageGroupSelection')">
+                  <div class="sectionSeparator"></div>
+               </td>
+               <td
+                  class="bigTd"
+                  [hidden]="
+                     isOptionHiddenByNames([
+                        'ribbonPageGroupSelection',
+                        'barButtonItemDeleteSelection'
+                     ])
+                  "
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="executeRemoveSelectedFeatures()"
+                     [disabled]="
+                        isOptionDisabledByNames([
+                           'ribbonPageGroupSelection',
+                           'barButtonItemDeleteSelection'
+                        ])
+                     "
+                  >
+                     <img class="img" src="assets/images/eliminar_seleccion.png" />
+                  </jqxButton>
+                  Eliminar Selección
+               </td>
+               <td
+                  class="bigTd"
+                  [hidden]="
+                     isOptionHiddenByNames([
+                        'ribbonPageGroupSelection',
+                        'barButtonItemZoomSelection'
+                     ])
+                  "
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="executeZoomToSelection()"
+                     [disabled]="
+                        isOptionDisabledByNames([
+                           'ribbonPageGroupSelection',
+                           'barButtonItemZoomSelection'
+                        ])
+                     "
+                  >
+                     <img class="img" src="assets/images/acercar_seleccion.png" />
+                  </jqxButton>
+                  Acercar a Selección
+               </td>
+               <td
+                  class="bigTd"
+                  [hidden]="
+                     isOptionHiddenByNames([
+                        'ribbonPageGroupSelection',
+                        'barButtonItemSelectedItems'
+                     ])
+                  "
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openViewSelection(null, null)"
+                     [disabled]="
+                        isOptionDisabledByNames([
+                           'ribbonPageGroupSelection',
+                           'barButtonItemSelectedItems'
+                        ])
+                     "
+                  >
+                     <img class="img" src="assets/images/elementos_seleccionados.png" />
+                  </jqxButton>
+                  Elementos Seleccionados
+               </td>
+               <td class="bigTd" [hidden]="isOptionHidden('ribbonPageGroupSelection')">
+                  <div class="sectionSeparator"></div>
+               </td>
+               <td
+                  class="bigTd"
+                  [hidden]="
+                     isOptionHiddenByNames(['ribbonPageGroupMapQueries', 'barButtonItemIdentify'])
+                  "
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openIdentify()"
+                     [disabled]="
+                        isOptionDisabledByNames([
+                           'ribbonPageGroupMapQueries',
+                           'barButtonItemIdentify'
+                        ])
+                     "
+                  >
+                     <img class="img" src="assets/images/identificar.png" />
+                  </jqxButton>
+                  Identificar
+               </td>
+               <td
+                  class="bigTd"
+                  [hidden]="
+                     isOptionHiddenByNames(['ribbonPageGroupMapQueries', 'barButtonItemMeasure'])
+                  "
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openMeasure()"
+                     [disabled]="
+                        isOptionDisabledByNames([
+                           'ribbonPageGroupMapQueries',
+                           'barButtonItemMeasure'
+                        ])
+                     "
+                  >
+                     <img class="img" src="assets/images/medir.png" />
+                  </jqxButton>
+                  Medir
+               </td>
+               <td
+                  class="bigTd"
+                  [hidden]="
+                     isOptionHiddenByNames([
+                        'ribbonPageGroupMapQueries',
+                        'barButtonItemQueryBuilder'
+                     ])
+                  "
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openQueryBuilder()"
+                     [disabled]="
+                        isOptionDisabledByNames([
+                           'ribbonPageGroupMapQueries',
+                           'barButtonItemQueryBuilder'
+                        ])
+                     "
+                  >
+                     <img class="img" src="assets/images/generador_de_consultas.png" />
+                  </jqxButton>
+                  Generador de Consultas
+               </td>
+               <td
+                  class="bigTd"
+                  [hidden]="
+                     isOptionHiddenByNames([
+                        'ribbonPageGroupMapQueries',
+                        'barButtonItemRiskManager'
+                     ])
+                  "
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openRisksManagement()"
+                     [disabled]="
+                        isOptionDisabledByNames([
+                           'ribbonPageGroupMapQueries',
+                           'barButtonItemRiskManager'
+                        ])
+                     "
+                  >
+                     <img class="img" src="assets/images/administracion_riesgos.png" />
+                  </jqxButton>
+                  Administración Riesgos
+               </td>
+               <td
+                  class="bigTd"
+                  [hidden]="
+                     isOptionHiddenByNames(['ribbonPageGroupMapQueries', 'barButtonItemAttachment'])
+                  "
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openAttachment()"
+                     [disabled]="
+                        isOptionDisabledByNames([
+                           'ribbonPageGroupMapQueries',
+                           'barButtonItemAttachment'
+                        ])
+                     "
+                  >
+                     <img class="img" src="assets/images/adjuntos.png" />
+                  </jqxButton>
+                  Adjuntos
+               </td>
+               <td class="bigTd" [hidden]="isOptionHidden('ribbonPageGroupMapQueries')">
+                  <div class="sectionSeparator"></div>
+               </td>
+               <td
+                  class="bigTd"
+                  [hidden]="
+                     isOptionHiddenByNames([
+                        'ribbonPageGroupPloting',
+                        'barButtonItemEsquemaManzana'
+                     ])
+                  "
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openSquareScheme()"
+                     [disabled]="
+                        isOptionDisabledByNames([
+                           'ribbonPageGroupPloting',
+                           'barButtonItemEsquemaManzana'
+                        ])
+                     "
+                  >
+                     <img class="img" src="assets/images/esquema_manzana.png" />
+                  </jqxButton>
+                  Esquema Manzana
+               </td>
+               <td
+                  class="bigTd"
+                  [hidden]="
+                     isOptionHiddenByNames(['ribbonPageGroupPloting', 'barButtonItemPlotting'])
+                  "
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openPlotting()"
+                     [disabled]="
+                        isOptionDisabledByNames(['ribbonPageGroupPloting', 'barButtonItemPlotting'])
+                     "
+                  >
+                     <img class="img" src="assets/images/ploteo.png" />
+                  </jqxButton>
+                  Ploteo
+               </td>
+               <td
+                  class="bigTd"
+                  [hidden]="
+                     isOptionHiddenByNames(['ribbonPageGroupPloting', 'barButtonItemPlotting'])
+                  "
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="searchLocation()"
+                     [disabled]="
+                        isOptionDisabledByNames(['ribbonPageGroupPloting', 'barButtonItemPlotting'])
+                     "
+                  >
+                     <img class="img" src="assets/images/marcadores.png" />
+                  </jqxButton>
+                  Mi Ubicacion
+               </td>
+               <td class="bigTd" [hidden]="isOptionHidden('ribbonPageGroupPloting')">
+                  <div class="sectionSeparator"></div>
+               </td>
+            </tr>
+         </table>
+         <div class="sectionSeparator"></div>
+      </div>
+
+      <!-- Dibujo -->
+      <div style="overflow: hidden" id="div3">
+         <div class="scrollDiv">
+            <div style="position: absolute">
+               <div class="scrollButtonLeft" (click)="scrollLeft('div3')"></div>
+            </div>
+            <div style="position: absolute; right: 0">
+               <div class="scrollButtonRight" (click)="scrollRight('div3')"></div>
+            </div>
+         </div>
+
+         <table
+            class="buttonHolderTable"
+            id="clipBoardTable"
+            [hidden]="isOptionHidden('ribbonPageGroupItems')"
+         >
+            <tr>
+               <td rowspan="3" class="bigTd" [hidden]="isOptionHidden('barButtonItemSelectDraw')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="executeEditGraphic()"
+                     [disabled]="isOptionDisabled('barButtonItemSelectDraw')"
+                  >
+                     <img class="img" src="assets/images/seleccionar1.png" />
+                  </jqxButton>
+                  Seleccionar
+               </td>
+               <td
+                  rowspan="3"
+                  class="bigTd"
+                  [hidden]="isOptionHidden('barButtonItemClearAllDraws')"
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="executeClearGraphic()"
+                     [disabled]="isOptionDisabled('barButtonItemClearAllDraws')"
+                  >
+                     <img class="img" src="assets/images/borrar_todo.png" />
+                  </jqxButton>
+                  Borrar Todo
+               </td>
+               <td rowspan="3" class="bigTd" [hidden]="isOptionHidden('barButtonItemClearDraw')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="executeDeleteGraphic()"
+                     [disabled]="isOptionDisabled('barButtonItemClearDraw')"
+                  >
+                     <img class="img" src="assets/images/borrar.png" />
+                  </jqxButton>
+                  Borrar
+               </td>
+            </tr>
+         </table>
+         <div class="sectionSeparator" [hidden]="isOptionHidden('ribbonPageGroupItems')"></div>
+
+         <table
+            class="buttonHolderTable"
+            style="float: left"
+            [hidden]="isOptionHidden('ribbonPageGroupItems')"
+         >
+            <tr>
+               <td [hidden]="isOptionHidden('barButtonItemPointDraw')">
+                  <jqxTooltip
+                     [position]="'mouse'"
+                     [theme]="'demoTheme'"
+                     [content]="'Punto'"
+                     [disabled]="isOptionDisabled('barButtonItemPointDraw')"
+                  >
+                     <jqxButton
+                        [theme]="'demoTheme'"
+                        [width]="30"
+                        [height]="30"
+                        (click)="executeDrawPoint()"
+                     >
+                        <img class="img" src="assets/images/punto.png" width="22px" height="22px" />
+                     </jqxButton>
+                  </jqxTooltip>
+               </td>
+               <td [hidden]="isOptionHidden('barButtonItemLineDraw')">
+                  <jqxTooltip
+                     [position]="'mouse'"
+                     [theme]="'demoTheme'"
+                     [content]="'Linea'"
+                     [disabled]="isOptionDisabled('barButtonItemLineDraw')"
+                  >
+                     <jqxButton
+                        [theme]="'demoTheme'"
+                        [width]="30"
+                        [height]="30"
+                        (click)="executeDrawLine()"
+                     >
+                        <img class="img" src="assets/images/linea.png" width="22px" height="22px" />
+                     </jqxButton>
+                  </jqxTooltip>
+               </td>
+               <td [hidden]="isOptionHidden('barButtonItemPolygonDraw')">
+                  <jqxTooltip
+                     [position]="'mouse'"
+                     [theme]="'demoTheme'"
+                     [content]="'Poligono'"
+                     [disabled]="isOptionDisabled('barButtonItemPolygonDraw')"
+                  >
+                     <jqxButton
+                        [theme]="'demoTheme'"
+                        [width]="30"
+                        [height]="30"
+                        (click)="executeDrawPolygon()"
+                     >
+                        <img
+                           class="img"
+                           src="assets/images/poligono.png"
+                           width="22px"
+                           height="22px"
+                        />
+                     </jqxButton>
+                  </jqxTooltip>
+               </td>
+               <td [hidden]="isOptionHidden('barButtonItemRectangleDraw')">
+                  <jqxTooltip
+                     [position]="'mouse'"
+                     [theme]="'demoTheme'"
+                     [content]="'Rectangulo'"
+                     [disabled]="isOptionDisabled('barButtonItemRectangleDraw')"
+                  >
+                     <jqxButton
+                        [theme]="'demoTheme'"
+                        [width]="30"
+                        [height]="30"
+                        (click)="executeDrawRectangle()"
+                     >
+                        <img
+                           class="img"
+                           src="assets/images/cuadrado.png"
+                           width="22px"
+                           height="22px"
+                        />
+                     </jqxButton>
+                  </jqxTooltip>
+               </td>
+               <td [hidden]="isOptionHidden('barButtonItemArrowDraw')">
+                  <jqxTooltip
+                     [position]="'mouse'"
+                     [theme]="'demoTheme'"
+                     [content]="'Flecha'"
+                     [disabled]="isOptionDisabled('barButtonItemArrowDraw')"
+                  >
+                     <jqxButton
+                        [theme]="'demoTheme'"
+                        [width]="30"
+                        [height]="30"
+                        (click)="executeDrawArrow()"
+                     >
+                        <img
+                           class="img"
+                           src="assets/images/flecha.png"
+                           width="22px"
+                           height="22px"
+                        />
+                     </jqxButton>
+                  </jqxTooltip>
+               </td>
+            </tr>
+            <tr>
+               <td [hidden]="isOptionHidden('barButtonItemEllipseDraw')">
+                  <jqxTooltip
+                     [position]="'mouse'"
+                     [theme]="'demoTheme'"
+                     [content]="'Elipse'"
+                     [disabled]="isOptionDisabled('barButtonItemEllipseDraw')"
+                  >
+                     <jqxButton
+                        [theme]="'demoTheme'"
+                        [width]="30"
+                        [height]="30"
+                        (click)="executeDrawEllipse()"
+                     >
+                        <img
+                           class="img"
+                           src="assets/images/elipse.png"
+                           width="22px"
+                           height="22px"
+                        />
+                     </jqxButton>
+                  </jqxTooltip>
+               </td>
+               <td [hidden]="isOptionHidden('barButtonItemCircleDraw')">
+                  <jqxTooltip
+                     [position]="'mouse'"
+                     [theme]="'demoTheme'"
+                     [content]="'Circulo'"
+                     [disabled]="isOptionDisabled('barButtonItemCircleDraw')"
+                  >
+                     <jqxButton
+                        [theme]="'demoTheme'"
+                        [width]="30"
+                        [height]="30"
+                        (click)="executeDrawCircle()"
+                     >
+                        <img
+                           class="img"
+                           src="assets/images/circulo.png"
+                           width="22px"
+                           height="22px"
+                        />
+                     </jqxButton>
+                  </jqxTooltip>
+               </td>
+               <td [hidden]="isOptionHidden('barButtonItemFreeHandDraw')">
+                  <jqxTooltip
+                     [position]="'mouse'"
+                     [theme]="'demoTheme'"
+                     [content]="'Mano Alzada'"
+                     [disabled]="isOptionDisabled('barButtonItemFreeHandDraw')"
+                  >
+                     <jqxButton
+                        [theme]="'demoTheme'"
+                        [width]="30"
+                        [height]="30"
+                        (click)="executeDrawFreehandPolyLine()"
+                     >
+                        <img
+                           class="img"
+                           src="assets/images/mano_alzada.png"
+                           width="22px"
+                           height="22px"
+                        />
+                     </jqxButton>
+                  </jqxTooltip>
+               </td>
+               <td [hidden]="isOptionHidden('barButtonItemTextDraw')">
+                  <jqxTooltip
+                     [position]="'mouse'"
+                     [theme]="'demoTheme'"
+                     [content]="'Texto'"
+                     [disabled]="isOptionDisabled('barButtonItemTextDraw')"
+                  >
+                     <jqxButton
+                        [theme]="'demoTheme'"
+                        [width]="30"
+                        [height]="30"
+                        (click)="executeDrawText()"
+                     >
+                        <img class="img" src="assets/images/letra.png" width="22px" height="22px" />
+                     </jqxButton>
+                  </jqxTooltip>
+               </td>
+            </tr>
+         </table>
+         <div class="sectionSeparator" [hidden]="isOptionHidden('ribbonPageGroupItems')"></div>
+         <table
+            class="buttonHolderTable"
+            id="clipBoardTable"
+            [hidden]="isOptionHidden('ribbonPageGroupItems')"
+         >
+            <tr>
+               <td
+                  rowspan="3"
+                  class="bigTd"
+                  [hidden]="isOptionHidden('barButtonItemDrawProperties')"
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openDrawColor()"
+                     [disabled]="isOptionDisabled('barButtonItemDrawProperties')"
+                  >
+                     <img class="img" src="assets/images/propiedades.png" />
+                  </jqxButton>
+                  Propiedades
+               </td>
+            </tr>
+         </table>
+      </div>
+
+      <!-- Aplicaciones -->
+      <div style="overflow: hidden" id="div4">
+         <div class="scrollDiv">
+            <div style="position: absolute">
+               <div class="scrollButtonLeft" (click)="scrollLeft('div4')"></div>
+            </div>
+            <div style="position: absolute; right: 0">
+               <div class="scrollButtonRight" (click)="scrollRight('div4')"></div>
+            </div>
+         </div>
+
+         <table class="buttonHolderTable" style="height: 100%">
+            <tr>
+               <td
+                  class="bigTd"
+                  [hidden]="
+                     isOptionHiddenByNames(['ribbonPageGroupGeneral', 'barButtonItemSearches'])
+                  "
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openSearches()"
+                     [disabled]="
+                        isOptionDisabledByNames(['ribbonPageGroupGeneral', 'barButtonItemSearches'])
+                     "
+                  >
+                     <img class="img" src="assets/images/busquedas.png" />
+                  </jqxButton>
+                  Búsquedas
+               </td>
+               <td
+                  class="bigTd"
+                  [hidden]="
+                     isOptionHiddenByNames(['ribbonPageGroupGeneral', 'barButtonItemQueries'])
+                  "
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openConsult()"
+                     [disabled]="
+                        isOptionDisabledByNames(['ribbonPageGroupGeneral', 'barButtonItemQueries'])
+                     "
+                  >
+                     <img class="img" src="assets/images/consultas.png" />
+                  </jqxButton>
+                  Consultas
+               </td>
+               <td
+                  class="bigTd"
+                  [hidden]="
+                     isOptionHiddenByNames(['ribbonPageGroupGeneral', 'barButtonItemThematicMaps'])
+                  "
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openThematicMap()"
+                     [disabled]="
+                        isOptionDisabledByNames([
+                           'ribbonPageGroupGeneral',
+                           'barButtonItemThematicMaps'
+                        ])
+                     "
+                  >
+                     <img class="img" src="assets/images/mapas_tematicos.png" />
+                  </jqxButton>
+                  Mapas Temáticos
+               </td>
+               <td
+                  class="bigTd"
+                  [hidden]="
+                     isOptionHiddenByNames(['ribbonPageGroupGeneral', 'barButtonItemSpecialCross'])
+                  "
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openSpatialCrossing()"
+                     [disabled]="
+                        isOptionDisabledByNames([
+                           'ribbonPageGroupGeneral',
+                           'barButtonItemSpecialCross'
+                        ])
+                     "
+                  >
+                     <img class="img" src="assets/images/cruces_especiales.png" />
+                  </jqxButton>
+                  Cruces Especiales
+               </td>
+               <td
+                  class="bigTd"
+                  [hidden]="
+                     isOptionHiddenByNames([
+                        'ribbonPageGroupGeneral',
+                        'barButtonItemNetworkCoverage'
+                     ])
+                  "
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openNetworkCoverage()"
+                     [disabled]="
+                        isOptionDisabledByNames([
+                           'ribbonPageGroupGeneral',
+                           'barButtonItemNetworkCoverage'
+                        ])
+                     "
+                  >
+                     <img class="img" src="assets/images/cobertura_red.png" />
+                  </jqxButton>
+                  Cobertura Red
+               </td>
+               <td class="bigTd" [hidden]="isOptionHidden('ribbonPageGroupGeneral')">
+                  <div class="sectionSeparator"></div>
+               </td>
+               <td
+                  class="bigTd"
+                  [hidden]="
+                     isOptionHiddenByNames(['ribbonPageGroupPrediales', 'barButtonItemAddress'])
+                  "
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openAddressSearch()"
+                     [disabled]="
+                        isOptionDisabledByNames([
+                           'ribbonPageGroupPrediales',
+                           'barButtonItemAddress'
+                        ])
+                     "
+                  >
+                     <img class="img" src="assets/images/busqueda_direccion.png" />
+                  </jqxButton>
+                  Búsqueda Dirección
+               </td>
+               <td
+                  class="bigTd"
+                  [hidden]="
+                     isOptionHiddenByNames(['ribbonPageGroupPrediales', 'barButtonItemQueryPredio'])
+                  "
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openSeekPredio()"
+                     [disabled]="
+                        isOptionDisabledByNames([
+                           'ribbonPageGroupPrediales',
+                           'barButtonItemQueryPredio'
+                        ])
+                     "
+                  >
+                     <img class="img" src="assets/images/consulta_predio.png" />
+                  </jqxButton>
+                  Consulta Predio
+               </td>
+               <td
+                  class="bigTd"
+                  [hidden]="
+                     isOptionHiddenByNames([
+                        'ribbonPageGroupPrediales',
+                        'barButtonItemChangeStratum'
+                     ])
+                  "
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openChangeStratum()"
+                     [disabled]="
+                        isOptionDisabledByNames([
+                           'ribbonPageGroupPrediales',
+                           'barButtonItemChangeStratum'
+                        ])
+                     "
+                  >
+                     <img class="img" src="assets/images/cambiar_estrato.png" />
+                  </jqxButton>
+                  Cambiar Estrato
+               </td>
+               <!-- <td class="bigTd">
+            <jqxButton class='button left' [theme]="'demoTheme'" [width]="36" [height]="36">
+              <img class="img" src="assets/images/consumo_de_polivalvulas.png" />
+            </jqxButton>
+            Consumo de Poliválvulas
+          </td>
+          <td class="bigTd">
+            <jqxButton class='button left' [theme]="'demoTheme'" [width]="36" [height]="36" (click)="openPolyValvulasByLocation()">
+              <img class="img" src="assets/images/polivalvulas_por_localidad.png" />
+            </jqxButton>
+            Poliválvulas por Localidad
+          </td> -->
+               <td class="bigTd" [hidden]="isOptionHidden('ribbonPageGroupPrediales')">
+                  <div class="sectionSeparator"></div>
+               </td>
+               <td
+                  class="bigTd"
+                  [hidden]="
+                     isOptionHiddenByNames(['ribbonPageGroupProject', 'barButtonItemProjectInfo'])
+                  "
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openProjectInformation()"
+                     [disabled]="
+                        isOptionDisabledByNames([
+                           'ribbonPageGroupProject',
+                           'barButtonItemProjectInfo'
+                        ])
+                     "
+                  >
+                     <img class="img" src="assets/images/informacion_de_proyecto.png" />
+                  </jqxButton>
+                  Información de Proyecto
+               </td>
+               <td
+                  class="bigTd"
+                  [hidden]="
+                     isOptionHiddenByNames([
+                        'ribbonPageGroupProject',
+                        'barButtonItemEstimatedValues'
+                     ])
+                  "
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openProjectBudget()"
+                     [disabled]="
+                        isOptionDisabledByNames([
+                           'ribbonPageGroupProject',
+                           'barButtonItemEstimatedValues'
+                        ])
+                     "
+                  >
+                     <img class="img" src="assets/images/presupuesto_de_proyecto.png" />
+                  </jqxButton>
+                  Presupuesto de Proyecto
+               </td>
+
+               <td class="bigTd" [hidden]="isOptionHidden('ribbonPageGroupProject')">
+                  <div class="sectionSeparator"></div>
+               </td>
+            </tr>
+         </table>
+      </div>
+
+      <!-- Redes -->
+      <div style="overflow: hidden" id="div5">
+         <div class="scrollDiv">
+            <div style="position: absolute">
+               <div class="scrollButtonLeft" (click)="scrollLeft('div5')"></div>
+            </div>
+            <div style="position: absolute; right: 0">
+               <div class="scrollButtonRight" (click)="scrollRight('div5')"></div>
+            </div>
+         </div>
+
+         <table
+            class="buttonHolderTable"
+            style="height: 100%"
+            [hidden]="isOptionHidden('ribbonPageGroupPressManager')"
+         >
+            <tr>
+               <td class="bigTdLarge" [hidden]="isOptionHidden('barButtonItemTrace')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openAislarTuberia()"
+                     [disabled]="isOptionDisabled('barButtonItemTrace')"
+                  >
+                     <img class="img" src="assets/images/aislar_tuberia.png" />
+                  </jqxButton>
+                  Aislar Tubería
+               </td>
+               <td class="bigTdLarge" [hidden]="isOptionHidden('barButtonItemSetValves')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openObviateValves()"
+                     [disabled]="isOptionDisabled('barButtonItemSetValves')"
+                  >
+                     <img class="img" src="assets/images/obviar_valvulas.png" />
+                  </jqxButton>
+                  Obviar Válvulas
+               </td>
+               <td class="bigTdLarge" [hidden]="isOptionHidden('barButtonItemAffectedUsers')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openUser()"
+                     [disabled]="isOptionDisabled('barButtonItemAffectedUsers')"
+                  >
+                     <img class="img" src="assets/images/usuarios_afectados.png" />
+                  </jqxButton>
+                  Usuarios Afectados
+               </td>
+               <td class="bigTdLarge" [hidden]="isOptionHidden('barButtonItemAdjustAffectedUsers')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="initModifyAffectedUsers()"
+                     [disabled]="isOptionDisabled('barButtonItemAdjustAffectedUsers')"
+                  >
+                     <img class="img" src="assets/images/modificar_usuarios_afectados.png" />
+                  </jqxButton>
+                  Modificar Usuarios Afectados
+               </td>
+               <td
+                  class="bigTdLarge"
+                  [hidden]="isOptionHidden('barButtonItemRecalculateAffectedUsers')"
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openRecalculateUser()"
+                     [disabled]="isOptionDisabled('barButtonItemRecalculateAffectedUsers')"
+                  >
+                     <img class="img" src="assets/images/recalcular_usuarios_afectados.png" />
+                  </jqxButton>
+                  Recalcular Usuarios Afectados
+               </td>
+               <td class="bigTdLarge" [hidden]="isOptionHidden('barButtonItemCutService')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openInterrupcionServicio()"
+                     [disabled]="isOptionDisabled('barButtonItemCutService')"
+                  >
+                     <img class="img" src="assets/images/sacar_de_servicio.png" />
+                  </jqxButton>
+                  Sacar de Servicio
+               </td>
+               <td class="bigTdLarge" [hidden]="isOptionHidden('barButtonItemPutService')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openRestablecerServicio()"
+                     [disabled]="isOptionDisabled('barButtonItemPutService')"
+                  >
+                     <img class="img" src="assets/images/restablecer_servicio.png" />
+                  </jqxButton>
+                  Restablecer Servicio
+               </td>
+               <td class="bigTdLarge" [hidden]="isOptionHidden('barButtonItemAvailableOperators')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openAvailableOperator()"
+                     [disabled]="isOptionDisabled('barButtonItemAvailableOperators')"
+                  >
+                     <img class="img" src="assets/images/operarios_disponibles.png" />
+                  </jqxButton>
+                  Operarios Disponibles
+               </td>
+               <td class="bigTd" [hidden]="isOptionHidden('barButtonItemCheckEmergency')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openEmergency()"
+                     [disabled]="isOptionDisabled('barButtonItemCheckEmergency')"
+                  >
+                     <img class="img" src="assets/images/ver_emergencia.png" />
+                  </jqxButton>
+                  Ver Emergencia
+               </td>
+               <td
+                  class="bigTdLarge"
+                  [hidden]="isOptionHidden('barButtonItemSuspensionServiceReport')"
+               >
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openReporteSuspensionServicio()"
+                     [disabled]="isOptionDisabled('barButtonItemSuspensionServiceReport')"
+                  >
+                     <img class="img" src="assets/images/reporte_suspension_de_servicio.png" />
+                  </jqxButton>
+                  Reporte Suspensión de Servicio
+               </td>
+               <td class="bigTdLarge" [hidden]="isOptionHidden('barButtonItemCreatePress')">
+                  <div class="sectionSeparator"></div>
+               </td>
+               <td class="bigTdLarge" [hidden]="isOptionHidden('barButtonItemCreatePress')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openManejoPrensas()"
+                     [disabled]="isOptionDisabled('barButtonItemCreatePress')"
+                  >
+                     <img class="img" src="assets/images/manejo_de_prensas.png" />
+                  </jqxButton>
+                  Manejo de Prensas
+               </td>
+               <td class="bigTdLarge" [hidden]="isOptionHidden('barButtonItemCreatePress')">
+                  <div class="sectionSeparator"></div>
+               </td>
+            </tr>
+         </table>
+      </div>
+
+      <!-- Estaciones -->
+      <div style="overflow: hidden" id="div6">
+         <div class="scrollDiv">
+            <div style="position: absolute">
+               <div class="scrollButtonLeft" (click)="scrollLeft('div6')"></div>
+            </div>
+            <div style="position: absolute; right: 0">
+               <div class="scrollButtonRight" (click)="scrollRight('div6')"></div>
+            </div>
+         </div>
+
+         <table
+            class="buttonHolderTable"
+            style="height: 100%"
+            [hidden]="isOptionHidden('ribbonPageGroupAdditionalData')"
+         >
+            <tr>
+               <td class="bigTd" [hidden]="isOptionHidden('barButtonItemPneumaticTest')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openPNeumaticTest()"
+                     [disabled]="isOptionDisabled('barButtonItemPneumaticTest')"
+                  >
+                     <img class="img" src="assets/images/pruebas_neumaticas.png" />
+                  </jqxButton>
+                  Pruebas Neumáticas
+               </td>
+               <td class="bigTd" [hidden]="isOptionHidden('barButtonItemRadiograficalTest')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openRadiograficalTest()"
+                     [disabled]="isOptionDisabled('barButtonItemRadiograficalTest')"
+                  >
+                     <img class="img" src="assets/images/pruebas_radiograficas.png" />
+                  </jqxButton>
+                  Pruebas Radiográficas
+               </td>
+               <td class="bigTd" [hidden]="isOptionHidden('barButtonItemModification')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openStationModification()"
+                     [disabled]="isOptionDisabled('barButtonItemModification')"
+                  >
+                     <img class="img" src="assets/images/modificaciones.png" />
+                  </jqxButton>
+                  Modificaciones
+               </td>
+               <td class="bigTd" [hidden]="isOptionHidden('barButtonItemComponents')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openStationComponent()"
+                     [disabled]="isOptionDisabled('barButtonItemComponents')"
+                  >
+                     <img class="img" src="assets/images/componentes.png" />
+                  </jqxButton>
+                  Componentes
+               </td>
+               <td class="bigTd">
+                  <div class="sectionSeparator"></div>
+               </td>
+            </tr>
+         </table>
+      </div>
+
+      <!-- Mantenimiento -->
+      <div style="overflow: hidden" id="div7">
+         <div class="scrollDiv">
+            <div style="position: absolute">
+               <div class="scrollButtonLeft" (click)="scrollLeft('div7')"></div>
+            </div>
+            <div style="position: absolute; right: 0">
+               <div class="scrollButtonRight" (click)="scrollRight('div7')"></div>
+            </div>
+         </div>
+
+         <table
+            class="buttonHolderTable"
+            style="height: 100%"
+            [hidden]="isOptionHidden('ribbonPageGroupReports')"
+         >
+            <tr>
+               <td class="bigTd" [hidden]="isOptionHidden('BarButtonItemStatisticReports')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openStatisticReports()"
+                     [disabled]="isOptionDisabled('BarButtonItemStatisticReports')"
+                  >
+                     <img class="img" src="assets/images/reportes_estadisticos.png" />
+                  </jqxButton>
+                  Reportes Estadísticos
+               </td>
+               <td class="bigTd" [hidden]="isOptionHidden('BarButtonItemMaintenanceHistoric')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openMaintenanceHistoric()"
+                     [disabled]="isOptionDisabled('BarButtonItemMaintenanceHistoric')"
+                  >
+                     <img class="img" src="assets/images/historico_mantenimiento.png" />
+                  </jqxButton>
+                  Histórico Mantenimiento
+               </td>
+               <td class="bigTd" [hidden]="isOptionHidden('BarButtonItemMaintenanceSchedule')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openMaintenanceSchedule()"
+                     [disabled]="isOptionDisabled('BarButtonItemMaintenanceSchedule')"
+                  >
+                     <img class="img" src="assets/images/cronograma_mantenimiento.png" />
+                  </jqxButton>
+                  Cronograma Mantenimiento
+               </td>
+               <td class="bigTd" [hidden]="isOptionHidden('BarButtonItemQualityIndex')">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openQualityIndex()"
+                     [disabled]="isOptionDisabled('BarButtonItemQualityIndex')"
+                  >
+                     <img class="img" src="assets/images/indice_de_calidad.png" />
+                  </jqxButton>
+                  Indice de Calidad
+               </td>
+               <td class="bigTd">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openLegalizationOrder()"
+                  >
+                     <img
+                        class="img"
+                        src="assets/images/legalizacion_orden.png"
+                        style="width: 35px; height: 37px"
+                     />
+                  </jqxButton>
+                  Legalización de Orden
+               </td>
+               <td class="bigTd">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openLegalizationDirect()"
+                  >
+                     <img
+                        class="img"
+                        src="assets/images/legalizacion_directa.png"
+                        style="width: 35px; height: 37px"
+                     />
+                  </jqxButton>
+                  Legalización Directa
+               </td>
+               <td class="bigTd">
+                  <div class="sectionSeparator"></div>
+               </td>
+               <td class="bigTd">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openGenerarCorrectivo()"
+                  >
+                     <img
+                        class="img"
+                        src="assets/images/legalizacion_directa.png"
+                        style="width: 35px; height: 37px"
+                     />
+                  </jqxButton>
+                  Generar Correctivo
+               </td>
+               <td class="bigTd">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openAdicionarElemento()"
+                  >
+                     <img
+                        class="img"
+                        src="assets/images/legalizacion_directa.png"
+                        style="width: 35px; height: 37px"
+                     />
+                  </jqxButton>
+                  Adicionar Elemento
+               </td>
+               <td class="bigTd">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="36"
+                     [height]="36"
+                     (click)="openConsultarOrdenes()"
+                  >
+                  </jqxButton>
+                  Consultar Ordenes
+               </td>
+            </tr>
+         </table>
+      </div>
+
+      <!--Patrullaje-->
+      <div style="overflow: hidden" id="div8">
+         <div class="scrollDiv">
+            <div style="position: absolute">
+               <div class="scrollButtonLeft" (click)="scrollLeft('div8')"></div>
+            </div>
+
+            <div style="position: absolute; right: 0">
+               <div class="scrollButtonRight" (click)="scrollRight('div8')"></div>
+            </div>
+         </div>
+
+         <!-- <table class="buttonHolderTable" style="height: 100%">
+            <tr> -->
+         <!-- <td class="bigTd">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="45"
+                     [height]="45"
+                     (click)="openFatherOrder()"
+                  >
+                     <img class="img" src="assets/images/CrearOrdenPadre.png" />
+                  </jqxButton>
+                  Orden Padre
+               </td> -->
+
+         <!-- <td class="bigTd">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="45"
+                     [height]="45"
+                     (click)="openAssignContractor()"
+                  >
+                     <img class="img" src="assets/images/contratista_orden_padre.png" />
+                  </jqxButton>
+                  Contratistas
+               </td>
+
+               <td class="bigTd">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="45"
+                     [height]="45"
+                     (click)="openPatrol()"
+                  >
+                     <img class="img" src="assets/images/patrullero02.png" />
+                  </jqxButton>
+                  Patrulleros
+               </td>
+
+               <td class="bigTd" id="prueba">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="45"
+                     [height]="45"
+                     (click)="openMailingList()"
+                  >
+                     <img class="img" src="assets/images/correo.png" />
+                  </jqxButton>
+                  Correos
+               </td>
+
+               <td class="bigTdLarge" id="prueba">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="45"
+                     [height]="45"
+                     (click)="openSecurityRisk()"
+                  >
+                     <img class="img" src="assets/images/riesgo01.png" />
+                  </jqxButton>
+                  Riesgo
+               </td>
+
+               <td class="bigTd" id="prueba">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="45"
+                     [height]="45"
+                     (click)="openTablesType()"
+                  >
+                     <img class="img" src="assets/images/tabla_tipo.png" />
+                  </jqxButton>
+                  Tablas Tipo
+               </td>
+
+               <td class="bigTd" id="prueba">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="45"
+                     [height]="45"
+                     (click)="openTeam()"
+                  >
+                     <img class="img" src="assets/images/equipos.png" />
+                  </jqxButton>
+                  Equipos
+               </td>
+
+               <td class="bigTd">
+                  <div class="sectionSeparator"></div>
+               </td>
+
+               <td class="bigTd">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="45"
+                     [height]="45"
+                     (click)="openOrderManagement()"
+                  >
+                     <img class="img" src="assets/images/Gestion_ordenes.png" />
+                  </jqxButton>
+                  Gestión
+               </td>
+
+               <td class="bigTd">
+                  <div class="sectionSeparator"></div>
+               </td>
+
+               <td class="bigTd">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="45"
+                     [height]="45"
+                     (click)="openContractor()"
+                  >
+                     <img class="img" src="assets/images/contratista.png" />
+                  </jqxButton>
+                  Contratista
+               </td>
+
+               <td class="bigTd">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="45"
+                     [height]="45"
+                     (click)="openConsultPatrol()"
+                  >
+                     <img class="img" src="assets/images/patrullero_consulta03.png" />
+                  </jqxButton>
+                  Patrulleros
+               </td>
+
+               <td class="bigTdLarge">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="45"
+                     [height]="45"
+                     (click)="openOrders()"
+                  >
+                     <img class="img" src="assets/images/consultar_orden.png" />
+                  </jqxButton>
+                  Ordenes
+               </td> -->
+
+         <!-- <td class="bigTd">
+            <jqxButton class="button left" [theme]="'demoTheme'" [width]="45" [height]="45">
+              <img class="img" src="assets/images/Correctivos.png" />
+            </jqxButton>
+            Correctivos
+          </td> -->
+
+         <!-- <td class="bigTd">
+                  <div class="sectionSeparator"></div>
+               </td>
+
+               <td class="bigTd">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="45"
+                     [height]="45"
+                     (click)="openReportsStatistics()"
+                  >
+                     <img class="img" src="assets/images/reportes.png" />
+                  </jqxButton>
+                  Reporte
+               </td>
+
+               <td class="bigTd">
+                  <div class="sectionSeparator"></div>
+               </td>
+
+               <td class="bigTd">
+                  <jqxButton
+                     class="button left"
+                     [theme]="'demoTheme'"
+                     [width]="45"
+                     [height]="45"
+                     (click)="dashboard()"
+                  >
+                     <img class="img" [src]="iconDashboard" />
+                  </jqxButton>
+                  Dashboard
+               </td> -->
+         <!-- </tr>
+         </table> -->
+      </div>
+      <!-- Fin Patrullaje -->
+   </div>
+</jqxRibbon>

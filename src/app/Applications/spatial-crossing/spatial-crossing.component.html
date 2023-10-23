@@ -1,0 +1,8 @@
+<div>
+  <!-- <button type="button" (click)="exportExcel()">Excel</button> -->
+  <jqxDataTable [width]="'99%'" [height]="210" [source]="dataAdapter" [columns]="dataTableColumns" [pageable]="false" [columnsResize]="true"
+    #jqxDataTable>
+  </jqxDataTable>
+</div>
+
+<jqxLoader #jqxLoader [imagePosition]="'top'" [height]="50" [text]="'Cargando...'"></jqxLoader>

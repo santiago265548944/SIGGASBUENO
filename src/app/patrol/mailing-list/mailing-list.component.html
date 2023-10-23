@@ -1,0 +1,34 @@
+<div style="width: 100%; height: 150px;">
+
+  <jqxDataTable #dataTable [width]="'100%'" [height]="'98%'" [source]="dataAdapter" [columns]="dataTableColumns"
+    [pageable]="false" [columnsResize]="true" (onRowSelect)="tableOnRowSelect($event)" style="text-align: center;">
+  </jqxDataTable>
+
+</div>
+
+<div class="adicionar-correo">
+
+  <label>Persona:</label>
+  <select style="width: 150px;" *ngIf="display === true; else None" [(ngModel)]="personasA" (ngModelChange)="personaSinAlerta($event)">
+    <option></option>
+    <option *ngFor="let ListarPersona of listMailing" [ngValue]="ListarPersona">{{ListarPersona.NOMBRE}}</option>
+  </select>
+
+  <ng-template #None>
+    <input type="text" disabled [value]="nombre" style="width: 150px;">
+  </ng-template>
+
+  <input type="checkbox" [checked]="fuga" [(ngModel)]="checkedV0" /> <span class="espacio">Alerta Fuga</span>
+  <input type="checkbox" [checked]="dano" [(ngModel)]="checkedV1" /> <span class="espacio">Alerta Daño</span>
+  <input type="checkbox" [checked]="fraude" [(ngModel)]="checkedV2" /> <span class="espacio">Alerta Fraude</span>
+  <input type="checkbox" [checked]="ubicacion" [(ngModel)]="checkedV3" /> <span>Alerta Ubicación</span>
+
+</div>
+
+<br>
+
+<div>
+  <input type="button" value="Cancelar" style="margin-left: 2%;" *ngIf="botonC" (click)="onCancelar()" />
+  <input type="button" value="Adicionar Nuevo Correo" class="boton-adicionar" [disabled]="botonAdicionar" (click)="onAdicionar()" />
+  <input type="button" value="Eliminar Datos" class="boton-adicionar" [disabled]="botonE" (click)="onEliminar()" />
+</div>

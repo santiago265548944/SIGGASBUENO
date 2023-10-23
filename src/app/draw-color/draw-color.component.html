@@ -1,0 +1,270 @@
+<div class="container-fluid-modal container-rz-height">
+  <jqxNavigationBar [expandMode]="'multiple'" [width]="'100%'" [expandedIndexes]="[1]">
+    <div style="display: none;">
+      <div style='margin-top: 2px;'>
+        <div style='margin-left: 4px; float: left;'>
+          CallOut
+        </div>
+      </div>
+    </div>
+    <div style="display: none;">
+      <div class="container-center">
+        <div class="inline-form-text">
+          Color de Fondo
+        </div>
+        <div class="inline-form-control">
+          <jqxDropDownButton #callOutBackground class="jqx-dropdownlist-p" style="float: left" [width]='100' [height]='20'>
+            <div>
+              <jqxColorPicker #callOutBackgroundPic [width]='200' (onColorchange)="colorPickerEvent($event, 'callOutBackground')" [height]='200'
+                [colorMode]='"hue"'>
+              </jqxColorPicker>
+            </div>
+          </jqxDropDownButton>
+        </div>
+      </div>
+      <div class="container-center">
+        <div class="inline-form-text">
+          Color de Borde
+        </div>
+        <div class="inline-form-control">
+          <jqxDropDownButton #callOutBorderColor class="jqx-dropdownlist-p" style="float: left" [width]='100' [height]='20'>
+            <div>
+              <jqxColorPicker #callOutBorderColorPic [width]='200' (onColorchange)="colorPickerEvent($event, 'callOutBorderColor')" [height]='200'
+                [colorMode]='"hue"'>
+              </jqxColorPicker>
+            </div>
+          </jqxDropDownButton>
+        </div>
+      </div>
+      <div class="container-center">
+        <div class="inline-form-text">
+          Radio de Borde
+        </div>
+        <div class="inline-form-control">
+          <jqxNumberInput #callOutBorderRadius [spinButtons]="true" [inputMode]="'simple'" [width]="100" [height]="20" [min]="1" [spinButtonsStep]="5"
+            [decimalDigits]="1">
+          </jqxNumberInput>
+        </div>
+      </div>
+      <div class="container-center">
+        <div class="inline-form-text">
+          Color de Texto
+        </div>
+        <div class="inline-form-control">
+          <jqxDropDownButton #callOutFontColor class="jqx-dropdownlist-p" style="float: left" [width]='100' [height]='20'>
+            <div>
+              <jqxColorPicker #callOutFontColorPic [width]='200' (onColorchange)="colorPickerEvent($event, 'callOutFontColor')" [height]='200'
+                [colorMode]='"hue"'>
+              </jqxColorPicker>
+            </div>
+          </jqxDropDownButton>
+        </div>
+      </div>
+      <div class="container-center">
+        <div class="inline-form-text">
+          Tamaño de Texto
+        </div>
+        <div class="inline-form-control">
+          <jqxNumberInput #callOutFontSize [spinButtons]="true" [inputMode]="'simple'" [width]="100" [height]="20" [min]="1" [spinButtonsStep]="5"
+            [decimalDigits]="1">
+          </jqxNumberInput>
+        </div>
+      </div>
+      <div class="container-center">
+        <div class="inline-form-text">
+          Tipo de Texto
+        </div>
+        <div class="inline-form-control">
+          <select style="width: 100px" [(ngModel)]="selectFontFamilyOption"></select>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style='margin-top: 2px;'>
+        <div style='margin-left: 4px; float: left;'>
+          Gráficos
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="container-center">
+        <div class="inline-form-text">
+          Color de Punto
+        </div>
+        <div class="inline-form-control">
+          <jqxDropDownButton #pointColor class="jqx-dropdownlist-p" style="float: left" [width]='100' [height]='20'>
+            <div>
+              <jqxColorPicker #pointColorPic [width]='200' (onColorchange)="colorPickerEvent($event, 'pointColor')" [height]='200' [colorMode]='"hue"'>
+              </jqxColorPicker>
+            </div>
+          </jqxDropDownButton>
+        </div>
+      </div>
+      <div class="container-center">
+        <div class="inline-form-text">
+          Tamaño de Punto
+        </div>
+        <div class="inline-form-control">
+          <jqxNumberInput #pointSize [spinButtons]="true" [inputMode]="'simple'" [width]="100" [height]="20" [min]="1" [spinButtonsStep]="5"
+            [value]="1" [decimalDigits]="1">
+          </jqxNumberInput>
+        </div>
+      </div>
+      <div class="container-center">
+        <div class="inline-form-text">
+          Estilo del Punto
+        </div>
+        <div class="inline-form-control">
+          <select #selectPointStyle style="width: 100px" [(ngModel)]="selectPointStyleOption"></select>
+        </div>
+      </div>
+      <div class="container-center">
+        <div class="inline-form-text">
+          Color de Linea
+        </div>
+        <div class="inline-form-control">
+          <jqxDropDownButton #lineColor class="jqx-dropdownlist-p" style="float: left" [width]='100' [height]='20'>
+            <div>
+              <jqxColorPicker #lineColorPic [width]='200' (onColorchange)="colorPickerEvent($event, 'lineColor')" [height]='200' [colorMode]='"hue"'>
+              </jqxColorPicker>
+            </div>
+          </jqxDropDownButton>
+        </div>
+      </div>
+      <div class="container-center">
+        <div class="inline-form-text">
+          Grosor de Linea
+        </div>
+        <div class="inline-form-control">
+          <jqxNumberInput #lineWidth [spinButtons]="true" [inputMode]="'simple'" [width]="100" [height]="20" [min]="1" [spinButtonsStep]="5"
+            [value]="1" [decimalDigits]="1">
+          </jqxNumberInput>
+        </div>
+      </div>
+      <div class="container-center">
+        <div class="inline-form-text">
+          Color de Relleno
+        </div>
+        <div class="inline-form-control">
+          <jqxDropDownButton #fillColor class="jqx-dropdownlist-p" style="float: left" [width]='100' [height]='20'>
+            <div>
+              <jqxColorPicker #fillColorPic [width]='200' (onColorchange)="colorPickerEvent($event, 'fillColor')" [height]='200' [colorMode]='"hue"'>
+              </jqxColorPicker>
+            </div>
+          </jqxDropDownButton>
+        </div>
+      </div>
+      <div class="container-center">
+        <div class="inline-form-text">
+          Grosor de Borde
+        </div>
+        <div class="inline-form-control">
+          <jqxNumberInput #borderThickness [spinButtons]="true" [inputMode]="'simple'" [width]="100" [height]="20" [min]="1" [spinButtonsStep]="5"
+            [value]="1" [decimalDigits]="1">
+          </jqxNumberInput>
+        </div>
+      </div>
+      <div class="container-center">
+        <div class="inline-form-text">
+          Color Linea Temp
+        </div>
+        <div class="inline-form-control">
+          <jqxDropDownButton #tempLineColor class="jqx-dropdownlist-p" style="float: left" [width]='100' [height]='20'>
+            <div>
+              <jqxColorPicker #tempLineColorPic [width]='200' (onColorchange)="colorPickerEvent($event, 'tempLineColor')" [height]='200'
+                [colorMode]='"hue"'>
+              </jqxColorPicker>
+            </div>
+          </jqxDropDownButton>
+        </div>
+      </div>
+      <div class="container-center">
+        <div class="inline-form-text">
+          Grosor Linea Temp
+        </div>
+        <div class="inline-form-control">
+          <jqxNumberInput #tempLineWidth [spinButtons]="true" [inputMode]="'simple'" [width]="100" [height]="20" [min]="1" [spinButtonsStep]="5"
+            [value]="1" [decimalDigits]="1">
+          </jqxNumberInput>
+        </div>
+      </div>
+      <div class="container-center">
+        <div class="inline-form-text">
+          Color Relleno Temp
+        </div>
+        <div class="inline-form-control">
+          <jqxDropDownButton #tempFillColor class="jqx-dropdownlist-p" style="float: left" [width]='100' [height]='20'>
+            <div>
+              <jqxColorPicker #tempFillColorPic [width]='200' (onColorchange)="colorPickerEvent($event, 'tempFillColor')" [height]='200'
+                [colorMode]='"hue"'>
+              </jqxColorPicker>
+            </div>
+          </jqxDropDownButton>
+        </div>
+      </div>
+      <div class="container-center">
+        <div class="inline-form-text">
+          Grosor Borde Temp
+        </div>
+        <div class="inline-form-control">
+          <jqxNumberInput #tempBorderThickness [spinButtons]="true" [inputMode]="'simple'" [width]="100" [height]="20" [min]="1" [spinButtonsStep]="5"
+            [value]="1" [decimalDigits]="1">
+          </jqxNumberInput>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style='margin-top: 2px;'>
+        <div style='margin-left: 4px; float: left;'>
+          Texto
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="container-center">
+        <div class="inline-form-text">
+          Color de Texto
+        </div>
+        <div class="inline-form-control">
+          <jqxDropDownButton #fontColor class="jqx-dropdownlist-p" style="float: left" [width]='100' [height]='20'>
+            <div>
+              <jqxColorPicker #fontColorPic [width]='200' (onColorchange)="colorPickerEvent($event, 'fontColor')" [height]='200' [colorMode]='"hue"'>
+              </jqxColorPicker>
+            </div>
+          </jqxDropDownButton>
+        </div>
+      </div>
+      <div class="container-center">
+        <div class="inline-form-text">
+          Tamaño de Texto
+        </div>
+        <div class="inline-form-control">
+          <jqxNumberInput #fontSize [spinButtons]="true" [inputMode]="'simple'" [width]="100" [height]="20" [min]="1" [spinButtonsStep]="5"
+            [value]="1" [decimalDigits]="1">
+          </jqxNumberInput>
+        </div>
+      </div>
+      <div class="container-center">
+        <div class="inline-form-text">
+          Tipo de Texto
+        </div>
+        <div class="inline-form-control">
+          <select #selectFontFamily style="width: 100px" [(ngModel)]="selectFontFamilyOption"></select>
+        </div>
+      </div>
+      <div class="container-center">
+        <div class="inline-form-text">
+          Texto en Mapa
+        </div>
+        <div class="inline-form-control">
+          <input #selectFontFamily type="text" style="width: 100px" [(ngModel)]="textMapDraw">
+        </div>
+      </div>
+    </div>
+  </jqxNavigationBar>
+</div>
+<div class="container-fluid-modal" style="height: 30px;">
+  <div class="form-row" style="text-align: center; align-content:center; margin-bottom: 5px; margin-top: 5px">
+    <button type="button" (click)="executeSetParameters()">Aplicar</button>
+  </div>
+</div>

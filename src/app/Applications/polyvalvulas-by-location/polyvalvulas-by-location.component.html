@@ -1,0 +1,31 @@
+<div>
+  <div class="container-center">
+    <div class="inline-form-text">
+      Departamento
+    </div>
+    <div class="inline-form-control">
+      <select style="width: 150px;" [(ngModel)]="departmentSelected" (ngModelChange)="onDepartmentChange($event)">
+        <option *ngFor="let departmentValue of departmentValues" [ngValue]="departmentValue.Code">{{departmentValue.Value}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="container-center">
+    <div class="inline-form-text">
+      Municipio
+    </div>
+    <div class="inline-form-control">
+      <select style="width: 150px;" [(ngModel)]="citySelected">
+        <option *ngFor="let cityValue of cityValues" [ngValue]="cityValue.Code">{{cityValue.Value}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="container-fluid-modal" style="height: 30px;">
+    <div class="form-row" style="text-align: center; align-content:center; margin-bottom: 5px; margin-top: 5px">
+      <button type="button" (click)="executeAccept()">Aceptar</button>
+    </div>
+  </div>
+
+  <jqxLoader #jqxLoader [imagePosition]="'top'" [width]="80" [height]="50" [text]="'Cargando...'">
+  </jqxLoader>

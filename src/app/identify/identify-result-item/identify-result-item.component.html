@@ -1,0 +1,11 @@
+<jqxExpander [width]="'100%'">
+    <div>
+        {{title}}
+    </div>
+    <div>
+      <app-identify-result-data *ngFor="let item of identifyResult[title]" [identityData]="item"
+      (itemSelectedEvent)="itemSelectedEventHandler($event)">
+
+      </app-identify-result-data>
+    </div>
+</jqxExpander>

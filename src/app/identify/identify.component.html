@@ -1,0 +1,30 @@
+<div class="app-identify-child1">
+  <label style="width: 30%">Identificar desde: </label>
+  <select #selectLayerOptions style="width: 65%" [(ngModel)]="selectedLayerOption">
+    <!-- <option *ngFor="let lo of layerOptionsData" [value]="lo.value">{{lo.text}}></option> -->
+  </select>
+</div>
+<div class="app-identify-child2">
+  <jqxSplitter #identifySplitter>
+    <div style='overflow:scroll;'>
+      <app-identify-result-item *ngFor="let element of identifyResultsGrouped"
+        [identifyResult]="element" (itemSelectedEvent)="itemSelectedEventHandler($event)">
+      </app-identify-result-item>
+    </div>
+    <div>
+      <jqxDataTable
+        [width]="'100%'" [height]="'100%'" [source]="dataAdapter" [columns]="dataTableColumns"
+        [pageable]="false" [columnsResize]="true">
+      </jqxDataTable>
+    </div>
+  </jqxSplitter>
+</div>
+<div class="identify-status-bar">
+  Identificado {{resultQuantity}} elementos.
+</div>
+<jqxLoader #jqxLoader
+           [imagePosition]="'top'"
+           [width]="80"
+           [height]="50"
+           [text]="'Cargando...'">
+</jqxLoader>

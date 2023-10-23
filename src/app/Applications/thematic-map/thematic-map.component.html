@@ -1,0 +1,50 @@
+<div style="width: 100%;">
+  <jqxExpander [width]="'100%'" [height]="'100%'">
+    <div>
+      Temáticos
+    </div>
+    <div>
+      <select style="width: 99%" [(ngModel)]="thematicItemSelected" (ngModelChange)="thematicItemChanged($event)">
+        <option *ngFor="let thematicItem of thematicList" [ngValue]="thematicItem">{{thematicItem.DESCRIPCION}}</option>
+      </select>
+    </div>
+  </jqxExpander>
+</div>
+<div>
+  <jqxExpander [width]="'100%'" [height]="'100%'">
+    <div>
+      Parámetros
+    </div>
+    <div>
+      <app-dynamic-form [dataSource]="dynamicItems"></app-dynamic-form>
+    </div>
+  </jqxExpander>
+</div>
+
+<div>
+  <select style="width: 30%; position: absolute; right: 30px; margin-top: 5px" [(ngModel)]="resultItemSelected" (ngModelChange)="resultItemChanged($event)">
+    <option *ngFor="let resultItem of resultList" [ngValue]="resultItem.Code">{{resultItem.Value}}</option>
+  </select>
+  <jqxExpander [width]="'100%'">
+    <div>
+      Resultados
+    </div>
+    <div>
+      <div style="width: 400px;">
+        <jqxDataTable #dataTable [width]="'800'" [height]="'150'" [source]="dataAdapter" [columns]="dataTableColumns" [pageable]="false"
+          [columnsResize]="true">
+        </jqxDataTable>
+      </div>
+    </div>
+  </jqxExpander>
+</div>
+<div style="text-align: center;">
+  <input type="button" value="Reporte" (click)="onShowThematicClick(2)" [disabled]="report" />
+  <input type="button" value="Exportar" (click)="onExportClick()" [disabled]="export" />
+  <input type="button" value="Leyenda" (click)="onLegendClick()" [disabled]="legend" />
+  <input type="button" value="Seleccionar" (click)="onSelectClick()" [disabled]="select" />
+  <input type="button" value="Mostrar" (click)="onShowThematicClick(1)" />
+  <input type="button" value="Cancelar" (click)="onCancelClick()" />
+</div>
+<jqxLoader #jqxLoader [imagePosition]="'top'" [width]="80" [height]="50" [text]="'Cargando...'">
+</jqxLoader>

@@ -1,0 +1,83 @@
+<div class="container-fluid-modal container-rz-height">
+  <div class="container-center">
+    <div class="inline-form-text">
+      Departamento
+    </div>
+    <div class="inline-form-control">
+      <select class="input-generic-long" [(ngModel)]="model.department">
+        <option *ngFor="let departmentValue of departmentValues" [ngValue]="departmentValue.Code">{{departmentValue.Value}}</option>
+      </select>
+    </div>
+  </div>
+  <br>
+
+  <jqxNavigationBar #jqxNav [width]="'100%'" [height]="210" (onExpandedItem)="expandedItem($event)">
+    <div>
+      Orden de diseño generada
+    </div>
+    <div>
+      <br>
+      <div class="container-center">
+        <div class="inline-form-text">
+          Numero de orden
+        </div>
+        <div style="display: inline; padding: 3px;">
+          <input type="text" style="width: 70px;" [(ngModel)]="model.OrdenGenUno">
+          <input type="text" style="width: 70px;" [(ngModel)]="model.OrdenGenDos">
+          <input type="text" style="width: 70px;" [(ngModel)]="model.OrdenGenTres">
+        </div>
+      </div>
+      <br>
+    </div>
+    <div>
+      Orden de factibilidad generada
+    </div>
+    <div>
+      <br>
+      <div class="container-center">
+        <div class="inline-form-text">
+          Numero de orden
+        </div>
+        <div style="display: inline; padding: 3px;">
+          <input type="text" style="width: 70px;" [(ngModel)]="model.OrdenFacUno">
+          <input type="text" style="width: 70px;" [(ngModel)]="model.OrdenFacDos">
+          <input type="text" style="width: 70px;" [(ngModel)]="model.OrdenFacTres">
+        </div>
+      </div>
+      <br>
+    </div>
+    <div>
+      Estado del proyecto
+    </div>
+    <div>
+      <br>
+      <label>
+        <input type="radio" [value]="'D'" name="grEstado" [(ngModel)]="model.Estado">En Diseño
+      </label>
+      <br>
+      <label>
+        <input type="radio" [value]="'C'" name="grEstado" [(ngModel)]="model.Estado">En Construcción
+      </label>
+      <br>
+      <label>
+        <input type="radio" [value]="'G'" name="grEstado" [(ngModel)]="model.Estado">Gasificado
+      </label>
+      <br>
+      <label>
+        <input type="radio" [value]="'T'" name="grEstado" [(ngModel)]="model.Estado">Terminado
+      </label>
+      <br>
+    </div>
+  </jqxNavigationBar>
+
+</div>
+<br>
+<div class="container-fluid-modal" style="height: 30px;">
+  <div class="form-row" style="text-align: center; align-content:center; margin-bottom: 5px; margin-top: 5px">
+    <button type="button" (click)="executeSearch('S')">Materiales</button>
+    <button type="button" (click)="executeSearch('N')">Consultar</button>
+    <button type="button" (click)="clearFields()">Limpiar</button>
+  </div>
+</div>
+
+<jqxLoader #jqxLoader [imagePosition]="'top'" [width]="80" [height]="50" [text]="'Cargando...'"></jqxLoader>

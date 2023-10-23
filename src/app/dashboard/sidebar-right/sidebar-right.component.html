@@ -1,0 +1,17 @@
+<div class="sidebar-right" [ngStyle]="{'height': height}">
+  <div class="cuadro-grafica">
+    <div class="seleccionado">
+      <label>{{ elementoSeleccionado }}</label>
+    </div>
+
+    <div class="grafica" *ngIf="values && ValueMax">
+      <jqxBarGauge [height]="230" [max]="ValueMax" [colorScheme]="'scheme06'" [values]="values" [startAngle]="180"
+        [endAngle]="0">
+      </jqxBarGauge>
+    </div>
+  </div>
+
+  <div class="cuadro">
+
+  </div>
+</div>

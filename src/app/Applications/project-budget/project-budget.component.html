@@ -1,0 +1,148 @@
+<div class="project-budget-body">
+  <div class="project-budget-body">
+    <div>
+      <jqxExpander [width]="'100%'">
+        <div>
+          Información del Proyecto
+        </div>
+        <div>
+          <div class='app-riesgos-content'>
+            <label class="project-budget-label-info-proyecto">Proyecto</label>
+            <select class="project-budget-long-input" [(ngModel)]="model.Proyecto" (ngModelChange)="onProyectoChanged($event)">
+                <option *ngFor="let project of projects" [ngValue]="project">{{project.text}}</option>
+            </select>
+          </div>
+          <div>
+            <label class="project-budget-label-info-proyecto">Despcripción proyecto</label>
+            <textarea class="project-budget-long-input" [(ngModel)]="model.DescripcionProyecto"></textarea>
+          </div>
+          <div>
+            <label class="project-budget-label-info-proyecto">Tuberia de anillo</label>
+            <input type="number" class="project-budget-short-input" [(ngModel)]="model.TuberiaAnillo"/>
+            <span >ML</span>
+          </div>
+          <div>
+            <label class="project-budget-label-info-proyecto">Tuberia de troncal</label>
+            <input type="number" class="project-budget-short-input" [(ngModel)]="model.TuberiaTroncal"/>
+            <span >ML</span>
+          </div>
+          <div class='app-riesgos-content'>
+            <label class="project-budget-label-info-proyecto">Tipo de cálculo</label>
+            <select class="project-budget-long-input" [(ngModel)]="model.TipoCalculo">
+                <option value="0">Por item</option>
+                <option value="1">Por unidad constructiva</option>
+            </select>
+          </div>
+          <div class='app-riesgos-content'>
+            <label class="project-budget-label-info-proyecto">Lista a usar</label>
+            <select class="project-budget-long-input" [(ngModel)]="model.ListaUsar">
+                <option *ngFor="let itemLista of listasUsar" [ngValue]="itemLista">{{itemLista.text}}</option>
+            </select>
+          </div>
+        </div>
+      </jqxExpander>
+      <jqxExpander [width]="'100%'" [expanded]="false">
+        <div>
+          Información Tuberías
+        </div>
+        <div>
+          <div class="project-budget-tipo-tuberia">
+            <label>Tipo Tuberia</label>
+            <select class="project-budget-short-input" [(ngModel)]="model.TipoTuberia" (ngModelChange)="onTipoTuberiaChanged($event)">
+                <option *ngFor="let tipoTuberia of tiposTuberia" [ngValue]="tipoTuberia">{{tipoTuberia.text}}</option>
+            </select>
+          </div>
+          <div *ngIf="anilloTroncalVisible">
+            <div class="project-budget-fieldset">
+              <div>
+                Bajo concreto
+              </div>
+              <br/>
+              <div>
+                <label>Metros lineales en arena:</label>
+                <input type="number" [(ngModel)]="model.ConcretoMetrosArena" (blur)="onInputBlur('ConcretoMetrosArena')"/>
+              </div>
+              <div>
+                <label>Metros lineales en caliche:</label>
+                <input type="number" [(ngModel)]="model.ConcretoMetrosCaliche" (blur)="onInputBlur('ConcretoMetrosCaliche')"/>
+              </div>
+              <div>
+                <label>Metros lineales en piedra:</label>
+                <input type="number" [(ngModel)]="model.ConcretoMetrosPiedra" (blur)="onInputBlur('ConcretoMetrosPiedra')"/>
+              </div>
+              <div>
+                <label>Concreto simple:</label>
+                <input type="number" [(ngModel)]="model.ConcretoSimple" (blur)="onInputBlur('ConcretoSimple')"/>
+              </div>
+              <div>
+                <label>Concreto especial:</label>
+                <input type="number" [(ngModel)]="model.ConcretoEspecial" (blur)="onInputBlur('ConcretoEspecial')"/>
+              </div>
+            </div>
+            <div class="project-budget-fieldset">
+              <div>
+                Terreno natural
+              </div>
+              <br/>
+              <div>
+                <label>Metros lineales en arena:</label>
+                <input type="number" [(ngModel)]="model.NaturalMetrosArena" (blur)="onInputBlur('NaturalMetrosArena')"/>
+              </div>
+              <div>
+                <label>Metros lineales en caliche:</label>
+                <input type="number" [(ngModel)]="model.NaturalMetrosCaliche" (blur)="onInputBlur('NaturalMetrosCaliche')"/>
+              </div>
+              <div>
+                <label>Metros lineales en piedra:</label>
+                <input type="number" [(ngModel)]="model.NaturalMetrosPiedra" (blur)="onInputBlur('NaturalMetrosPiedra')"/>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="!anilloTroncalVisible">
+              <div class="project-budget-fieldset">
+                <div>
+                  Bajo concreto
+                </div>
+                <br/>
+                <div>
+                  <label>En concreto:</label>
+                  <input type="number" [(ngModel)]="model.ConcretoEnConcreto"/>
+                </div>
+                <div>
+                  <label>En asfalto:</label>
+                  <input type="number" [(ngModel)]="model.ConcretoEnAsfalto"/>
+                </div>
+                <div>
+                  <label>En anden tableta:</label>
+                  <input type="number" [(ngModel)]="model.ConcretoEnAndenTableta"/>
+                </div>
+                <div>
+                  <label>En zona verde:</label>
+                  <input type="number" [(ngModel)]="model.ConcretoEnZonaVerde"/>
+                </div>
+                <div>
+                  <label>En destapado:</label>
+                  <input type="number" [(ngModel)]="model.ConcretoEnDestapado"/>
+                </div>
+              </div>
+            </div>
+        </div>
+      </jqxExpander>
+      <jqxExpander [width]="'100%'" [expanded]="resultExpand" (onCollapsed)="onResultadosCollapsed()">
+        <div>
+          Resultados
+        </div>
+        <div>
+          <jqxDataTable [width]="'99%'" [height]="210" [source]="dataAdapter"
+              [columns]="dataTableColumns" [pageable]="false" [columnsResize]="true" #jqxDataTable>
+          </jqxDataTable>
+        </div>
+      </jqxExpander>
+    </div>
+  </div>
+  <div class="project-budget-buttons">
+    <input type="button" value="Aceptar" (click)="onAceptarClick()"/>
+  </div>
+</div>
+<jqxLoader #jqxLoader [imagePosition]="'top'" [height]="50" [text]="progressMessage">
+</jqxLoader>

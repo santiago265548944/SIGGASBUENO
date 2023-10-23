@@ -1,0 +1,178 @@
+.cuadro1 {
+   border: 1px solid black;
+}
+.row-1 {
+   padding: 5px;
+   box-sizing: border-box;
+   display: flex;
+   align-items: center;
+}
+
+.row-1-col1 {
+   width: 70%;
+   margin-right: 5px;
+}
+
+.row-1-col2 {
+   width: 30%;
+   left: 10%;
+}
+.row1-select {
+   position: relative;
+   width: 48%;
+   left: 2%;
+}
+/* row-2*/
+
+.row-2 {
+   padding: 5px;
+   box-sizing: border-box;
+   display: flex;
+   align-items: center;
+}
+
+.row-2-col1 {
+   width: 70%;
+   margin-right: 5px;
+}
+
+.row-2-col2 {
+   width: 30%;
+   left: 10%;
+}
+.row2-select {
+   position: relative;
+   width: 48%;
+   left: 10%;
+}
+/*row-3*/
+
+.row-3 {
+   padding: 5px;
+   box-sizing: border-box;
+   display: flex;
+   align-items: center;
+}
+
+.row-3-col1 {
+   width: 70%;
+   margin-right: 5px;
+}
+
+.row3-select {
+   position: relative;
+   width: 48%;
+   left: 2%;
+}
+/*row-4*/
+.row-4 {
+   padding: 5px;
+   box-sizing: border-box;
+   display: flex;
+   align-items: center;
+}
+
+.row-4-col1 {
+   width: 70%;
+   margin-right: 5px;
+}
+
+.row4-select {
+   position: relative;
+   width: 48%;
+   left: 4%;
+}
+.inputObserva {
+   position: relative;
+   width: 47%;
+   left: 5%;
+}
+/*row-5*/
+
+.row-5 {
+   padding: 5px;
+   box-sizing: border-box;
+   display: flex;
+   align-items: center;
+}
+
+.row-5-col1 {
+   width: 70%;
+   margin-right: 5px;
+}
+
+.row5-input {
+   position: relative;
+   width: 48%;
+   left: 27%;
+}
+.row-5-col2 {
+   width: 30%;
+   left: 10%;
+}
+.buttonCancelar {
+   width: 40%;
+}
+.buttonAgregar {
+   width: 40%;
+}
+.buttonRemover {
+   width: 40%;
+}
+/*row-6*/
+
+.row-6 {
+   padding: 5px;
+   box-sizing: border-box;
+   display: flex;
+   align-items: center;
+}
+
+.row-6-col1 {
+   width: 70%;
+   margin-right: 5px;
+}
+
+.row-6-col2 {
+   position: relative;
+   width: 30%;
+   left: 70%;
+}
+/*row-7*/
+
+.input1 {
+   width: 11%;
+   background-color: rgb(190, 186, 186);
+}
+.input2 {
+   width: 23%;
+   background-color: rgb(190, 186, 186);
+}
+.buttonPredio {
+   background-color: rgb(190, 186, 186);
+}
+.row-7-col2 {
+   position: relative;
+   width: 30%;
+   left: 80%;
+}
+.cuadro2 {
+   border: 1px solid black;
+}
+/* Estilos de la tabla */
+.tabla {
+   display: table;
+   width: 100%;
+   border-collapse: collapse;
+}
+
+.fila {
+   display: table-row;
+}
+
+.celda {
+   display: table-cell;
+   border: 1px solid #ccc;
+   padding: 8px;
+   align-items: center;
+}

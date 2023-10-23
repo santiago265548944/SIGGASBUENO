@@ -1,0 +1,12 @@
+<div style="width: 100%;">
+  <jqxExpander #expSelectTool [width]="'100%'" [height]="'100%'">
+    <div>
+      Herramienta de selección
+    </div>
+    <div>
+      <app-embedded-selection [ownerTool]='aislarTuberiaSelectType'></app-embedded-selection>
+    </div>
+  </jqxExpander>
+</div>
+<jqxLoader #jqxLoader [imagePosition]="'top'" [width]="80" [height]="50" [text]="'Cargando...'">
+</jqxLoader>

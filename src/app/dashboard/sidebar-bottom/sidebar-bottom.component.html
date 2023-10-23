@@ -1,0 +1,22 @@
+<div class="sidebar-bottom" [ngStyle]="{'height': height}">
+  <div class="bar-chart">
+    <jqxChart [width]="'100%'" [height]="'100%'" [title]="titulo" [description]="nombreSeleccionado"
+      [enableAnimations]="true" [showLegend]="true" [source]="datos" [xAxis]="xAxis" [valueAxis]="valueAxis"
+      [seriesGroups]="seriesGroups" [colorScheme]="'scheme09'">
+    </jqxChart>
+  </div>
+
+  <div class="donut-chart">
+    <div class="seleccionado">
+      <label>{{ elementoSeleccionado }}</label>
+      <br>
+      <span>{{ nombreSeleccionado }}</span>
+    </div>
+
+    <div class="grafica" *ngIf="values && ValueMax">
+      <jqxBarGauge [height]="230" [max]="ValueMax" [colorScheme]="'scheme06'" [values]="values" [startAngle]="180"
+        [endAngle]="0">
+      </jqxBarGauge>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,107 @@
+<div [className]="firstVisibility">
+  <div class="container-center">
+    <div class="inline-form-text">
+      Departamento
+    </div>
+    <div class="inline-form-control">
+      <select style="width: 150px;" [(ngModel)]="squareSchemeModel.department" (change)="executeQuery(2)">
+        <option *ngFor="let departmentValue of departmentValues" [ngValue]="departmentValue.Code">{{departmentValue.Value}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="container-center">
+    <div class="inline-form-text">
+      Localidad
+    </div>
+    <div class="inline-form-control">
+      <select style="width: 150px;" [(ngModel)]="squareSchemeModel.location">
+        <option *ngFor="let locationValue of locationValues" [ngValue]="locationValue.Code">{{locationValue.Value}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="container-center">
+    <div class="inline-form-text">
+      Zona
+    </div>
+    <div class="inline-form-control">
+      <input type="text" style="width: 150px" [(ngModel)]="squareSchemeModel.zona" />
+    </div>
+  </div>
+  <div class="container-center">
+    <div class="inline-form-text">
+      Sector
+    </div>
+    <div class="inline-form-control">
+      <input type="text" style="width: 150px" [(ngModel)]="squareSchemeModel.sector" />
+    </div>
+  </div>
+
+  <div class="container-center">
+    <div class="inline-form-text">
+      Manzana
+    </div>
+    <div class="inline-form-control">
+      <input type="text" style="width: 150px" [(ngModel)]="squareSchemeModel.manzana" />
+    </div>
+  </div>
+
+  <div class="container-fluid-modal" style="height: 30px;">
+    <div class="form-row" style="text-align: center; align-content:center; margin-bottom: 5px; margin-top: 5px">
+      <button type="button" (click)="executeZoom()">Acercar</button>
+    </div>
+  </div>
+</div>
+
+<div [className]="secondVisibility">
+  <div class="container-center">
+    <div class="inline-form-text">
+      Orden de trabajo
+    </div>
+    <div class="inline-form-control">
+      <input type="text" style="width: 150px" [(ngModel)]="squareSchemeModel.ordenTrabajo" />
+    </div>
+  </div>
+  <div class="container-center">
+    <div class="inline-form-text">
+      Paquete
+    </div>
+    <div class="inline-form-control">
+      <input type="text" style="width: 150px" [(ngModel)]="squareSchemeModel.paquete" />
+    </div>
+  </div>
+  <div class="container-center">
+    <div class="inline-form-text">
+      Nombre del contratista
+    </div>
+    <div class="inline-form-control">
+      <input type="text" style="width: 150px" [(ngModel)]="squareSchemeModel.contratista" />
+    </div>
+  </div>
+  <div class="container-center">
+    <div class="inline-form-text">
+      Nombre del supervisor
+    </div>
+    <div class="inline-form-control">
+      <input type="text" style="width: 150px" [(ngModel)]="squareSchemeModel.supervisor" />
+    </div>
+  </div>
+  <div class="container-center">
+    <div class="inline-form-text">
+      Nombre del responsable
+    </div>
+    <div class="inline-form-control">
+      <input type="text" style="width: 150px" [(ngModel)]="squareSchemeModel.responsable" />
+    </div>
+  </div>
+
+  <div class="container-fluid-modal" style="height: 30px;">
+    <div class="form-row" style="text-align: center; align-content:center; margin-bottom: 5px; margin-top: 5px">
+      <button type="button" (click)="setVisibilityContent()">Atras</button>
+      <button type="button" (click)="executeGenerate()">Generar</button>
+    </div>
+  </div>
+</div>
+
+
+
+<jqxLoader #jqxLoader [imagePosition]="'top'" [width]="80" [height]="50" [text]="'Cargando...'"></jqxLoader>

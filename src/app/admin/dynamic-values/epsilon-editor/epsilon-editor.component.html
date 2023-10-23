@@ -1,0 +1,17 @@
+<div class="container-center">
+    <div class="inline-form-text">
+      Tipo de rotación
+    </div>
+    <div class="inline-form-control">
+      <select style="width: 160px;" [(ngModel)]="rotationTypeValue">
+        <option *ngFor="let rotationValue of rotationTypeValues" [ngValue]="rotationValue.Code">{{rotationValue.Value}}</option>
+      </select>
+    </div>
+  </div>
+  
+  <div class="container-fluid-modal" style="height: 30px;">
+    <div class="form-row" style="text-align: center; align-content:center; margin-bottom: 5px; margin-top: 5px">
+      <button type="button" (click)="executeSave()">Aceptar</button>
+      <button type="button" (click)="executeCancel()">Cancelar</button>
+    </div>
+  </div>

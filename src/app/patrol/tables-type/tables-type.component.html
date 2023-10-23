@@ -1,0 +1,56 @@
+<div class="contenedor">
+  <jqxExpander [width]="'100%'">
+
+    <div>
+      Tablas Tipo
+    </div>
+
+    <div class="consulta">
+      <select style="width: 100%;" [(ngModel)]="nameTable" (ngModelChange)="loadTypePause()">
+        <option></option>
+        <option *ngFor="let list of listTablesType">{{ list.TABLA }}</option>
+      </select>
+    </div>
+
+  </jqxExpander>
+</div>
+
+<div class="contenedor">
+  <jqxExpander [width]="'100%'" [height]="'150px'">
+
+    <div>
+      Lista de Tipos
+    </div>
+
+    <div class="lista-tipos">
+      <table>
+        <tr>
+          <th style="width: 30%;">Tipo</th>
+          <th style="width: 68%;">Descripción</th>
+        </tr>
+
+        <tr *ngFor="let list of listTypePause">
+          <td style="width: 30%;">{{ list.TIPO }}</td>
+          <td style="width: 68%;">{{ list.DESCRIPCION }}</td>
+        </tr>
+      </table>
+    </div>
+
+  </jqxExpander>
+</div>
+
+<div style="width: 100%; margin-top: 2%;" class="consulta">
+  <div>
+    <label style="width: 30%;">Nuevo tipo</label>
+    <input type="text" style="width: 68%;" [(ngModel)]="newType">
+  </div>
+
+  <div>
+    <label style="width: 30%;">Descripción</label>
+    <input type="text" style="width: 68%;" [(ngModel)]="description">
+  </div>
+</div>
+
+<div style="text-align: center;">
+  <input type="button" value="Adicionar" (click)="onAdd()" />
+</div>

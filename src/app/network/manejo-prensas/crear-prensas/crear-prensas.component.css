@@ -1,0 +1,15 @@
+input, textarea, label, select {
+  width: 49%;
+}
+
+label {
+  font-size: small;
+  font-weight: normal;
+  vertical-align: middle;
+}
+div {
+  vertical-align: middle;
+}
+.app-crearprensas-buttons {
+  text-align: right;
+}

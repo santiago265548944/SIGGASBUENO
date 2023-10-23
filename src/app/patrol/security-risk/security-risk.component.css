@@ -1,0 +1,31 @@
+.contenedor-manzanas {
+    width: 40%;
+    height: 80%;
+    display: inline-block;
+    border: 1px solid #cccccc;
+    overflow: hidden;
+    padding: 1%;
+}
+
+.contenedor {
+    width: 59%;
+    height: 80%;
+    display: inline-block;
+    border: 1px solid #cccccc;
+    overflow: auto;
+    padding: 5% 4%;
+}
+
+.boton-manzanas {
+    width: 40%;
+    text-align: center;
+    display: inline-block;
+    margin-top: 1%;
+}
+
+.boton {
+    width: 59%;
+    text-align: center;
+    display: inline-block;
+    margin-top: 1%;
+}

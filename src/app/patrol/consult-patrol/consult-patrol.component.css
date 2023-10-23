@@ -1,0 +1,73 @@
+.columna-uno {
+    width: 40%;
+    height: 99%;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.columna-dos {
+    width: 59%;
+    height: 99%;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.seleccionar {
+    width: 100%;
+    height: 31%;
+    padding: 2%;
+    margin-bottom: 3%;
+}
+
+.cuadros-uno {
+    width: 100%;
+    height: 31.5%;
+    padding: 4%;
+    margin-bottom: 3%;
+    border: 1px solid #BDBDBD;
+}
+
+.contenedor-principal {
+    width: 100%;
+    height: 45%;
+    margin-bottom: 3%;
+}
+
+.contenedor {
+    width: 49%;
+    height: 100%;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.contenedor-uno {
+    width: 100%;
+    height: 70%;
+    overflow: auto;
+    margin-top: 9.5%;
+}
+
+.contenedor-dos {
+    width: 100%;
+    height: 30%;
+    overflow: hidden;
+    text-align: center;
+}
+
+.bordes {
+    padding: 2%;
+    margin-bottom: 1%;
+    border: 1px solid #BDBDBD;
+}
+
+.contenedor-patrullaje {
+    width: 100%;
+    height: 55%;
+}
+
+.patrullaje-uno {
+    width: 100%;
+    height: 94.5%;
+    padding: 1%;
+    overflow: hidden;
+}

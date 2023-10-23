@@ -1,0 +1,59 @@
+<app-ribbon
+   (toggleToc)="showTOC()"
+   (mostrarDashboard)="openDashboard()"
+   (ocultarDashboard)="closeDashboard()"
+></app-ribbon>
+
+<div id="wrapper" [className]="classToggle" [ngStyle]="{ 'padding-bottom': alturaMapa }">
+   <!-- <div id="wrapper" [className]="classToggle" [ngStyle]="{'padding-bottom': alturaMapa, 'padding-right': paddingRight}"> -->
+
+   <!-- Sidebar Left -->
+   <div id="sidebar-wrapper" [ngStyle]="{ height: sidebarRight }">
+      <span
+         class="glyphicon glyphicon-remove"
+         [ngStyle]="{ display: appEsriToc }"
+         style="position: relative; float: right; text-align: right; cursor: pointer"
+         (click)="showTOC()"
+      >
+      </span>
+
+      <app-esri-toc [ngStyle]="{ display: appEsriToc }"></app-esri-toc>
+      <app-sidebar-left [ngStyle]="{ display: appDashboard }"></app-sidebar-left>
+   </div>
+   <!-- /#sidebar-left-wrapper -->
+
+   <!-- Sidebar Right -->
+   <!-- <div id="sidebar-wrapper-right" [ngStyle]="{'height': sidebarRight, 'left': marginLeft}">
+    <app-sidebar-right [ngStyle]="{'display': appDashboard }"></app-sidebar-right>
+  </div> -->
+   <!-- /#sidebar-right-wrapper -->
+
+   <!-- Sidebar Bottom -->
+   <div id="sidebar-wrapper-bottom" [ngStyle]="{ width: sidebarBottomWidth, height: alturaMapa }">
+      <app-sidebar-bottom [ngStyle]="{ display: appDashboard }"></app-sidebar-bottom>
+   </div>
+   <!-- /#sidebar-bottom-wrapper -->
+
+   <!-- Page Content -->
+   <div id="page-content-wrapper" style="overflow: hidden">
+      <div class="container-fluid">
+         <div class="row">
+            <div class="col-lg-12 nopadding">
+               <!-- The content below is only a placeholder and can be replaced. -->
+               <app-esri-map
+                  [center]="mapCenter"
+                  [mapHeight]="mapHeight"
+                  [basemap]="basemapType"
+                  [zoom]="mapZoomLevel"
+                  (mapLoaded)="mapLoadedEvent($event)"
+               >
+               </app-esri-map>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- /#page-content-wrapper -->
+</div>
+<!-- /#wrapper -->
+
+<app-modal-placeholder></app-modal-placeholder>

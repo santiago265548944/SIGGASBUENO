@@ -1,0 +1,31 @@
+<div class="contenedor">
+
+  <label style="width: 48%; margin-bottom: 2%;">Departamento</label>
+  <select [(ngModel)]="departamentoSeleccionado" (ngModelChange)="loadUnidadOperativa($event)" style="width: 50%; margin-bottom: 2%;">
+    <option></option>
+    <option *ngFor="let departamento of listarDepartamentos" [ngValue]="departamento">{{ departamento.NOMBRE }}</option>
+  </select>
+
+  <label style="width: 48%; margin-bottom: 2%;">Unidad Operativa</label>
+  <select [(ngModel)]="unidadOperativaSeleccionada" (ngModelChange)="loadContratista($event)" style="width: 50%; margin-bottom: 2%;">
+    <option></option>
+    <option *ngFor="let unidadOperativa of listarUnidadesOperativas" [ngValue]="unidadOperativa">{{ unidadOperativa.OPER_UNIT_CODE }}</option>
+  </select>
+
+  <label style="width: 48%; margin-bottom: 2%;">Contratista</label>
+  <select [(ngModel)]="contratistaSeleccionado" style="width: 50%; margin-bottom: 2%;">
+    <option></option>
+    <option *ngFor="let contratista of listarContratistas" [ngValue]="contratista">{{ contratista.NOM_CONTRATISTA }}</option>
+  </select>
+
+  <label style="width: 48%; margin-bottom: 4%;">Orden Padre</label>
+  <select [(ngModel)]="ordenPadreSeleccionada" style="width: 50%; margin-bottom: 4%;">
+    <option></option>
+    <option *ngFor="let ordenPadre of listarOrdenPadre">{{ ordenPadre.COD_ORDEN_PADRE }}</option>
+  </select>
+
+  <div style="text-align: center;">
+    <input type="button" value="Asignar" (click)="btnAsignar()">
+  </div>
+
+</div>

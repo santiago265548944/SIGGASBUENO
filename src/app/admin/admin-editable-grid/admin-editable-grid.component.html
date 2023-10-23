@@ -1,0 +1,91 @@
+<div
+  *ngIf="config.editable && editFields.length > 0"
+  [className]="curretStateEditControls"
+>
+  <div class="admin-editable-grid-edit-container-fields">
+    <div
+      *ngFor="let field of editFields"
+      class="admin-editable-grid-edit-container-field"
+    >
+      <label *ngIf="!isGridColumnHidden(field)">{{ field }}</label>
+      <input
+        type="checkbox"
+        [(ngModel)]="model[field]"
+        *ngIf="isFieldCheckBox(field); else: dropDownListOption"
+      />
+      <ng-template #dropDownListOption>
+        <select
+          [(ngModel)]="model[field]"
+          *ngIf="isFieldDrowpDownList(field); else: noColumnConfigDefined"
+        >
+          <option
+            *ngFor="let item of config.columns[field].data"
+            [ngValue]="item"
+            >{{ item[config.columns[field].textField] }}</option
+          >
+        </select>
+      </ng-template>
+
+      <ng-template #noColumnConfigDefined>
+        <input
+          type="text"
+          [(ngModel)]="model[field]"
+          *ngIf="!isGridColumnHidden(field); else: hiddenColumn"
+          [disabled]="isFieldDisabled(field)"
+        />
+
+        <ng-template #hiddenColumn>
+          <input type="hidden" [(ngModel)]="model[field]" />
+        </ng-template>
+      </ng-template>
+    </div>
+  </div>
+</div>
+<br>
+  <div class="admin-editable-grid-edit-container-btn">
+    <input
+      *ngIf="!isAddHidden()"
+      type="button"
+      value="Nuevo"
+      (click)="onNewButtonClickHandler()"
+    />
+    <input
+      *ngIf="!isUpdateHidden()"
+      type="button"
+      value="Editar"
+      (click)="onEditButtonClickHandler()" />
+    <input
+      *ngIf="!isDeleteHidden()"
+      type="button"
+      value="Eliminar"
+      (click)="onDeleteButtonClickHandler()"
+    />
+    |
+    <input type="button" value="Guardar" (click)="onSaveButtonClickHandler()" />
+    <input
+      type="button"
+      value="Cancelar"
+      (click)="onCancelButtonClickHandler()"
+    />
+  </div>
+<hr>
+<div>
+  <jqxDataTable
+    [width]="'99%'"
+    [height]="config.height"
+    [source]="dataAdapter"
+    [columns]="dataTableColumns"
+    [pageable]="false"
+    [columnsResize]="true"
+    [selectionMode]="'multipleRows'"
+    (onRowDoubleClick)="onRowDoubleClick($event)"
+    (onRowClick)="onRowClick($event)"
+    [autoRowHeight]="false"
+    [columnsHeight]="20"
+    [filterable]="true"
+    [columnsReorder]="true"
+    [sortable]="true"
+    #jqxDataTable
+  >
+  </jqxDataTable>
+</div>

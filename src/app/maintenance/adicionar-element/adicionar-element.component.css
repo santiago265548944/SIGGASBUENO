@@ -1,0 +1,63 @@
+.cuadro1 {
+   border: 1px solid black;
+}
+.row-1 label {
+   font-size: 12px;
+}
+
+.row-1 {
+   padding: 5px;
+   box-sizing: border-box;
+   display: flex;
+   align-items: center;
+}
+
+.row-1-col1 {
+   display: flex;
+   width: 70%;
+   margin-right: 5px;
+}
+
+.row-1-col2 {
+   width: 30%;
+   left: 10%;
+}
+
+.row1-label {
+   width: 50%;
+}
+
+.row1-select {
+   width: 48%;
+}
+
+.row-1 span {
+   cursor: pointer;
+}
+/* row-2*/
+.row-2 {
+   padding: 5px;
+   box-sizing: border-box;
+   display: flex;
+   align-items: center;
+}
+/* Estilos de la tabla */
+.tabla {
+   display: table;
+   width: 100%;
+   border-collapse: collapse;
+}
+
+.fila {
+   display: table-row;
+}
+
+.celda {
+   display: table-cell;
+   border: 1px solid #ccc;
+   padding: 8px;
+   align-items: center;
+}
+.cuadro3 {
+   border: 1px solid black;
+}

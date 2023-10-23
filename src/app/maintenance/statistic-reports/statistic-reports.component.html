@@ -1,0 +1,48 @@
+<div style="width: 100%; margin-top: 3%">
+
+  <label style="width: 30%">Tipo Reporte</label>
+  <select style="width: 68%" [(ngModel)]="statisticReportsItemSelectedT">
+    <option *ngFor="let statisticReportsItem of statisticReportsListT" [ngValue]="statisticReportsItem">{{statisticReportsItem.text}}</option>
+  </select>
+
+</div>
+
+<div style="width: 100%;">
+
+  <label style="width: 30%">Actividad</label>
+  <select style="width: 68%" [(ngModel)]="statisticReportsItemSelectedA" (ngModelChange)="statisticReportsItemChanged($event)">
+    <option *ngFor="let statisticReportsItem of statisticReportsListA" [ngValue]="statisticReportsItem">{{statisticReportsItem.DESCRIPCION}}</option>
+  </select>
+
+</div>
+
+<div style="width: 100%;">
+
+  <label style="width: 30%">Elemento</label>
+  <select style="width: 68%" [(ngModel)]="statisticReportsItemSelectedE">
+    <option *ngFor="let statisticReportsItem of statisticReportsListE" [ngValue]="statisticReportsItem">{{statisticReportsItem.ELEMENTO}}</option>
+  </select>
+
+</div>
+
+<div style="width: 100%;">
+
+  <label style="width: 30%">Fecha Inicial</label>
+  <input style="width: 68%" type="date" [(ngModel)]="openDate">
+
+</div>
+
+<div style="width: 100%;">
+
+  <label style="width: 30%">Fecha Final</label>
+  <input style="width: 68%" type="date" [(ngModel)]="closeDate">
+
+</div>
+
+<br>
+
+<div style="text-align: center;">
+  <input type="button" value="Aceptar" (click)="onAceptarClick()" />
+</div>
+
+<jqxLoader #jqxLoader [imagePosition]="'top'" [width]="80" [height]="50" [text]="'Cargando...'"></jqxLoader>

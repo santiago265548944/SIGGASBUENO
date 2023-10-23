@@ -1,0 +1,168 @@
+<div class="app-address-search-body">
+  <div class="app-address-search-body">
+    <div style="width: 100%;" class="contenedor">
+      <jqxExpander [width]="'100%'">
+
+        <div>
+          Ubicación Geográfica
+        </div>
+
+        <div class="ubicacion">
+          <div class='app-riesgos-content'>
+            <label style="width: 30%;">Departamento:</label>
+            <select style="width: 68%;" [(ngModel)]="model.Departamento" (ngModelChange)="onDeparmentSelectChanged($event)">
+              <option *ngFor="let department of departments" [ngValue]="department">{{department.text}}</option>
+            </select>
+          </div>
+
+          <div>
+            <label style="width: 30%;">Localidad:</label>
+            <select style="width: 68%;" [(ngModel)]="model.Localidad">
+              <option *ngFor="let localidad of localidades" [ngValue]="localidad">{{localidad.text}}</option>
+            </select>
+          </div>
+        </div>
+
+      </jqxExpander>
+    </div>
+    <div style="width: 100%;" class="contenedor">
+      <jqxExpander [width]="'100%'">
+        <div>
+          Datos Vías
+        </div>
+        <div class="datosV">
+          <table>
+            <tr>
+              <td class="app-address-search-tipo-via">Tipo Via Inicial</td>
+              <td class="app-address-search-no-via">No. Vía</td>
+              <td class="app-address-search-no-via">Letra 1</td>
+              <td class="app-address-search-no-via">Letra 2</td>
+              <td class="app-address-search-no-via">Letra 3</td>
+            </tr>
+            <tr>
+              <td>
+                <select style="width: 90%;" [(ngModel)]="model.TipoViaInicial">
+                  <option *ngFor="let tipoVia of tiposVia" [ngValue]="tipoVia">{{tipoVia.text}}</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" maxlength="5" style="width: 90%;" [(ngModel)]="model.NumeroViaInicial" (blur)="onBlurHandler()" />
+              </td>
+              <td>
+                <input type="text" maxlength="5" style="width: 90%;" [(ngModel)]="model.Letra1ViaInicial" (ngModelChange)="model.Letra1ViaInicial=model.Letra1ViaInicial.toUpperCase()"
+                  (blur)="onBlurHandler()" />
+              </td>
+              <td>
+                <input type="text" maxlength="5" style="width: 90%;" [(ngModel)]="model.Letra2ViaInicial" (blur)="onBlurHandler()" />
+              </td>
+              <td>
+                <input type="text" maxlength="5" style="width: 90%;" [(ngModel)]="model.Letra3ViaInicial" (ngModelChange)="model.Letra3ViaInicial=model.Letra3ViaInicial.toUpperCase()"
+                  (blur)="onBlurHandler()" />
+              </td>
+            </tr>
+            <tr>
+              <td class="tabla2">Tipo Vía Cruce</td>
+              <td class="tabla2">No. Vía</td>
+              <td class="tabla2">Letra 1</td>
+              <td class="tabla2">Letra 2</td>
+              <td class="tabla2">Letra 3</td>
+            </tr>
+            <tr>
+              <td>
+                <select style="width: 90%;" [(ngModel)]="model.TipoViaCruce">
+                  <option *ngFor="let tipoVia of tiposVia" [ngValue]="tipoVia">{{tipoVia.text}}</option>
+                </select>
+              </td>
+              <td>
+                <input type="text" maxlength="5" style="width: 90%;" [(ngModel)]="model.NumeroViaCruce" (blur)="onBlurHandler()" />
+              </td>
+              <td>
+                <input type="text" maxlength="5" style="width: 90%;" [(ngModel)]="model.Letra1ViaCruce" (ngModelChange)="model.Letra1ViaCruce=model.Letra1ViaCruce.toUpperCase()"
+                  (blur)="onBlurHandler()" />
+              </td>
+              <td>
+                <input type="text" maxlength="5" style="width: 90%;" [(ngModel)]="model.Letra2ViaCruce" (blur)="onBlurHandler()" />
+              </td>
+              <td>
+                <input type="text" maxlength="5" style="width: 90%;" [(ngModel)]="model.Letra3ViaCruce" (ngModelChange)="model.Letra3ViaCruce=model.Letra3ViaCruce.toUpperCase()"
+                  (blur)="onBlurHandler()" />
+              </td>
+            </tr>
+          </table>
+        </div>
+      </jqxExpander>
+    </div>
+    <div style="width: 100%;" class="contenedor">
+      <jqxExpander [width]="'100%'" [expanded]="false">
+        <div>
+          Datos de Casa
+        </div>
+        <div class="datosC">
+          <div class="app-address-search-inline-div">
+            <label>No. Casa</label>
+            <input type="text" [(ngModel)]="model.NumeroCasa" (blur)="onBlurHandler()" />
+            <label>Letra Casa</label>
+            <input type="text" [(ngModel)]="model.LetraCasa" (ngModelChange)="model.LetraCasa=model.LetraCasa.toUpperCase()" (blur)="onBlurHandler()" />
+          </div>
+        </div>
+      </jqxExpander>
+    </div>
+    <div style="width: 100%;" class="contenedor">
+      <jqxExpander [width]="'100%'" [expanded]="false">
+        <div>
+          Tipo Lugar 1
+        </div>
+        <div class="lugar1">
+          <div class="app-address-search-inline-div">
+            <label>Tipo Lugar 1</label>
+            <select [(ngModel)]="model.TipoLugar1">
+              <option *ngFor="let tipoLugar of tiposLugar" [ngValue]="tipoLugar">{{tipoLugar.text}}</option>
+            </select>
+            <label>No. Lugar 1</label>
+            <input type="text" [(ngModel)]="model.NumeroLugar1" (blur)="onBlurHandler()" />
+          </div>
+        </div>
+      </jqxExpander>
+    </div>
+    <div style="width: 100%;" class="contenedor">
+      <jqxExpander [width]="'100%'" [expanded]="false">
+        <div>
+          Tipo Lugar 2
+        </div>
+        <div class="lugar2">
+          <div class="app-address-search-inline-div">
+            <label>Tipo Lugar 2</label>
+            <select [(ngModel)]="model.TipoLugar2">
+              <option *ngFor="let tipoLugar of tiposLugar" [ngValue]="tipoLugar">{{tipoLugar.text}}</option>
+            </select>
+            <label>No. Lugar 2</label>
+            <input type="text" [(ngModel)]="model.NumeroLugar2" (blur)="onBlurHandler()" />
+          </div>
+        </div>
+      </jqxExpander>
+    </div>
+    <div style="width: 100%;" class="contenedor">
+      <jqxExpander [width]="'100%'" [expanded]="false">
+        <div>
+          Tipo Lugar 3
+        </div>
+        <div class="lugar3">
+          <div class="app-address-search-inline-div">
+            <label>Tipo Lugar 3</label>
+            <select [(ngModel)]="model.TipoLugar3">
+              <option *ngFor="let tipoLugar of tiposLugar" [ngValue]="tipoLugar">{{tipoLugar.text}}</option>
+            </select>
+            <label>No. Lugar 3</label>
+            <input type="text" [(ngModel)]="model.NumeroLugar3" (blur)="onBlurHandler()" />
+          </div>
+        </div>
+      </jqxExpander>
+    </div>
+  </div>
+  <div class="app-address-search-buttons">
+    <input type="button" value="Buscar" (click)="onSearchClick()">
+    <input type="button" value="Limpiar" (click)="onCleanClick()">
+    <input type="button" value="Cancelar" (click)="onCancelarClick()">
+  </div>
+</div>
+<jqxLoader #jqxLoader [imagePosition]="'top'" [height]="50" [text]="progressMessage"></jqxLoader>

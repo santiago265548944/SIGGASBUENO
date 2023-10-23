@@ -1,0 +1,27 @@
+<div class="container-center">
+  <div class="inline-form-text">
+    Nombre de la tabla
+  </div>
+  <div class="inline-form-control">
+    <select style="width: 160px;" [(ngModel)]="tableNameValue">
+      <option *ngFor="let tableValue of tableValues" [ngValue]="tableValue.Code">{{tableValue.Value}}</option>
+    </select>
+  </div>
+</div>
+
+<div class="container-center">
+  <div class="inline-form-text">
+    Distancia
+  </div>
+  <div class="inline-form-control">
+    <jqxNumberInput [inputMode]="'simple'" [width]="158" [height]="20" [(ngModel)]='distanceValue' [decimalDigits]="0">
+    </jqxNumberInput>
+  </div>
+</div>
+
+<div class="container-fluid-modal" style="height: 30px;">
+  <div class="form-row" style="text-align: center; align-content:center; margin-bottom: 5px; margin-top: 5px">
+    <button type="button" (click)="executeSave()">Aceptar</button>
+    <button type="button" (click)="executeCancel()">Cancelar</button>
+  </div>
+</div>

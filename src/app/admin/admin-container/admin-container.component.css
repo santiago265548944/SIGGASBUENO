@@ -1,0 +1,17 @@
+.admin-container-main {
+  width: 100%;
+  height: 100%;
+}
+.admin-container-header{
+  background-color: lightgray;
+  padding: 4px;
+  height: 25px;
+  width: 100%;
+  font-size: smaller;
+  vertical-align: middle;
+}
+
+.admin-container-content {
+  width: 100%;
+  height: calc(100% - 26px);
+}

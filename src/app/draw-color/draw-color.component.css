@@ -1,0 +1,4 @@
+.container-rz-height {
+  height: calc(100% - 35px);
+  overflow: auto;
+}

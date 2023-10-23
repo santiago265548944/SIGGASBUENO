@@ -1,0 +1,146 @@
+.cuadro0 {
+   border: 1px solid black;
+}
+.cuadro_radios {
+   padding: 5px;
+   box-sizing: border-box;
+   display: flex;
+   align-items: center;
+}
+.row-0-col1 {
+   display: block;
+   width: 25%;
+   margin-right: 5px;
+   border: 2px solid black;
+}
+.row-0-col2 {
+   width: 50%;
+   margin-left: 5px;
+}
+.form-check-label {
+   font-size: 10px;
+}
+.row-1 {
+   padding: 5px;
+   box-sizing: border-box;
+   display: flex;
+   align-items: center;
+}
+
+.row-1-col1 {
+   width: 50%;
+   margin-right: 5px;
+}
+
+.row-1-col2 {
+   width: 50%;
+   margin-left: 5px;
+}
+
+.row1-label {
+   width: 50%;
+}
+
+.row1-select {
+   width: 43%;
+}
+
+.row-1 span {
+   cursor: pointer;
+}
+
+.row1-input {
+   width: 48%;
+}
+.glyphicon {
+   cursor: pointer;
+}
+.Preventivo {
+   padding: 5px;
+   box-sizing: border-box;
+   display: flex;
+   align-items: center;
+}
+/*Estilos de la tabla 0*/
+.cuadro1 {
+   border: 1px solid black;
+}
+.tabla0 {
+   width: 50%;
+   margin-right: 5px;
+}
+.tabla {
+   display: table;
+   width: 100%;
+   border-collapse: collapse;
+}
+
+.fila {
+   display: table-row;
+}
+
+.celda {
+   display: table-cell;
+   border: 1px solid #ccc;
+   padding: 8px;
+   align-items: center;
+}
+
+.tabla0-1 {
+   display: table;
+   width: 100%;
+   border-collapse: collapse;
+   border: 1px solid black;
+}
+.Correctivo {
+   padding: 5px;
+   box-sizing: border-box;
+   display: flex;
+   align-items: center;
+}
+/* Estilos de la tabla 1 */
+.cuadro2 {
+   border: 1px solid black;
+}
+.tabla1 {
+   width: 50%;
+   margin-right: 5px;
+}
+.tabla {
+   display: table;
+   width: 100%;
+   border-collapse: collapse;
+}
+
+.fila {
+   display: table-row;
+}
+
+.celda {
+   display: table-cell;
+   border: 1px solid #ccc;
+   padding: 8px;
+   align-items: center;
+}
+
+/* Estilos de la tabla 2 */
+.tabla2 {
+   width: 50%;
+   margin-left: 5px;
+}
+.tabla {
+   display: table;
+   width: 100%;
+   border-collapse: collapse;
+}
+
+.fila {
+   display: table-row;
+}
+
+.celda {
+   display: table-cell;
+   border: 1px solid #ccc;
+   padding: 8px;
+   align-items: center;
+}

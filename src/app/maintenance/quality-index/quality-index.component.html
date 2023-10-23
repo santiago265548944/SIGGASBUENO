@@ -1,0 +1,53 @@
+<div style="width: 100%; margin-top: 3%">
+
+  <label style="width: 40%;">Año</label>
+  <select [(ngModel)]="yearSelected">
+    <option *ngFor="let years of year" [ngValue]="years">{{years}}</option>
+  </select>
+
+</div>
+
+<div style="width: 100%; margin-top: 2%">
+
+  <label style="width: 40%">Actividad</label>
+  <select style="width: 58%" [(ngModel)]="activitySelected">
+    <option *ngFor="let activities of activity" [ngValue]="activities">{{activities.DESCRIPCION}}</option>
+  </select>
+
+</div>
+
+<div style="width: 100%; margin-top: 2%">
+
+  <label style="width: 40%; display: inline-block;">Presupuestados</label>
+  <p style="width: 58%; display: inline-block;" *ngIf="budgeted == null; else presupuestados">----</p>
+  <ng-template #presupuestados>
+    <p style="width: 58%; display: inline-block;">{{budgeted}}</p>
+  </ng-template>
+
+</div>
+
+<div style="width: 100%; margin-top: 2%">
+
+  <label style="width: 40%; display: inline-block;">Ejecutados</label>
+  <p style="width: 58%; display: inline-block;" *ngIf="executed == null; else ejecutados">----</p>
+  <ng-template #ejecutados>
+    <p style="width: 58%; display: inline-block;">{{executed}}</p>
+  </ng-template>
+
+</div>
+
+<div style="width: 100%; margin-top: 2%">
+
+  <label style="width: 40%; display: inline-block;">Indice de calidad</label>
+  <p style="width: 58%; display: inline-block;" *ngIf="qualityIndex == null; else calidad">----</p>
+  <ng-template #calidad>
+    <p style="width: 58%; display: inline-block;">{{qualityIndex}}</p>
+  </ng-template>
+
+</div>
+
+<div style="text-align: center; margin-top: 2%">
+  <input type="button" value="Aceptar" (click)="onAceptarClick()" />
+</div>
+
+<jqxLoader #jqxLoader [imagePosition]="'top'" [width]="80" [height]="50" [text]="'Cargando...'"></jqxLoader>

@@ -1,0 +1,22 @@
+input[type='date'] {
+  width: 41%;
+}
+
+input[type='time'] {
+  width: 26%;
+}
+
+label {
+  font-size: small;
+  font-weight: normal;
+  vertical-align: middle;
+  width: 30%;
+}
+div {
+  vertical-align: middle;
+}
+
+.app-reportesuspensionservicio-buttons {
+  text-align: right;
+  width: 100%;
+}

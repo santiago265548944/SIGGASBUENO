@@ -1,0 +1,39 @@
+<div class="container-center">
+  <div class="inline-form-text-md">
+    Departamento
+  </div>
+  <div class="inline-form-control-md">
+    <select #selectDepartment style="width: 100px" [(ngModel)]="selectDepartmentOption" (change)="executeQuery(2)">
+      <option></option>
+    </select>
+    <img class="img" src="assets/images/acercar_coordenada.png" style="width: 15px; height: 15px;" (click)="executeZoom(1)" />
+  </div>
+</div>
+<div class="container-center">
+  <div class="inline-form-text-md">
+    Localidad
+  </div>
+  <div class="inline-form-control-md">
+    <select #selectLocation style="width: 100px" [(ngModel)]="selectLocationOption" (change)="executeQuery(3)"></select>
+    <img class="img" src="assets/images/acercar_coordenada.png" style="width: 15px; height: 15px;" (click)="executeZoom(2)" />
+  </div>
+</div>
+<div class="container-center">
+  <div class="inline-form-text-md">
+    Sector
+  </div>
+  <div class="inline-form-control-md">
+    <select #selectSector style="width: 100px" [(ngModel)]="selectSectorOption" (change)="executeQuery(4)"></select>
+    <img class="img" src="assets/images/acercar_coordenada.png" style="width: 15px; height: 15px;" (click)="executeZoom(3)" />
+  </div>
+</div>
+<div class="container-center">
+  <div class="inline-form-text-md">
+    Manzana
+  </div>
+  <div class="inline-form-control-md">
+    <select #selectBlock style="width: 100px" [(ngModel)]="selectBlockOption"></select>
+    <img class="img" src="assets/images/acercar_coordenada.png" style="width: 15px; height: 15px;" (click)="executeZoom(4)" />
+  </div>
+</div>
+<jqxLoader #jqxLoader [imagePosition]="'top'" [width]="80" [height]="50" [text]="'Cargando...'"></jqxLoader>

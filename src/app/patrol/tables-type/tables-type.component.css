@@ -1,0 +1,26 @@
+.contenedor {
+    width: 100%;
+    margin-bottom: 1%;
+}
+
+.consulta {
+    padding: 3%;
+}
+
+.lista-tipos {
+    padding: 2%;
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    padding-bottom: 2%;
+    text-align: center;
+}
+
+td {
+    padding-bottom: 1%;
+    text-align: center;
+}

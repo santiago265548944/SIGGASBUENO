@@ -1,0 +1,16 @@
+<div style="min-height: 100px;">
+  <ng-container *ngFor="let inputItem of dataSource">
+    <div *ngIf="(inputItem.TipoParametro =='TEXT' || inputItem.TipoParametro =='COMBO' || inputItem.TipoParametro =='DATE' || inputItem.TipoParametro =='CHECK') && inputItem.ClaseParametro == 'E'">
+      <label>{{inputItem.Etiqueta}}</label>
+      <input *ngIf="inputItem.TipoParametro == 'TEXT' &&  inputItem.TipoDato != 'N'" type="text" [(ngModel)]="inputItem.Value"/>
+      <input *ngIf="inputItem.TipoParametro == 'TEXT' &&  inputItem.TipoDato == 'N'" type="number" [(ngModel)]="inputItem.Value"/>
+      <select *ngIf="inputItem.TipoParametro == 'COMBO'" [(ngModel)]="inputItem.Value" (ngModelChange)="inputItem.OnModelChanged($event, inputItem)">
+        <option *ngFor="let item of inputItem.DataList" [ngValue]="item">{{item.text}}</option>
+      </select>
+      <input *ngIf="inputItem.TipoParametro == 'DATE'" type="date" [(ngModel)]="inputItem.Value"/>
+      <input *ngIf="inputItem.TipoParametro == 'CHECK'" type="checkbox" [(ngModel)]="inputItem.Value"/>
+    </div>
+  </ng-container>
+</div>
+
+<jqxLoader #jqxLoader [imagePosition]="'top'" [width]="80" [height]="50" [text]="'Cargando...'"></jqxLoader>

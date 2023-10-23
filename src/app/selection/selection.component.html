@@ -1,0 +1,13 @@
+<div>
+  Haga click sobre la capa la cual desee realizar selección.
+</div>
+<div>
+  <label style="width: 30%;">Servicio de mapa:</label>
+  <select style="width: 65%;" [(ngModel)]="selectedMapService" (ngModelChange)="onMapServiceChange($event)">
+    <option *ngFor="let mapService of mapServices" [ngValue]="mapService">{{mapService.id}}</option>
+  </select>
+</div>
+<div>
+  <label style="width: 30%;">Layer:</label>
+  <select #selectLayers style="width: 65%;" [(ngModel)]="layerIdSelected"></select>
+</div>

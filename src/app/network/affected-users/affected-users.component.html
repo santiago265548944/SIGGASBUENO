@@ -1,0 +1,7 @@
+<div style="width: 1500px; height: calc(100% - 30px);">
+  <jqxDataTable #dataTable [width]="'100%'" [height]="'98%'" [source]="dataAdapter" [columns]="dataTableColumns" [pageable]="false"
+    [columnsResize]="true">
+  </jqxDataTable>
+</div>
+
+<jqxLoader #jqxLoader [imagePosition]="'top'" [width]="80" [height]="50" [text]="'Cargando...'"></jqxLoader>

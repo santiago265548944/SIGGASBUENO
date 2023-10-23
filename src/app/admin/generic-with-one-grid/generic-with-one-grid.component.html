@@ -1,0 +1,23 @@
+<div class="container-fluid-modal" style="height: 30px;" *ngIf="configFirstGrid.showAddDelete">
+  <div class="form-row" style="text-align: center; align-content:center; margin-bottom: 5px; margin-top: 5px">
+    <button type="button" (click)="executeAddNew()">+</button>
+    <button type="button" (click)="executeDelete()">X</button>
+  </div>
+</div>
+<div *ngIf="configFirstGrid.showUserButtons" class="one-grid-user-buttons">
+  <div  style="text-align: center; align-content:center;">
+    <button type="button" (click)="executeCambiarContrasenia()">Cambiar Contraseña</button>
+    <button type="button" (click)="executeDesbloquearUsuario()">Desbloquear Usuario</button>
+    <button type="button" (click)="executeOtorgarPermisos()">Otorgar Permisos</button>
+  </div>
+</div>
+<div>
+  <div>
+    <app-admin-editable-grid [config]="configFirstGrid" [data]="gridDataFirstGrid" [tranformDataFunction]="tranformModelFunction"
+      (rowDoubleClickHandler)="firstGridRowDoubleClickHandler($event)" (saveNewEvent)="saveNewOnFirstGrid($event)"
+      (rowClickHandler)="firstGridRowClickHandler($event)" (saveModifiedEvent)="saveEditedOnFirstGrid($event)"
+      (deleteEvent)="deleteOnFirstGrid($event)"></app-admin-editable-grid>
+  </div>
+</div>
+<jqxLoader #jqxLoader [imagePosition]="'top'" [width]="80" [height]="50" [text]="'Cargando...'">
+</jqxLoader>

@@ -1,0 +1,16 @@
+input[type=text],input[type=date], textarea, select {
+  width: 59%;
+}
+
+label {
+  font-size: small;
+  font-weight: normal;
+  vertical-align: middle;
+  width: 39%;
+}
+div {
+  vertical-align: middle;
+}
+.app-restablecerservicio-buttons {
+  text-align: right;
+}

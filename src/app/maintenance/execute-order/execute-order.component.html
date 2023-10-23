@@ -1,0 +1,39 @@
+<jqxExpander [width]="'100%'" [height]="'100%'">
+  <div>
+    Información de la actividad
+  </div>
+
+  <div class="container-activity">
+    <label for="num_order">Número de orden:</label>
+    <input type="text" id="num_order" [(ngModel)]="orden">
+
+    <label for="causal_execution">Causal de ejecución:</label>
+    <select id="causal_execution" [(ngModel)]="causalModel" (ngModelChange)="ngChangeCausal($event)">
+      <option *ngFor="let itemCausal of causal"[ngValue]="itemCausal">{{itemCausal.CODIGO}}-{{itemCausal.DESCRIPCION}}</option>
+    </select>
+
+    <label for="start_date">Fecha inicio:</label>
+    <input type="date" id="start_date" [(ngModel)]="fechaInit">
+    <!-- <select id="start_date"> -->
+      <!-- <option></option> -->
+    <!-- </select> -->
+
+    <label for="end_date">Fecha fin:</label>
+    <input type="date" id="end_date" [(ngModel)]="fechaFinal">
+    <!-- <select id="end_date"> -->
+      <!-- <option></option> -->
+    <!-- </select> -->
+
+    <label for="comment_type">Tipo de comentario:</label>
+    <select id="comment_type" [(ngModel)]="commentModel" (ngModelChange)="ngChangetypeComment($event)">
+      <option *ngFor="let itemComment of comentario" [ngValue]="itemComment">{{itemComment.COMMENT_TYPE_ID}}-{{itemComment.DESCRIPTION}}</option>
+    </select>
+
+    <div class="container-observation">
+      <label for="observation">Observación:</label>
+      <textarea id="observation" [(ngModel)]="observacion"></textarea>
+    </div>
+
+    <input type="button" value="Ejecutar" class="button-execute" (click)="registerSimpleButton_Click()">
+  </div>
+</jqxExpander>

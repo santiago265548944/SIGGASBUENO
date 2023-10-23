@@ -1,0 +1,125 @@
+<div style="width: 100%;">
+  <jqxExpander #expSelectTool [width]="'100%'" [height]="'100%'">
+    <div>
+      Herramienta de selección
+    </div>
+    <div>
+      <app-embedded-selection [ownerTool]='radiograficalSelectType'></app-embedded-selection>
+    </div>
+  </jqxExpander>
+</div>
+<div style="width: 100%;">
+  <jqxExpander [width]="'100%'" [height]="'100%'">
+    <div>
+      Pruebas radiograficas
+    </div>
+    <div>
+      <div id="divControlsRadiografical">
+        <div class="container-center">
+          <div class="inline-form-text">
+            Contratista
+          </div>
+          <div class="inline-form-control">
+            <select style="width: 150px;" [(ngModel)]="radiograficalModel.contratista">
+              <option *ngFor="let contractorValue of contractorValues" [ngValue]="contractorValue.Code">{{contractorValue.Value}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Municipio
+          </div>
+          <div class="inline-form-control">
+            <input type="text" style="width: 150px" [(ngModel)]="radiograficalModel.municipio" />
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Inspec. Radiografica
+          </div>
+          <div class="inline-form-control">
+            <textarea type="" style="width: 150px" [(ngModel)]="radiograficalModel.inspeccionradiografica"></textarea>
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Fecha
+          </div>
+          <div class="inline-form-control">
+            <input type="date" style="width: 150px" [(ngModel)]="radiograficalModel.fecha" />
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Espesor Pared
+          </div>
+          <div class="inline-form-control">
+            <input type="text" style="width: 150px" [(ngModel)]="radiograficalModel.espesorpared" />
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Diametro
+          </div>
+          <div class="inline-form-control">
+            <input type="text" style="width: 150px" [(ngModel)]="radiograficalModel.diametro" />
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Interventor
+          </div>
+          <div class="inline-form-control">
+            <select style="width: 150px;" [(ngModel)]="radiograficalModel.interventor">
+              <option *ngFor="let interventorValue of interventorValues" [ngValue]="interventorValue.Code">{{interventorValue.Value}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Tecnico
+          </div>
+          <div class="inline-form-control">
+            <select style="width: 150px;" [(ngModel)]="radiograficalModel.tecnico">
+              <option *ngFor="let technicianValue of technicianValues" [ngValue]="technicianValue.Code">{{technicianValue.Value}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Numero Unión
+          </div>
+          <div class="inline-form-control">
+            <input type="number" style="width: 150px" [(ngModel)]="radiograficalModel.numerounion" />
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid-modal" style="height: 30px;">
+        <div class="form-row" style="text-align: center; align-content:center; margin-bottom: 5px; margin-top: 5px">
+          <span class="glyphicon glyphicon-fast-backward" title="Primer registro" (click)="executeFirstRow()"></span>
+          <span class="glyphicon glyphicon-chevron-left" title="Registro Anterior" (click)="executePreviousRow()"></span>
+          <input [(ngModel)]="countResult" type="text" value="1 de 10" style="width: 80px; font-size: 10px" disabled>
+          <span class="glyphicon glyphicon-chevron-right" title="Registro siguiente" (click)="executeNextRow()"></span>
+          <span class="glyphicon glyphicon-fast-forward" title="Ultimo registro" (click)="executeLastRow()"></span>
+          <span class="glyphicon glyphicon-minus" title="Eliminar registro" (click)="executeDeleteRow()"></span>
+          <span class="glyphicon glyphicon-plus" title="Agregar registro" (click)="executeAddRow()"></span>
+          <span class="glyphicon glyphicon-edit" title="Editar registro" (click)="executeEditRow()"></span>
+          <span class="glyphicon glyphicon-floppy-disk" title="Guardar registro" (click)="executeSaveRow()"></span>
+          <span class="glyphicon glyphicon-remove" title="Cancelar Accion" (click)="executeCancel()"></span>
+        </div>
+      </div>
+
+    </div>
+
+  </jqxExpander>
+</div>
+<jqxLoader #jqxLoader [imagePosition]="'top'" [width]="80" [height]="50" [text]="'Cargando...'">
+</jqxLoader>

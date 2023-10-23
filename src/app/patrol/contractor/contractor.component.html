@@ -1,0 +1,149 @@
+<div class="columna-uno">
+
+  <div class="seleccionar">
+    <label style="width: 48%; margin-bottom: 3%; margin-top: 1%;">Departamento</label>
+    <select [(ngModel)]="departamentoSeleccionado" (ngModelChange)="loadUnidadOperativa($event)" style="width: 50%; margin-bottom: 3%; margin-top: 1%;">
+      <option></option>
+      <option *ngFor="let departamento of listarDepartamentos" [ngValue]="departamento">{{ departamento.NOMBRE }}</option>
+    </select>
+
+    <label style="width: 48%; margin-bottom: 3%;">Unidad operativa</label>
+    <select [(ngModel)]="unidadOperativaSeleccionada" (ngModelChange)="loadContratista($event)" style="width: 50%; margin-bottom: 3%;">
+      <option></option>
+      <option *ngFor="let unidadOperativa of listarUnidadesOperativas" [ngValue]="unidadOperativa">{{ unidadOperativa.OPER_UNIT_CODE }}</option>
+    </select>
+
+    <label style="width: 48%;">Contratista</label>
+    <select [(ngModel)]="contratistaSeleccionado" (ngModelChange)="loadOrdenPadre($event)" style="width: 50%;">
+      <option></option>
+      <option *ngFor="let contratista of listarContratistas" [ngValue]="contratista">{{ contratista.NOM_CONTRATISTA }}</option>
+    </select>
+  </div>
+
+  <div class="cuadros-tres">
+    <label>Datos básicos del contratista seleccionado</label>
+
+    <table style="width: 100%;">
+      <tr>
+        <td>Código:</td>
+        <td *ngFor="let datosCont of datosContratista" style="text-align: right;">{{ datosCont.COD_CONTRATISTA }}</td>
+      </tr>
+
+      <tr>
+        <td>Nombre:</td>
+        <td *ngFor="let datosCont of datosContratista" style="text-align: right;">{{ datosCont.NOM_CONTRATISTA }}</td>
+      </tr>
+    </table>
+
+    Unidades operativas: <span *ngFor="let datosCont of datosContratista">{{ datosCont.NAME }}</span>
+  </div>
+
+  <div class="cuadros-uno">
+    <label>Avance total del contratista</label>
+
+    <table style="width: 100%;">
+      <tr>
+        <td>Long. total tubería(m):</td>
+        <td *ngFor="let avanceCont of avanceContratista" style="text-align: right;">
+
+          <ng-container *ngIf="avanceCont.LONG_TUBERIA !== null; else elseTemplate">
+            {{ avanceCont.LONG_TUBERIA | currency : ' ' }}
+          </ng-container>
+          <ng-template #elseTemplate>
+            0.00
+          </ng-template>
+
+        </td>
+      </tr>
+
+      <tr>
+        <td>Long. patrullada(m):</td>
+        <td *ngFor="let avanceCont of avanceContratista" style="text-align: right;">
+
+        <ng-container *ngIf="avanceCont.LONG_RECORRIDA !== null; else elseTemplate">
+          {{ avanceCont.LONG_RECORRIDA | currency : ' ' }}
+        </ng-container>
+        <ng-template #elseTemplate>
+          0.00
+        </ng-template>
+
+        </td>
+      </tr>
+
+      <tr>
+        <td>Porcentaje de avance:</td>
+        <td *ngFor="let avanceCont of avanceContratista" style="text-align: right;">
+
+        <ng-container *ngIf="avanceCont.PORCENTAJE !== null; else elseTemplate">
+          {{ avanceCont.PORCENTAJE }}%
+        </ng-container>
+        <ng-template #elseTemplate>
+          0.00%
+        </ng-template>
+
+        </td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+<div class="columna-dos">
+
+  <div class="cuadros-dos">
+    <label>Ordenes padre</label>
+
+    <jqxDataTable #dataTable [width]="'100%'" [height]="'89.75%'" [source]="dataAdapter" [columns]="dataTableColumns"
+      [pageable]="false" [columnsResize]="true" (onRowSelect)="tableOnRowSelect($event)">
+    </jqxDataTable>
+  </div>
+
+  <div class="cuadros-uno">
+    <label>Avance de la orden seleccionada</label>
+
+    <table style="width: 100%;">
+      <tr>
+        <td>Long. total tubería(m):</td>
+        <td *ngFor="let orden of avanceOrden" style="text-align: right;">
+
+          <ng-container *ngIf="orden.LONG_TUBERIA !== null; else elseTemplate">
+            {{ orden.LONG_TUBERIA | currency : ' ' }}
+          </ng-container>
+          <ng-template #elseTemplate>
+            0.00
+          </ng-template>
+
+        </td>
+      </tr>
+
+      <tr>
+        <td>Long. patrullada(m):</td>
+        <td *ngFor="let orden of avanceOrden" style="text-align: right;">
+        
+        <ng-container *ngIf="orden.LONG_PATRULLADA !== null; else elseTemplate">
+          {{ orden.LONG_PATRULLADA | currency : ' ' }}
+        </ng-container>
+        <ng-template #elseTemplate>
+          0.00
+        </ng-template>
+        
+        </td>
+      </tr>
+
+      <tr>
+        <td>Porcentaje de avance:</td>
+        <td *ngFor="let orden of avanceOrden" style="text-align: right;">
+        
+        <ng-container *ngIf="orden.PORCENTAJE !== null; else elseTemplate">
+          {{ orden.PORCENTAJE }}%
+        </ng-container>
+        <ng-template #elseTemplate>
+          0.00%
+        </ng-template>
+        
+        </td>
+      </tr>
+    </table>
+  </div>
+
+</div>

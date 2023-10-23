@@ -1,0 +1,15 @@
+.busqueda {
+  padding-block-end: 15px;
+  padding: 3%;
+}
+
+.parametro {
+  padding-block-end: 10%;
+  padding: 5% 4%;
+  height: 160px !important;
+  overflow-y: hidden;
+}
+
+.contenedor {
+  margin-bottom: 1%;
+}

@@ -1,0 +1,27 @@
+<div class="container-fluid-modal">
+
+  <div class="container-center">
+    <div class="inline-form-text">
+      Medir distancia
+    </div>
+    <div class="inline-form-control">
+        <img class="img" (click)="executeMeasureLine()" style="width: 25px; height: 25px;" src="assets/images/medir-linea.png" />
+      <!-- <input type="button" (click)="executeMeasureLine()" value="Linea"> -->
+    </div>
+  </div>
+
+  <div class="container-center">
+    <div class="inline-form-text">
+      Medir Area/Perimetro
+    </div>
+    <div class="inline-form-control">
+        <img class="img" (click)="executeMeasurePolygon()" style="width: 25px; height: 25px;" src="assets/images/medir-poligono.png" />
+      <!-- <input type="button" (click)="executeMeasurePolygon()" value="Poligono"> -->
+    </div>
+  </div>
+
+  <div class="container-center" style="padding-top:15px">
+    <b>Medida: {{ measureDistance }}</b>
+  </div>
+
+</div>

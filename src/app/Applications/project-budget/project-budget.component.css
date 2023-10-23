@@ -1,0 +1,60 @@
+.project-budget-label-info-proyecto {
+  width: 37%;
+  font-weight: normal;
+}
+.project-budget-long-input {
+  width: 60%;
+}
+
+.project-budget-short-input {
+  width: 35%;
+}
+
+.project-budget-fieldset {
+  width: 45%;
+  float: left;
+  padding: 2px;
+  margin: 2px;
+}
+.project-budget-fieldset label {
+  font-size: smaller;
+  font-weight: normal;
+  width: 80%;
+}
+.project-budget-fieldset input {
+  width: 14%;
+}
+
+.project-budget-info-tuberia {
+  vertical-align: top;
+}
+
+.project-budget-body {
+  height: 100%;
+  overflow: auto;
+  padding-bottom: 30px;
+}
+
+.project-budget-buttons {
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 30px;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+    font-size: smaller;
+}
+
+.project-budget-tipo-tuberia {
+  text-align: center;
+}
+.project-budget-tipo-tuberia label{
+  font-weight: normal;
+  font-size: small;
+}

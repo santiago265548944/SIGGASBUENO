@@ -1,0 +1,23 @@
+<div>
+  <label>Cantidad prensas</label>
+  <input type="number" [(ngModel)]="model.CantidadPrensas" />
+</div>
+<div>
+  <label>Descripción de emergencia</label>
+  <textarea [(ngModel)]="model.DespcripcionEmergencia"></textarea>
+</div>
+<div>
+  <label >Fecha emergencia</label>
+  <input type="date" [(ngModel)]="model.FechaEmergencia" />
+</div>
+<div>
+  <label>Tuberia</label>
+  <select [(ngModel)]="model.Tuberia">
+    <option *ngFor="let pipe of pipes" [ngValue]="pipe">{{pipe.text}}</option>
+  </select>
+</div>
+<div class="app-crearprensas-buttons">
+  <input type="button" value="Aceptar" (click)="onAceptarClickHandler()" />
+  <input type="button" value="Cancelar" (click)="onCancelarClickHandler()" />
+</div>
+<jqxLoader #jqxLoader [imagePosition]="'top'" [width]="80" [height]="50" [text]="'Cargando...'"></jqxLoader>

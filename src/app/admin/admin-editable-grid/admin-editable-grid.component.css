@@ -1,0 +1,31 @@
+.admin-editable-grid-edit-container {
+
+}
+
+.admin-editable-grid-edit-container-fields {
+  overflow-x: auto;
+  display: flex;
+}
+
+.admin-editable-grid-edit-container-field {
+  display: inline-table;
+  text-align: center;
+  margin: 5px;
+}
+
+.admin-editable-grid-edit-container-field > label{
+  font-size: x-small;
+  font-weight: normal;
+  display: block;
+}
+
+.admin-editable-grid-edit-container-field > input, .admin-editable-grid-edit-container-field > select{
+  width: 100px;
+  height: 20px;
+  display: block;
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}

@@ -1,0 +1,50 @@
+.contenedor-uno {
+    width: 100%;
+    height: 60%;
+}
+
+.contenedor-dos {
+    width: 100%;
+    height: 40%;
+}
+
+.columna-uno {
+    width: 39%;
+    height: 100%;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+}
+
+.columna-dos {
+    width: 60%;
+    height: 100%;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.botones {
+    position: absolute;
+    bottom: 0%;
+    margin: 0 0 8.1% 4.5%;
+    text-align: center;
+}
+
+.contenedor-tabla {
+    width: 100%;
+    height: 89%;
+    padding: 1%;
+}
+
+.contenedor-manzanas {
+    width: 100%;
+    height: 100%;
+    padding: 5% 9%;
+    border: 1px solid #BDBDBD;
+}
+
+.cantidad {
+    font-size: 11px;
+    margin-top: 0.7%;
+    float: right;
+}

@@ -1,0 +1,21 @@
+.app-identify-child1 {
+  height: 30px;
+  width: 100%;
+}
+
+.app-identify-child2 {
+  height: calc(100% - 30px - 20px);
+  width: 100%;
+}
+
+.identify-status-bar {
+  height: 20px;
+  width: 100%;
+  background-color: #E8E8E8;
+  border: 1px solid #C5C5C5;
+  font-size: small;
+  font-style: italic;
+  vertical-align: bottom;
+  padding-left: 2px;
+
+}

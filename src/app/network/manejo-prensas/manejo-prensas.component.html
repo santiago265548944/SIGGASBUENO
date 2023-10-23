@@ -1,0 +1,17 @@
+<div style="width: 100%; height: 100%;">
+  <div class="app-man-prensas-table">
+    <app-view-selection [listElementsProp]="prensasList"
+      (RowSelected)="onRowSelectHandler($event)"
+      [ownerTool]="OwnerSelection.ManejoPrensas">
+    </app-view-selection>
+  </div>
+  <div class="app-man-prensas-buttons">
+    <input type="button" value="Crear" (click)="onCrearClickHandler()"/>
+    <input type="button" value="Eliminar" (click)="onEliminarClickHandler()"/>
+    <input type="button" value="Insertar" *ngIf="!inserting" (click)="onInsertClick()"/>
+    <select [(ngModel)]="pipeSelected" *ngIf="inserting" (change)="onPipeSelected()">
+      <option *ngFor="let pipe of pipes" [ngValue]="pipe">{{pipe.text}}</option>
+    </select>
+  </div>
+  <jqxLoader #jqxLoader [imagePosition]="'top'" [width]="80" [height]="50" [text]="'Cargando...'"></jqxLoader>
+</div>

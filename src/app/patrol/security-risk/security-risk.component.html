@@ -1,0 +1,29 @@
+<div class="contenedor-manzanas">
+
+  <jqxDataTable #dataTable [width]="'100%'" [height]="'98%'" [source]="dataAdapter" [columns]="dataTableColumns"
+    [pageable]="false" [columnsResize]="true" (onRowSelect)="tableOnRowSelect($event)">
+  </jqxDataTable>
+
+</div>
+
+<div class="contenedor">
+  <p style="text-align: center; margin-bottom: 4%;"><b>Selección de Manzanas</b></p>
+
+  <div style="text-align: center; margin-bottom: 9%;">
+    <input type="button" [value]="onOff" (click)="btnOnOff()" style="width: 85px;">
+    <input type="button" value="Seleccionar Manzanas" (click)="executeMeasureLine()">
+  </div>
+
+  <div>
+    <span>Manzanas seleccionadas: {{ cantidadManzanas }}</span>
+  </div>
+</div>
+
+<div class="boton-manzanas">
+  <input type="button" value="Acercar a Manzana" (click)="executeZoom(4)">
+</div>
+
+<div class="boton">
+  <input type="button" value="Restringir Patrullaje" (click)="adiccionarManzana()">
+  <input type="button" value="Quitar Restricción" (click)="eliminarManzana()">
+</div>

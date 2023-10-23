@@ -1,0 +1,355 @@
+<div class="main-admin-container">
+  <div class="main-admin-left-panel">
+    <div [hidden]="isOptionHidden('navBarGroupElements')">
+      <jqxExpander
+        [width]="'95%'"
+        [disabled]="isOptionHidden('navBarGroupElements')"
+      >
+        <div>
+          <img
+            class="main-admin-img-header"
+            src="assets/images/Elements_32x32.png"
+          />
+          Elementos
+        </div>
+        <div class="main-admin-item-container">
+          <div
+            *ngFor="let item of elementsData"
+            [title]="item"
+            (click)="onElementItemClickHandler(item)"
+          >
+            {{ item }}
+          </div>
+        </div>
+      </jqxExpander>
+    </div>
+    <div [hidden]="isOptionHidden('navBarGroupSecurity')">
+      <jqxExpander
+        [width]="'95%'"
+        [disabled]="isOptionDisabled('navBarGroupSecurity')"
+      >
+        <div title="Seguridad">
+          <img
+            class="main-admin-img-header"
+            src="assets/images/Security_32x32.png"
+          />
+          Seguridad
+        </div>
+        <div class="main-admin-item-container">
+          <div
+            [title]="securityItems.Usuarios"
+            (click)="onSecurityItemClickHandler(securityItems.Usuarios.Name)"
+          >
+            <img src="assets/images/UsersManagment_32x32.png" />
+            {{ securityItems.Usuarios.Name }}
+          </div>
+          <div
+            [title]="securityItems.Perfiles"
+            (click)="onSecurityItemClickHandler(securityItems.Perfiles.Name)"
+          >
+            <img src="assets/images/Profiles_32x32.png" />
+            {{ securityItems.Perfiles.Name }}
+          </div>
+          <div
+            title="Asignar Perfil"
+            (click)="
+              onSecurityItemClickHandler(securityItems.AsignarPerfil.Name)
+            "
+          >
+            <img src="assets/images/UsersManagment_32x32.png" />
+            {{ securityItems.AsignarPerfil.Name }}
+          </div>
+          <div
+            title="Funcionalidades"
+            (click)="
+              onSecurityItemClickHandler(securityItems.Funcionalidades.Name)
+            "
+          >
+            <img src="assets/images/OptionsManagment_32x32.png" />
+            {{ securityItems.Funcionalidades.Name }}
+          </div>
+          <div
+            title="Opciones por perfil"
+            (click)="
+              onSecurityItemClickHandler(
+                securityItems.OpcionesPorPerfil.Name,
+                securityItems.OpcionesPorPerfil.Alias
+              )
+            "
+          >
+            <img src="assets/images/FunctionalityProfile_32x32.png" />
+            {{ securityItems.OpcionesPorPerfil.Name }}
+          </div>
+          <div
+            title="Opciones por gasera"
+            (click)="
+              onSecurityItemClickHandler(
+                securityItems.OpcionesPorGasera.Name,
+                securityItems.OpcionesPorGasera.Alias
+              )
+            "
+          >
+            <img src="assets/images/FunctionalityCompany_32x32.png" />
+            {{ securityItems.OpcionesPorGasera.Name }}
+          </div>
+        </div>
+      </jqxExpander>
+    </div>
+    <div [hidden]="isOptionHidden('navBarGroupArcSDE')">
+      <jqxExpander
+        [width]="'95%'"
+        [disabled]="isOptionDisabled('navBarGroupArcSDE')"
+      >
+        <div>
+          <img
+            class="main-admin-img-header"
+            src="assets/images/ArcSde_32x32.png"
+          />
+          ArcSDE
+        </div>
+        <div class="main-admin-item-container">
+          <div
+            title="Estado"
+            (click)="
+              onArcSDEItemClickHandler(
+                arcSDEItems.Estado.Name,
+                arcSDEItems.Estado.Alias
+              )
+            "
+          >
+            <img src="assets/images/SDEStatus_32x32.png" />
+            {{ arcSDEItems.Estado.Name }}
+          </div>
+          <div
+            title="Versión"
+            (click)="
+              onArcSDEItemClickHandler(
+                arcSDEItems.Version.Name,
+                arcSDEItems.Version.Alias
+              )
+            "
+          >
+            <img src="assets/images/SDEVersion_32x32.png" />
+            {{ arcSDEItems.Version.Name }}
+          </div>
+          <div
+            title="Configuración"
+            (click)="
+              onArcSDEItemClickHandler(
+                arcSDEItems.Configuracion.Name,
+                arcSDEItems.Configuracion.Alias
+              )
+            "
+          >
+            <img src="assets/images/SDEConfiguration_32x32.png" />
+            {{ arcSDEItems.Configuracion.Name }}
+          </div>
+          <div
+            title="Estadísticas"
+            (click)="
+              onArcSDEItemClickHandler(
+                arcSDEItems.Estadisticas.Name,
+                arcSDEItems.Estadisticas.Alias
+              )
+            "
+          >
+            <img src="assets/images/Statistics_32x32.png" />
+            {{ arcSDEItems.Estadisticas.Name }}
+          </div>
+          <div
+            title="Monitor"
+            (click)="
+              onArcSDEItemClickHandler(
+                arcSDEItems.Monitor.Name,
+                arcSDEItems.Monitor.Alias
+              )
+            "
+          >
+            <img src="assets/images/Monitor_32x32.png" />
+            {{ arcSDEItems.Monitor.Name }}
+          </div>
+        </div>
+      </jqxExpander>
+    </div>
+    <div [hidden]="isOptionHidden('navBarGroupApplication')">
+      <jqxExpander
+        [width]="'95%'"
+        [disabled]="isOptionDisabled('navBarGroupApplication')"
+      >
+        <div>
+          <img
+            class="main-admin-img-header"
+            src="assets/images/FuncsConfiguration_32x32.png"
+          />
+          Aplicaciones
+        </div>
+        <div class="main-admin-item-container">
+          <div
+            title="General"
+            (click)="
+              onOnGridViewClickHandler(
+                aplicacionesItems.General.Name,
+                aplicacionesItems.General.Alias
+              )
+            "
+          >
+            <img src="assets/images/Settings_32x32.png" />
+            {{ aplicacionesItems.General.Name }}
+          </div>
+          <div
+            title="Cambio de Dirección"
+            (click)="
+              onOnGridViewClickHandler(aplicacionesItems.CambioDireccion.Name)
+            "
+          >
+            <img src="assets/images/Settings_32x32.png" />
+            {{ aplicacionesItems.CambioDireccion.Name }}
+          </div>
+          <div
+            title="Ploteo"
+            (click)="onOnGrid2ViewClickHandler(aplicacionesItems.Ploteo.Name)"
+          >
+            <img src="assets/images/PlottingConfig_32x32.png" />
+            {{ aplicacionesItems.Ploteo.Name }}
+          </div>
+          <div
+            title="Mapa Base"
+            (click)="onOnGridViewClickHandler(aplicacionesItems.MapaBase.Name)"
+          >
+            <img src="assets/images/BaseMapConfig_32x32.png" />
+            {{ aplicacionesItems.MapaBase.Name }}
+          </div>
+          <div
+            title="Edición"
+            (click)="
+              onOnGridViewClickHandler(
+                aplicacionesItems.Edicion.Name,
+                aplicacionesItems.Edicion.Alias
+              )
+            "
+          >
+            <img src="assets/images/EditFeature_32x32.png" />
+            {{ aplicacionesItems.Edicion.Alias }}
+          </div>
+          <div
+            title="Configuración de Edición"
+            (click)="
+              onOnGridViewClickHandler(
+                aplicacionesItems.ConfiguracionEdicion.Name,
+                aplicacionesItems.ConfiguracionEdicion.Alias
+              )
+            "
+          >
+            <img src="assets/images/EditFeature_32x32.png" />
+            {{ aplicacionesItems.ConfiguracionEdicion.Alias }}
+          </div>
+          <div
+            title="Auditoría Geográfica"
+            (click)="
+              onOnGridViewClickHandler(
+                aplicacionesItems.AuditoriaGeografica.Name,
+                aplicacionesItems.AuditoriaGeografica.Alias
+              )
+            "
+          >
+            <img src="assets/images/Audit_32x32.png" />
+            {{ aplicacionesItems.AuditoriaGeografica.Alias }}
+          </div>
+          <div
+            title="Auditoría Alfanumérica"
+            (click)="
+              onOnGridViewClickHandler(
+                aplicacionesItems.AuditoriaAlfanumerica.Name,
+                aplicacionesItems.AuditoriaAlfanumerica.Alias
+              )
+            "
+          >
+            <img src="assets/images/Audit_32x32.png" />
+            {{ aplicacionesItems.AuditoriaAlfanumerica.Alias }}
+          </div>
+          <div
+            title="Relaciones Espaciales"
+            (click)="
+              onOnGridViewClickHandler(
+                aplicacionesItems.RelacionesEspaciales.Name
+              )
+            "
+          >
+            <img src="assets/images/SpatialRelation_32x32.png" />
+            {{ aplicacionesItems.RelacionesEspaciales.Name }}
+          </div>
+          <div
+            title="Atributos Dinámicos"
+            (click)="
+              onOnGridViewClickHandler(
+                aplicacionesItems.AtributosDinamicos.Name,
+                aplicacionesItems.AtributosDinamicos.Alias
+              )
+            "
+          >
+            <img src="assets/images/DynamicValues_32x32.png" />
+            {{ aplicacionesItems.AtributosDinamicos.Alias }}
+          </div>
+          <div
+            title="Histórico"
+            (click)="
+              onOnGridViewClickHandler(
+                aplicacionesItems.Historico.Name,
+                aplicacionesItems.Historico.Alias
+              )
+            "
+          >
+            <img src="assets/images/HistoricData_32x32.png" />
+            {{ aplicacionesItems.Historico.Alias }}
+          </div>
+          <div
+            title="Secuencia"
+            (click)="onOnGridViewClickHandler(aplicacionesItems.Secuencia.Name)"
+          >
+            <img src="assets/images/Secuence_32x32.png" />
+            {{ aplicacionesItems.Secuencia.Name }}
+          </div>
+          <div
+            title="Búsquedas"
+            (click)="
+              onOnGrid2ViewClickHandler(
+                aplicacionesItems.Busquedas.Name,
+                aplicacionesItems.Busquedas.Alias
+              )
+            "
+          >
+            <img src="assets/images/SearchesConfig_32x32.png" />
+            {{ aplicacionesItems.Busquedas.Alias }}
+          </div>
+          <div
+            title="Consultas"
+            (click)="
+              onOnGrid2ViewClickHandler(
+                aplicacionesItems.Consultas.Name,
+                aplicacionesItems.Consultas.Alias
+              )
+            "
+          >
+            <img src="assets/images/ConsultConfig_32x32.png" />
+            {{ aplicacionesItems.Consultas.Name }}
+          </div>
+          <div
+            title="Temáticos"
+            (click)="
+              onOnGrid2ViewClickHandler(
+                aplicacionesItems.Tematicos.Name,
+                aplicacionesItems.Tematicos.Alias
+              )
+            "
+          >
+            <img src="assets/images/ThematicMapConfig_32x32.png" />
+            {{ aplicacionesItems.Tematicos.Name }}
+          </div>
+        </div>
+      </jqxExpander>
+    </div>
+  </div>
+  <div class="main-admin-right-panel">
+    <app-admin-container [component]="itemToLoad"></app-admin-container>
+  </div>
+</div>

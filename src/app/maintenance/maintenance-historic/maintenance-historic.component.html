@@ -1,0 +1,34 @@
+<div style="width: 100%;">
+
+  <label style="width: 30%; margin-top: 3%">Año Inicial</label>
+  <select [(ngModel)]="initialYearSelected">
+    <option *ngFor="let year of initialYear" [ngValue]="year">{{year}}</option>
+  </select>
+
+</div>
+
+<div style="width: 100%;">
+
+  <label style="width: 30%">Año Final</label>
+  <select [(ngModel)]="finalYearSelected">
+    <option *ngFor="let year of finalYear" [ngValue]="year">{{year}}</option>
+  </select>
+
+</div>
+
+<div style="width: 100%;">
+
+  <label style="width: 30%">Actividad</label>
+  <select style="width: 68%" [(ngModel)]="activitySelected">
+    <option *ngFor="let activities of activity" [ngValue]="activities">{{activities.DESCRIPCION}}</option>
+  </select>
+
+</div>
+
+<br>
+
+<div style="text-align: center;">
+  <input type="button" value="Buscar" (click)="onBuscarClick()" />
+</div>
+
+<jqxLoader #jqxLoader [imagePosition]="'top'" [width]="80" [height]="50" [text]="'Cargando...'"></jqxLoader>

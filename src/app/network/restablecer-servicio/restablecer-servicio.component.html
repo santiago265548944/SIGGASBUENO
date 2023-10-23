@@ -1,0 +1,29 @@
+<div>
+  <label>Id. Falla</label>
+  <input type="text" [(ngModel)]="model.IdFalla"/>
+</div>
+<div>
+  <label>Tipo Falla</label>
+  <select [(ngModel)]="model.TipoFalla">
+    <option *ngFor="let item of faultTypes" [ngValue]="item">{{item.text}}</option>
+  </select>
+</div>
+<div>
+  <label>Id. Causa</label>
+  <select [(ngModel)]="model.IdCausa">
+      <option *ngFor="let item of causeTypes" [ngValue]="item">{{item.text}}</option>
+  </select>
+</div>
+<div>
+  <label>Fecha Fin</label>
+  <input type="date" [(ngModel)]="model.FechaFin">
+</div>
+<div>
+  <label>Justificación</label>
+  <textarea [(ngModel)]="model.Justificacion"></textarea>
+</div>
+<div class="app-restablecerservicio-buttons">
+  <input type="button" value="Aceptar" (click)="onAceptarClickHandler()"/>
+  <input type="button" value="Cancelar" (click)="onCancelarClickHandler()"/>
+</div>
+<jqxLoader #jqxLoader [imagePosition]="'top'" [width]="80" [height]="50" [text]="'Cargando...'"></jqxLoader>

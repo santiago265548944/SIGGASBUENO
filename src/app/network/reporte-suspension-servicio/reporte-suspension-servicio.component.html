@@ -1,0 +1,22 @@
+<div>
+  <label>Programada</label>
+  <span>SI</span>
+  <input type="radio" [(ngModel)]="model.Programada" name="programada" value="Y"/>
+  <span>NO</span>
+  <input type="radio" [(ngModel)]="model.Programada" name="programada" value="N"/>
+</div>
+<div>
+  <label>Fecha Inicial</label>
+  <input type="date" [(ngModel)]="model.FechaInicial"/>
+  <input type="time" [(ngModel)]="model.HoraInicial"/>
+</div>
+<div>
+  <label>Fecha Final</label>
+  <input type="date" [(ngModel)]="model.FechaFinal"/>
+  <input type="time" [(ngModel)]="model.HoraFinal"/>
+</div>
+<div class="app-reportesuspensionservicio-buttons">
+  <input type="button" value="Aceptar" (click)="onAceptarClickHandler()" />
+  <input type="button" value="Cancelar" (click)="onCancelarClickHandler()" />
+</div>
+<jqxLoader #jqxLoader [imagePosition]="'top'" [width]="80" [height]="50" [text]="'Cargando...'"></jqxLoader>

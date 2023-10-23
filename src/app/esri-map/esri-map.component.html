@@ -1,0 +1,26 @@
+<div
+   id="mapViewNode"
+   [style.height]="mapHeight"
+   (window:keydown)="onKeyDown($event)"
+   (window:keyup)="onKeyUp($event)"
+>
+   <span
+      id="info"
+      style="
+         position: absolute;
+         left: 170px;
+         margin-bottom: 14px;
+         font-weight: bold;
+         bottom: 5px;
+         color: #000;
+         z-index: 50;
+      "
+      >{{ strCoordinate }}</span
+   >
+   <div id="printMap" style="display: none"></div>
+</div>
+<div style="display: none">
+   <div id="measure" style="display: none"></div>
+</div>
+<!-- <jqxLoader #jqxLoader [imagePosition]="'top'" [width]="80" [height]="50" [text]="'Cargando...'">
+</jqxLoader> -->

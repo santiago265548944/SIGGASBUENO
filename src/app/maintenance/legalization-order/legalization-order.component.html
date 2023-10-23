@@ -1,0 +1,249 @@
+<jqxExpander [width]="'100%'" [height]="'30%'">
+  <div>
+    Información de la orden
+  </div>
+
+  <!-- Fila 1 -->
+  <div class="row-1">
+    <!-- Columna 1 - F1 -->
+    <div class="row-1-col-1">
+      <div class="container-width">
+        <label for="order_number" class="modify-label">Número de orden:</label>
+        <select name="orderNumber" id="order_number" class="modify-sel_inp" [(ngModel)]="orderSelected" (ngModelChange)="onResultOrdenes($event)">
+          <option *ngFor="let resultItem of resultOrders" [ngValue]="resultItem">
+            {{ resultItem.ORDEN }} - {{ resultItem['TIPO MANTENIMIENTO'] }}
+          </option>
+        </select>
+        <span class="glyphicon glyphicon-search modify-span" (click)="buscarOrdenes()"></span>
+
+        <br>
+
+        <label for="date_generation" class="modify-label">Fecha de generación:</label>
+        <input type="text" name="dateGeneration" id="date_generation" class="modify-input" [(ngModel)]="fechaGeneracion" readonly>
+
+        <br>
+
+        <label for="date_programming" class="modify-label">Fecha de programación:</label>
+        <input type="text" name="dateProgramming" id="date_programming" class="modify-input" [(ngModel)]="fechaProgramacion" readonly>
+
+        <br>
+
+        <label for="date_legalization" class="modify-label">Fecha de legalización:</label>
+        <input type="text" name="dateLegalization" id="date_legalization" [(ngModel)]="fechLegalizacion" class="modify-input" readonly>
+      </div>
+    </div>
+    <!-- Fin Columna 1 - F1 -->
+
+    <!-- Columna 2 - F1 -->
+    <div class="row-1-col-2">
+      <div class="container-width">
+        <input type="checkbox" name="otLegalized" id="ot_legalized" [(ngModel)]="opcion" (click)="inpOTLegalized()">
+        <label for="ot_legalized" class="size-label">OT. Legalizadas</label>
+
+        <br>
+
+        <label for="activity" class="modify-label">Actividad:</label>
+        <input type="text" id="activity" class="modify-input" [(ngModel)]="actividad" readonly [title]="actividad">
+
+        <label for="main_activity" class="modify-label">Actividad principal OSF:</label>
+        <input type="text" id="main_activity" class="modify-input" [(ngModel)]="actividadOSF" readonly [title]="actividadOSF">
+
+        <label for="assigned_gang" class="modify-label">Cuadrilla asignada:</label>
+        <input type="text" id="assigned_gang" class="modify-input" [(ngModel)]="cuadrillaAsignada" readonly [title]="cuadrillaAsignada">
+
+        <label for="controller_gang" class="modify-label">Cuadrilla interventor:</label>
+        <input id="controller_gang" class="modify-sel_inp" *ngIf="cuadrillaInterventor != null" type="text" [(ngModel)]="cuadrillaInterventor" [disabled]="interventorTF" [title]="cuadrillaInterventor"/>
+        <select *ngIf="intenvertor != null" id="controller_gang" class="modify-sel_inp" [(ngModel)]="cuadrillaInterventor1" (ngModelChange)="completedInterventor($event)" [disabled]="interventorTF" [title]="cuadrillaInterventor1">
+          <option *ngFor="let itemInterventor of intenvertor" [ngValue]="itemInterventor">
+            {{ itemInterventor.NOMBRE }}
+          </option>
+        </select>
+        <span class="glyphicon glyphicon-repeat modify-span" (click)="guardarIterventor()"></span>
+      </div>
+    </div>
+    <!-- Fin Columna 2 - F1 -->
+
+    <!-- Columna 3 - F1 -->
+    <div class="row-1-col-3">
+      <div class="container-flat">
+        <div class="flat-head">
+          <h6>Planos</h6>
+        </div>
+
+        <div class="flat-content">
+          <input type="checkbox" name="flatApproved" id="approved" [checked]="checkAP" [disabled] ="planoTF">
+          <label for="approved" class="size-label">Aprobado</label>
+
+          <br>
+
+          <input type="checkbox" name="flatRejected" id="rejected" [checked]="checkRE" [disabled] ="planoTF">
+          <label for="rejected" class="size-label">Rechazado</label>
+
+          <br>
+
+          <input type="checkbox" name="noPlanes" id="no_planes" [checked]="checkNT" [disabled] ="planoTF">
+          <label for="no_planes" class="size-label">No tiene planos</label>
+        </div>
+      </div>
+
+      <div class="container-icon modify-span">
+        <span class="glyphicon glyphicon-list-alt"></span>
+      </div>
+    </div>
+    <!-- Fin Columna 3 - F1 -->
+  </div>
+  <!-- Fin Fila 1 -->
+</jqxExpander>
+
+<!-- Fila 2 -->
+<div class="row-2">
+  <!-- Columna 1 - F2 -->
+  <div class="row-2-col-1">
+    <jqxExpander [width]="'100%'" [expanded]="false">
+      <div>
+        Preventivo
+      </div>
+
+      <div class="container-preventivo">
+
+        <div class="preventivo">
+          <table>
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Costo</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let itemdataPre of dataPreItems">
+                <td>{{itemdataPre.CODIGO}}</td>
+                <td>{{itemdataPre.DESCRIPCION}}</td>
+                <td>{{itemdataPre.CANTIDAD}}</td>
+                <td>${{itemdataPre.COSTO}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="container-textarea" >
+          <textarea>{{observacion}}</textarea>
+        </div>
+
+      </div>
+    </jqxExpander>
+
+    <jqxExpander [width]="'100%'" [expanded]="false">
+      <div>
+        Correctivo
+      </div>
+
+      <div class="container-correctivo">
+
+        <div class="correctivo-elementos">
+          <table>
+            <thead>
+              <tr>
+                <th>Tag</th>
+                <th>Elemento</th>
+                <th>Departamento</th>
+                <th>ID Válvula</th>
+                <th>Localidad</th>
+                <th>Subtipo</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let item of resultOrdersTag">
+                <td>{{ item.TAG }}</td>
+                <td>{{ item.ELEMENTO }}</td>
+                <td>{{ item.DEPARTAMENTO }}</td>
+                <td>{{ item['ID VALVULA'] }}</td>
+                <td>{{ item.LOCALIDAD }}</td>
+                <td>{{ item.SUBTIPO }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="correctivo-items">
+          <table>
+            <thead>
+              <tr >
+                <th>Código</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Costo</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let itemCorreItems of resultCorrItems">
+                <td>{{itemCorreItems.CODIGO}}</td>
+                <td>{{itemCorreItems.DESCRIPCION}}</td>
+                <td>{{itemCorreItems.CANTIDAD}}</td>
+                <td>{{itemCorreItems.COSTO}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </jqxExpander>
+  </div>
+  <!-- Fin Columna 1 - F2 -->
+
+  <!-- Columna 2 - F2 -->
+  <div class="row-2-col-2">
+    <div class="button-center space">
+      <input type="button" value="Datos adicionales">
+    </div>
+
+    <label for="main_legalization" class="size-label">Causal de legalización principal:</label>
+    <input id="main_legalization"  *ngIf="causalTiene != null" type="text" [(ngModel)]="causalTiene" [title]="causalTiene" [disabled]="disableTF"/>
+    <select *ngIf="causal != null" id="main_legalization" [(ngModel)]="causalCambio" (ngModelChange)="ngChangeCausal($event)">
+        <!-- <option [ngValue]="undefined" hidden>Selecicionar Causal</option> -->
+      <option *ngFor="let itemCausal of causal" [ngValue]="itemCausal">{{itemCausal.CODIGO}}-{{itemCausal.DESCRIPCION}}</option>
+    </select>
+
+    <label for="person_legalizes" class="size-label">Persona que legaliza:</label>
+    <select id="person_legalizes" [(ngModel)]="personaCambio"  (ngModelChange)= "ngChangePersona($event)">
+        <!-- <option [ngValue]="null" hidden>Selecicionar Persona</option> -->
+      <option *ngFor="let itemPersona of persona" [ngValue]="itemPersona">{{itemPersona.ID}} - {{itemPersona.NOMBRE}} </option>
+    </select>
+
+    <label for="commentary" class="size-label">Comentario:</label>
+    <textarea id="commentary" rows="4" [title]="observacion">{{observacion}}</textarea>
+
+    <label for="start" class="size-label">Inicio:</label>
+    <!-- <input type="text" id="start" *ngIf="fechaInicio !=null" [(ngModel)]="fechaInicio"readonly > -->
+    <!-- <input type="date"  id="start"  *ngIf="fechaInicio !=null" [(ngModel)]="fechaInicio" > -->
+    <input type="date"  id="start"   [(ngModel)]="fechaInicio"  [disabled]="fechaVaidarTF">
+    <!-- <select id="start">
+      <option></option>
+    </select> -->    
+
+    <label for="end" class="size-label">Fin:</label>
+    <!-- <input type="text" id="end" *ngIf="fechaFin !=null; else null" [(ngModel)]="fechaFin" readonly> -->
+    <!-- <input type="date"  id="end" *ngIf="fechaFin !=null " [(ngModel)]="fechaFin"> -->
+    <input type="date"  id="end"  [(ngModel)]="fechaFin"  [disabled]="fechaVaidarTF">
+    <!-- <ng-template #calidad>
+      <input type="text" id="end"  [(ngModel)]="fechaFin" readonly>
+    </ng-template> -->
+    <!-- <select id="end" class="space">
+      <option></option>
+    </select> -->
+
+    <div class="button-center">
+      <input type="button" value="Fechas de ejecución" (click)="openExecuteOrder()" [disabled]="FechasETF">
+      <input type="button" value="Rechazar" class="button-width" (click)="simpleButton5_Click()" >
+      <input type="button" value="Legalizar" class="button-width" (click)="legalizeSimpleButton_Click()">
+    </div>
+  </div>
+  <!-- Fin Columna 2 - F2 -->
+</div>
+<!-- Fila 2 -->
+
+<jqxLoader #jqxLoader [imagePosition]="'top'" [width]="80" [height]="50" [text]="'Cargando...'"></jqxLoader>

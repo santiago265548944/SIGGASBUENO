@@ -1,0 +1,17 @@
+<div class="form-row" style="text-align: center; align-content:center; margin-bottom: 5px; height: 30px;" *ngIf="!hideGeoButtons">
+  <div class="btn-group btn-group-xs" role="group">
+    <button type="button" (click)="genericActionGeometry(1)">Resaltar</button>
+    <button type="button" (click)="genericActionGeometry(2)">Acercar</button>
+    <button type="button" (click)="genericActionGeometry(2)">Desplazar</button>
+    <button type="button" (click)="genericActionGeometry(4)">Dibujar</button>
+    <button type="button" (click)="genericActionGeometry(5)">Dibujar Todo</button>
+    <button type="button" (click)="genericActionGeometry(6)">Acercar Todo</button>
+    <button type="button" (click)="genericActionGeometry(7)">Cambio Estado</button>
+  </div>
+</div>
+
+<div [style.width]="'4000px'" [style.height]="tableContainerHeight">
+  <jqxDataTable #dataTable [width]="'100%'" [height]="'98%'" [source]="dataAdapter" [columns]="dataTableColumns"
+    [pageable]="false" [columnsResize]="true" (onRowSelect)="tableOnRowSelect($event)">
+  </jqxDataTable>
+</div>

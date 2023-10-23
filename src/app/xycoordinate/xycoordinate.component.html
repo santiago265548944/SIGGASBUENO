@@ -1,0 +1,29 @@
+<div class="container-fluid-modal">
+  <div class="form-row">
+    <div class="container-center">
+      <div class="inline-form-text">
+        X
+      </div>
+      <div class="inline-form-control">
+        <jqxNumberInput [inputMode]="'simple'" [width]="100" [height]="20" [(ngModel)]='coorX'>
+        </jqxNumberInput>
+      </div>
+      <div class="inline-form-text">
+        Y
+      </div>
+      <div class="inline-form-control">
+        <jqxNumberInput [inputMode]="'simple'" [width]="100" [height]="20" [(ngModel)]='coorY'>
+        </jqxNumberInput>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="form-row" style="text-align: center; align-content:center; margin-bottom: 5px">
+    <div class="btn-group btn-group-xs" role="group">
+      <button type="button" (click)="executeZoomXY(0)">Acercar</button>
+      <button type="button" (click)="executeZoomXY(1)">Marcar</button>
+      <button type="button" (click)="executeZoomXY(2)">Resaltar</button>
+    </div>
+  </div>
+</div>

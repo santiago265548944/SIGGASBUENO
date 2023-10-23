@@ -1,0 +1,44 @@
+<div>
+  <label style="width: 30%;">Departamento:</label>
+  <select style="width: 65%;" [(ngModel)]="deparmentSelected" (ngModelChange)="onDeparmentSelectChanged($event)">
+    <option *ngFor="let department of departments" [ngValue]="department">{{department.text}}</option>
+  </select>
+</div>
+
+<div>
+  <label style="width: 30%;">Localidad:</label>
+  <select style="width: 65%;" [(ngModel)]="localidadSelected" (ngModelChange)="onLocalidadSelectChanged($event)">
+    <option *ngFor="let localidad of localidades" [ngValue]="localidad">{{localidad.text}}</option>
+  </select>
+</div>
+
+<div>
+  <label style="width: 30%;">Sector:</label>
+  <select style="width: 65%;" [(ngModel)]="sectorSelected">
+    <option *ngFor="let sector of sectores" [ngValue]="sector">{{sector.text}}</option>
+  </select>
+</div>
+
+<div>
+  <label style="width: 30%;">Cobertura Red:</label>
+  <select style="width: 65%;" [(ngModel)]="networkCoverageSelected">
+    <option *ngFor="let networkCoverage of networkCoverages" [ngValue]="networkCoverage">{{networkCoverage.text}}</option>
+  </select>
+</div>
+
+<div>
+  <label style="width: 30%;">Fecha Cierre:</label>
+  <input type="date" style="width: 65%;" [(ngModel)]="closeDate" />
+</div>
+
+<div style="text-align: center; padding-top: 2px;">
+  <input type="button" value="Aceptar" (click)="onAceptarClickHandler()" />
+</div>
+
+<div>
+  <label style="font-size: x-small">{{processLabelText}}</label>
+</div>
+
+<jqxDataTable [width]="'99%'" [height]="200" [source]="dataAdapter" [columns]="dataTableColumns" [pageable]="false" [columnsResize]="true"></jqxDataTable>
+
+<jqxLoader #jqxLoader [imagePosition]="'top'" [width]="80" [height]="50" [text]="'Cargando...'"></jqxLoader>

@@ -1,0 +1,35 @@
+<div style="width: 100%;" class="contenedor">
+  <jqxExpander [width]="'100%'">
+    <div>
+      Búsquedas
+    </div>
+
+    <div class="busqueda">
+      <select style="width: 100%" [(ngModel)]="searchItemSelected" (ngModelChange)="searchItemChanged($event)">
+        <option *ngFor="let searchItem of searchesList" [ngValue]="searchItem">{{searchItem.DESCRIPCION}}</option>
+      </select>
+    </div>
+  </jqxExpander>
+</div>
+
+<div class="contenedor">
+  <jqxExpander [width]="'100%'">
+    <div>
+      Parámetros
+    </div>
+
+    <div class="parametro">
+      <app-dynamic-form [dataSource]="dynamicItems"></app-dynamic-form>
+    </div>
+  </jqxExpander>
+</div>
+
+<br>
+
+<div style="text-align: center;">
+  <input type="button" value="Buscar" (click)="onBuscarButtonClick()" />
+  <input type="button" value="Ver Datos" (click)="onVerDatosClick()" />
+  <input type="button" value="Cancelar" (click)="onCancelarClick()" />
+</div>
+
+<jqxLoader #jqxLoader [imagePosition]="'top'" [width]="80" [height]="50" [text]="'Cargando...'"></jqxLoader>

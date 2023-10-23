@@ -1,0 +1,42 @@
+<div class="container-center">
+  <div class="inline-form-text">
+    Plantilla
+  </div>
+  <div class="inline-form-control">
+    <select style="width: 150px;" [(ngModel)]="plotting" (ngModelChange)="onChangePlotting($event)">
+      <option *ngFor="let plottingValue of plottingValues" [ngValue]="plottingValue.Code">{{plottingValue.Value}}</option>
+    </select>
+  </div>
+</div>
+<br>
+<div>
+  <div style="width:100%; overflow:auto; height:280px" id="tableContent">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Contenido</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let paramsValue of paramsValues" id="{{paramsValue.Value}}" [className]="paramsValue.Class" (click)="setRowSelect(paramsValue.Guid)">
+          <td>
+            <input type="text" style="width: 140px; height: 15px; font-size: 11px;" value="{{paramsValue.Value}}">
+          </td>
+          <td>
+            <input type="text" style="width: 100px; height: 15px; font-size: 11px;" id="{{paramsValue.ExternalValue}}">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="container-fluid-modal" style="height: 30px;">
+    <div class="form-row" style="text-align: center; align-content:center; margin-bottom: 5px; margin-top: 5px">
+      <button type="button" (click)="addRow()">Agregar Parámetro</button>
+      <button type="button" (click)="deleteRow()">Borrar Parámetro</button>
+      <button type="button" (click)="executeGenerate()">Generar</button>
+    </div>
+  </div>
+
+  <jqxLoader #jqxLoader [imagePosition]="'top'" [width]="80" [height]="50" [text]="'Cargando...'">
+  </jqxLoader>

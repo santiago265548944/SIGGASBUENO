@@ -1,0 +1,119 @@
+<div class="fila-uno">
+
+  <div class="fila-uno-contenedor-uno">
+    <label style="width: 8%;">Desde</label>
+    <input type="date" [(ngModel)]="fechaInicial" [max]="fechaActual">
+
+    <label style="width: 8%;">Hasta</label>
+    <input type="date" [(ngModel)]="fechaFinal" [max]="fechaActual">
+  </div>
+
+  <div class="fila-uno-contenedor-dos">
+    <label style="width: 41%; margin-bottom: 1.5%;">Departamento</label>
+    <select [(ngModel)]="departamentoSeleccionado" (ngModelChange)="loadUnidadOperativa($event)"
+      [disabled]="fechaInicial !== null && fechaInicial !== '' && fechaFinal !== null && fechaFinal !== '' ? 'false' : 'true'"
+      style="width: 51%; margin-bottom: 1.5%;">
+      <option></option>
+      <option *ngFor="let departamento of listarDepartamentos" [ngValue]="departamento">{{ departamento.NOMBRE }}</option>
+    </select>
+
+    <label style="width: 41%; margin-bottom: 1.5%;">Unidad operativa</label>
+    <select [(ngModel)]="unidadOperativaSeleccionada" (ngModelChange)="loadContratista($event)"
+      [disabled]="fechaInicial !== null && fechaInicial !== '' && fechaFinal !== null && fechaFinal !== '' ? 'false' : 'true'"
+      style="width: 51%; margin-bottom: 1.5%;">
+      <option></option>
+      <option *ngFor="let unidadOperativa of listarUnidadesOperativas" [ngValue]="unidadOperativa">{{ unidadOperativa.OPER_UNIT_CODE }}</option>
+    </select>
+
+    <label style="width: 41%; margin-bottom: 1.5%;">Contratista</label>
+    <select [(ngModel)]="contratistaSeleccionado" (ngModelChange)="loadOrdenPadre($event)"
+      [disabled]="fechaInicial !== null && fechaInicial !== '' && fechaFinal !== null && fechaFinal !== '' ? 'false' : 'true'"
+      style="width: 51%; margin-bottom: 1.5%;">
+      <option></option>
+      <option *ngFor="let contratista of listarContratistas" [ngValue]="contratista">{{ contratista.NOM_CONTRATISTA }}</option>
+    </select>
+    <a (click)="btnReporteContratista()" style="cursor: pointer;">
+      <span class="glyphicon glyphicon-search"></span>
+    </a>
+
+    <label style="width: 41%; margin-bottom: 1.5%;">Orden padre</label>
+    <select [(ngModel)]="ordenPadreSeleccionada" (ngModelChange)="loadPatrullero($event)"
+      [disabled]="fechaInicial !== null && fechaInicial !== '' && fechaFinal !== null && fechaFinal !== '' ? 'false' : 'true'"
+      style="width: 51%; margin-bottom: 1.5%;">
+      <option></option>
+      <option *ngFor="let ordenPadre of listarOrdenesPadre" [ngValue]="ordenPadre">{{ ordenPadre.COD_ORDEN_PADRE }}</option>
+    </select>
+    <a (click)="btnReporteOrdenPadre()" style="cursor: pointer;">
+      <span class="glyphicon glyphicon-search"></span>
+    </a>
+
+    <label style="width: 41%; margin-bottom: 1.5%;">Patrullero</label>
+    <select [(ngModel)]="patrulleroSeleccionado"
+      [disabled]="fechaInicial !== null && fechaInicial !== '' && fechaFinal !== null && fechaFinal !== '' ? 'false' : 'true'"
+      style="width: 51%; margin-bottom: 1.5%;">
+      <option></option>
+      <option *ngFor="let patrullero of listarPatrulleros" [ngValue]="patrullero">{{ patrullero.NOM_PATRULLERO }}</option>
+    </select>
+    <a (click)="btnReportePatrullero()" style="cursor: pointer;">
+      <span class="glyphicon glyphicon-search"></span>
+    </a>
+
+    <div style="text-align: center;">
+      <input type="button" value="Generar reporte de fugas">
+    </div>
+  </div>
+
+</div>
+
+<div class="fila-dos">
+
+  <jqxDataTable [width]="'99.5%'" [height]="'97%'" [source]="dataAdapterGeneralTable" [columns]="dataTableColumnsGeneralTable"
+    [pageable]="false" [columnsResize]="true">
+  </jqxDataTable>
+
+</div>
+
+<div class="fila-tres">
+
+  <jqxDataTable #dataTable [width]="'99.5%'" [height]="'97%'" [source]="dataAdapterSpecificTable" [columns]="dataTableColumnsSpecificTable"
+    [pageable]="false" [columnsResize]="true">
+  </jqxDataTable>
+
+</div>
+
+<div class="fila-cuatro">
+
+  <table style="width: 100%;">
+    <tr class="encabezado">
+      <th></th>
+      <th>Long. Total</th>
+      <th>Long. Patrullada</th>
+      <th>Tiempo Efectivo</th>
+      <th>Tiempo Total</th>
+      <th>Can. Correctivos</th>
+    </tr>
+
+    <tr>
+      <th>Resumen:</th>
+      <td *ngFor="let resProm of resumenPromedio">{{ resProm.LONG_TOTAL }}</td>
+      <td *ngFor="let resProm of resumenPromedio">{{ resProm.LONG_PATRULLADA }}</td>
+      <td *ngFor="let resProm of resumenPromedio">{{ resProm.TIEMPO_EFECTIVO }}</td>
+      <td *ngFor="let resProm of resumenPromedio">{{ resProm.TIEMPO_TOTAL }}</td>
+      <td *ngFor="let resProm of resumenPromedio">{{ resProm.CAN_CORRECTIVOS }}</td>
+    </tr>
+
+    <tr>
+      <th>Promedios:</th>
+      <td></td>
+      <td></td>
+      <td *ngFor="let resProm of resumenPromedio">{{ resProm.PROM_TEFECTIVO }}</td>
+      <td *ngFor="let resProm of resumenPromedio">{{ resProm.PROM_TIMTOTAL }}</td>
+      <td></td>
+    </tr>
+  </table>
+
+  <div style="margin-top: 1%;">
+    <input type="button" value="Exportar" (click)="exportarExcel()">
+  </div>
+
+</div>

@@ -1,0 +1,203 @@
+<p>Consultas</p>
+<div class="cuadro0">
+   <div class="cuadro_radios">
+      <div class="row-0-col1">
+         <input class="form-check-input" type="radio" (click)="checkBuscarOrden()" />
+         <label class="form-check-label" for="flexRadioDefault1"> Buscar Orden </label>
+         <br />
+         <input class="form-check-input" type="radio" (click)="buscarTagElemento()" />
+         <label class="form-check-label" for="flexRadioDefault2"> Buscar TAG elemento </label>
+      </div>
+      <div class="row-0-col2">
+         <select name="" id="">
+            <option value="">Estado de orden:</option>
+            <option value="">Todas</option>
+            <option value="">Registrada</option>
+            <option value="">Asignada</option>
+            <option value="">Legalizada</option>
+         </select>
+         <br />
+         <input type="text" />
+         <span class="glyphicon glyphicon-search modify-span" (click)="buscarOrdenes()"></span>
+
+         <button class="btn btn-primary" (click)="openModal()">Cambios de estado</button>
+
+         <!-- Modal -->
+         <div class="modal" [class.show]="showModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title">Reporte Historial de Cambios de estado de Ordenes</h5>
+                     <button type="button" class="close" (click)="closeModal()">
+                        <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                  <div class="modal-body">
+                     <div class="cuadro1">
+                        <div class="Preventivo">
+                           <div class="tabla0">
+                              <div class="tabla0-0">
+                                 <div class="fila">
+                                    <div class="celda"></div>
+                                    <div class="celda">IDCAMBIO</div>
+                                    <div class="celda">ORDEN:</div>
+                                    <div class="celda">FECHA:</div>
+                                    <div class="celda">USUARIO:</div>
+                                    <div class="celda">MAQUINA</div>
+                                    <div class="celda">OSF_ANT</div>
+                                    <div class="celda">OSF_NUE</div>
+                                    <div class="celda">GIS_ANT</div>
+                                    <div class="celda">GIS_NUE</div>
+                                 </div>
+                                 <div class="fila">
+                                    <div class="celda"></div>
+                                    <div class="celda">{{ id }}</div>
+                                    <div class="celda">{{ selectedOrder }}</div>
+                                    <div class="celda">{{ fechaGeneracion }}</div>
+                                    <div class="celda">{{ usuarioPorDefecto }}</div>
+                                    <div class="celda">{{ maquinaDefault }}</div>
+                                    <div class="celda"></div>
+                                    <div class="celda"></div>
+                                    <div class="celda"></div>
+                                    <div class="celda"></div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" (click)="closeModal()">
+                        Cerrar
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="row-1">
+      <div class="row-1-col1">
+         <label for="order_number" class="row1-label">Número de orden:</label>
+         <select class="row1-select" [(ngModel)]="selectedOrder" (change)="seleccionarOrden()">
+            <option *ngFor="let orden of ordenesRealizadas" [ngValue]="orden.numeroOrden">
+               {{ orden.numeroOrden }}
+            </option>
+         </select>
+
+         <label for="date_generation" class="row1-label">Fecha de generación:</label>
+         <input
+            type="text"
+            id="date_generation"
+            class="row1-input"
+            [(ngModel)]="fechaGeneracion"
+            readonly
+         />
+
+         <label for="date_programming" class="row1-label">Fecha de Asignación:</label>
+         <input
+            type="date"
+            id="date_programming"
+            class="row1-input"
+            [(ngModel)]="fechaProgramacion"
+            readonly
+         />
+
+         <label for="date_legalization" class="row1-label">Inicio de Ejecución:</label>
+         <input
+            type="text"
+            id="date_legalization"
+            class="row1-input"
+            [(ngModel)]="dateLegalization"
+            readonly
+         />
+         <label for="date_legalization" class="row1-label">Fin de Ejecución:</label>
+         <input type="text" id="date_legalization" class="row1-input" readonly />
+      </div>
+
+      <div class="row-1-col2">
+         <label for="estadoOrden" class="row1-label">Estado de Orden:</label>
+         <input type="text" id="estadoOrden" [(ngModel)]="estadoOrden" readonly />
+
+         <label for="activity" class="row1-label">Cuadrilla Asignada:</label>
+         <input type="text" id="activity" class="row1-input" readonly />
+
+         <label for="main_activity" class="row1-label">Actividad Gis:</label>
+         <input type="text" id="main_activity" class="row1-input" [(ngModel)]="activity" readonly />
+         <label for="activityPrincipal" class="row1-label">Actividad Principal OSF:</label>
+         <input type="text" id="activity" class="row1-input" [(ngModel)]="activity" readonly />
+
+         <label for="fechaLegalizacion" class="row1-label">Fecha de legalización:</label>
+         <input
+            type="date"
+            id="fechaLegalizacion"
+            class="row1-input"
+            [(ngModel)]="fechLegalizacion"
+            readonly
+         />
+      </div>
+   </div>
+</div>
+<jqxExpander [width]="'100%'" [expanded]="false">
+   <p>Preventivo</p>
+   <div class="cuadro1">
+      <div class="Preventivo">
+         <div class="tabla0">
+            <div class="tabla0-0">
+               <div class="fila">
+                  <div class="celda"></div>
+                  <div class="celda">Codigo</div>
+                  <div class="celda">Descripción</div>
+                  <div class="celda">Cantidad</div>
+                  <div class="celda">Costo</div>
+               </div>
+               <div class="fila" *ngFor="let itemdataPre of dataPreItems">
+                  <div class="celda"></div>
+                  <div class="celda">{{ itemdataPre.CODIGO }}</div>
+                  <div class="celda">{{ itemdataPre.DESCRIPCION }}</div>
+                  <div class="celda">{{ itemdataPre.CANTIDAD }}</div>
+                  <div class="celda">{{ itemdataPre.COSTO }}</div>
+               </div>
+            </div>
+         </div>
+         <div class="tabla0-1">
+            <label for="">Observación:</label>
+            <textarea>{{ observacion }}</textarea>
+         </div>
+      </div>
+   </div>
+</jqxExpander>
+<jqxExpander [width]="'100%'" [expanded]="false">
+   <p>Correctivo</p>
+   <div class="cuadro2">
+      <div class="Correctivo">
+         <div class="tabla1">
+            <div class="tabla">
+               <jqxDataTable
+                  #myDataTable
+                  [source]="dataAdapter"
+                  [columns]="dataTableColumns"
+                  [pageable]="false"
+                  [columnsResize]="true"
+               ></jqxDataTable>
+            </div>
+         </div>
+         <div class="tabla2">
+            <div class="tabla">
+               <div class="fila">
+                  <div class="celda">codigo</div>
+                  <div class="celda">Descripción</div>
+                  <div class="celda">Cantidad</div>
+                  <div class="celda">Costo</div>
+               </div>
+               <div class="fila" *ngFor="let itemCorreItems of resultCorrItems">
+                  <div class="celda">{{ itemCorreItems.CODIGO }}</div>
+                  <div class="celda">{{ itemCorreItems.DESCRIPCION }}</div>
+                  <div class="celda">{{ itemCorreItems.CANTIDAD }}</div>
+                  <div class="celda">{{ itemCorreItems.COSTO }}</div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</jqxExpander>

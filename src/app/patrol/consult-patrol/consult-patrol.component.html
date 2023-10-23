@@ -1,0 +1,235 @@
+<div class="columna-uno">
+
+  <div class="seleccionar">
+    <label style="width: 49%; margin-bottom: 2%;">Departamento</label>
+    <select [(ngModel)]="departamentoSelect" (ngModelChange)="loadUnidadOperativa($event)" style="width: 49%; margin-bottom: 2%;">
+      <option></option>
+      <option *ngFor="let department of departments" [ngValue]="department">{{ department.NOMBRE }}</option>
+    </select>
+
+    <label style="width: 49%; margin-bottom: 2%;">Unidad operativa</label>
+    <select [(ngModel)]="modelUnidad" (ngModelChange)="loadContratista($event)" style="width: 49%; margin-bottom: 2%;">
+      <option></option>
+      <option *ngFor="let unidadO of unidadOperativa" [ngValue]="unidadO">{{ unidadO.OPER_UNIT_CODE  }}</option>
+    </select>
+
+    <label style="width: 49%; margin-bottom: 2%;">Contratista</label>
+    <select [(ngModel)]="contratista" (ngModelChange)="loadPatrulleros($event)" style="width: 49%; margin-bottom: 2%;">
+      <option></option>
+      <option *ngFor="let cont of listarContratistas" [ngValue]="cont">{{ cont.NOM_CONTRATISTA }}</option>
+    </select>
+
+    <label style="width: 49%; margin-bottom: 2%;">Patrullero</label>
+    <select [(ngModel)]="patrulleroSeleccionado" (ngModelChange)="loadOrdenPadre($event)" style="width: 49%; margin-bottom: 2%;">
+      <option></option>
+      <option *ngFor="let patrulleroC of consultPatrullero" [ngValue]="patrulleroC">{{ patrulleroC.NOM_PATRULLERO }}</option>
+    </select>
+
+    <label style="width: 49%;">Orden padre</label>
+    <select [(ngModel)]="ordenPadreSeleccionada" (ngModelChange)="loadOrdenesHijas($event)" style="width: 49%;">
+      <option></option>
+      <option *ngFor="let ordenPadre of listarOrdenPadre" [ngValue]="ordenPadre">{{ ordenPadre.COD_ORDEN_PADRE }}</option>
+    </select>
+  </div>
+
+  <div class="cuadros-uno">
+    <label>Datos básicos del patrullero</label>
+
+    <br>
+
+    <table style="width: 100%;">
+      <tr>
+        <td>Código:</td>
+        <td *ngFor="let DatePatrol of listarDatosPatrol" style="text-align: right;">{{ DatePatrol.COD_PATRULLERO }}</td>
+      </tr>
+
+      <tr>
+        <td>Nombre:</td>
+        <td *ngFor="let DatePatrol of listarDatosPatrol" style="text-align: right;">{{ DatePatrol.NOM_PATRULLERO }}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="cuadros-uno">
+    <label>Avance total del patrullero</label>
+
+    <table style="width: 100%;">
+      <tr>
+        <td>Long. total tubería:</td>
+        <td *ngFor="let avanceTotal of datosAvanceTotal" style="text-align: right;">
+
+          <ng-container *ngIf="avanceTotal.LONG_TUBERIA !== null; else elseTemplate">
+            {{ avanceTotal.LONG_TUBERIA | currency: ' ' }}
+          </ng-container>
+          <ng-template #elseTemplate>
+            0.00
+          </ng-template>
+
+        </td>
+      </tr>
+
+      <tr>
+        <td>Long. total patrullada:</td>
+        <td *ngFor="let avanceTotal of datosAvanceTotal" style="text-align: right;">
+
+          <ng-container *ngIf="avanceTotal.LONG_RECORRIDA !== null; else elseTemplate">
+            {{ avanceTotal.LONG_RECORRIDA | currency: ' ' }}
+          </ng-container>
+          <ng-template #elseTemplate>
+            0.00
+          </ng-template>
+
+        </td>
+      </tr>
+
+      <tr>
+        <td>Porcentaje de avance:</td>
+        <td *ngFor="let avanceTotal of datosAvanceTotal" style="text-align: right;">
+
+          <ng-container *ngIf="avanceTotal.PORCENTAJE !== null; else elseTemplate">
+            {{ avanceTotal.PORCENTAJE }}%
+          </ng-container>
+          <ng-template #elseTemplate>
+            0.00%
+          </ng-template>
+
+        </td>
+      </tr>
+
+      <tr>
+        <td>Tiempo efectivo:</td>
+        <td *ngFor="let avanceTotal of datosAvanceTotal" style="text-align: right;">
+
+          <ng-container *ngIf="avanceTotal.TIEMPO_EFECTIVO !== null; else elseTemplate">
+            {{ avanceTotal.TIEMPO_EFECTIVO }}m
+          </ng-container>
+          <ng-template #elseTemplate>
+            0m
+          </ng-template>
+
+        </td>
+      </tr>
+
+      <tr>
+        <td>Tiempo total:</td>
+        <td *ngFor="let avanceTotal of datosAvanceTotal" style="text-align: right;">
+
+          <ng-container *ngIf="avanceTotal.TIEMPO_TOTAL !== null; else elseTemplate">
+            {{ avanceTotal.TIEMPO_TOTAL }}m
+          </ng-container>
+          <ng-template #elseTemplate>
+            0m
+          </ng-template>
+
+        </td>
+      </tr>
+    </table>
+  </div>
+
+</div>
+
+<div class="columna-dos">
+
+  <div class="contenedor-principal">
+    <div class="contenedor">
+      <label>Ordenes hija</label>
+
+      <jqxDataTable #dataTable [width]="'99%'" [height]="'83%'" [source]="dataAdapter" [columns]="dataTableColumns"
+        [pageable]="false" [columnsResize]="true" (onRowSelect)="tableOnRowSelect($event)">
+      </jqxDataTable>
+    </div>
+
+    <div class="contenedor">
+      <div class="contenedor-uno bordes">
+        <label>Avance de la orden seleccionada</label>
+
+        <table style="width: 100%;">
+          <tr>
+            <td>Long. tubería:</td>
+            <td *ngFor="let avance of datosAvance" style="text-align: right;">
+
+              <ng-container *ngIf="avance.LONG_TUBERIA !== null; else elseTemplate">
+                {{ avance.LONG_TUBERIA | currency: ' ' }}
+              </ng-container>
+              <ng-template #elseTemplate>
+                0.00
+              </ng-template>
+
+            </td>
+          </tr>
+
+          <tr>
+            <td>Long. patrullada:</td>
+            <td *ngFor="let avance of datosAvance" style="text-align: right;">
+
+              <ng-container *ngIf="avance.LONG_RECORRIDA !== null; else elseTemplate">
+                {{ avance.LONG_RECORRIDA | currency: ' ' }}
+              </ng-container>
+              <ng-template #elseTemplate>
+                0.00
+              </ng-template>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Porcentaje de avance:</td>
+            <td *ngFor="let avance of datosAvance" style="text-align: right;">
+
+              <ng-container *ngIf="avance.PORCENTAJE_AVANCE !== null; else elseTemplate">
+                {{ avance.PORCENTAJE_AVANCE }}%
+              </ng-container>
+              <ng-template #elseTemplate>
+                0.00%
+              </ng-template>
+
+            </td>
+          </tr>
+
+          <tr>
+            <td>Tiempo efectivo:</td>
+            <td *ngFor="let avance of datosAvance" style="text-align: right;">
+
+              <ng-container *ngIf="avance.TIEMPO_EFECTIVO !== null; else elseTemplate">
+                {{ avance.TIEMPO_EFECTIVO }}m
+              </ng-container>
+              <ng-template #elseTemplate>
+                0m
+              </ng-template>
+
+            </td>
+          </tr>
+
+          <tr>
+            <td>Tiempo total:</td>
+            <td *ngFor="let avance of datosAvance" style="text-align: right;">
+
+              <ng-container *ngIf="avance.TIEMPO_TOTAL !== null; else elseTemplate">
+                {{ avance.TIEMPO_TOTAL }}m
+              </ng-container>
+              <ng-template #elseTemplate>
+                0m
+              </ng-template>
+
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="contenedor-dos">
+        <input type="button" value="Acercamiento orden" (click)="mostrarManzanasPatrulleros()">
+      </div>
+    </div>
+  </div>
+
+  <div class="contenedor-patrullaje">
+    <div class="patrullaje-uno">
+      <label>Historia de patrullaje</label>
+
+      <jqxDataTable #dataTable [width]="'100%'" [height]="'88%'" [source]="dataAdapterHistPatrol"
+        [columns]="dataTableColumnsHistPatrol" [pageable]="false" [columnsResize]="true" [filterable]="true" [sortable]="true"
+        (onRowSelect)="tableOnRowSelectHistorico($event)">
+      </jqxDataTable>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,14 @@
+<div style="width: 100%;">
+  <div class="contenedor">
+    <label>Código de Interrupción:</label>
+    <select style="width: 100%" [(ngModel)]="emergencyItemSelected" (ngModelChange)="emergencyItemChanged($event)">
+      <option *ngFor="let emergencyItem of emergencyList" [ngValue]="emergencyItem">{{emergencyItem.IDENTIFICADORFALLA}}</option>
+    </select>
+  </div>
+</div>
+
+<div style="text-align: center; margin-top: 1%">
+  <input type="button" value="Ver" (click)="onVerClick()" />
+</div>
+
+<jqxLoader #jqxLoader [imagePosition]="'top'" [width]="80" [height]="50" [text]="'Cargando...'"></jqxLoader>

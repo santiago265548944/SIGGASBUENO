@@ -1,0 +1,24 @@
+.sidebar-right {
+    width: 100%;
+    border-left: 1px solid #c7c7c7;
+    overflow: hidden;
+}
+
+.cuadro-grafica {
+    width: 100%;
+    height: 32%;
+}
+
+.cuadro {
+    width: 100%;
+    height: 54%;
+}
+
+.grafica {
+    margin-left: -100px;
+}
+
+.seleccionado {
+    text-align: center;
+    padding-top: 20px;
+}

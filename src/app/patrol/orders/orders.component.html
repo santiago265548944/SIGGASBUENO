@@ -1,0 +1,469 @@
+<div class="columna-uno">
+
+  <div class="cu-contenedor-uno">
+    <label>Departamento</label>
+    <select [(ngModel)]="departamentoSeleccionado" (ngModelChange)="loadUnidadOperativa($event)" style="width: 100%; margin-bottom: 2%;">
+      <option></option>
+      <option *ngFor="let departamento of listarDepartamentos" [ngValue]="departamento">{{ departamento.NOMBRE }}</option>
+    </select>
+
+    <label>Unidad operativa</label>
+    <select [(ngModel)]="unidadOperativaSeleccionada" (ngModelChange)="loadContratista($event)" style="width: 100%; margin-bottom: 2%;">
+      <option></option>
+      <option *ngFor="let unidadOperativa of listarUnidadOperativa" [ngValue]="unidadOperativa">{{ unidadOperativa.OPER_UNIT_CODE }}</option>
+    </select>
+
+    <label>Contratista</label>
+    <select [(ngModel)]="contratistaSeleccionado" style="width: 100%; margin-bottom: 6%;">
+      <option></option>
+      <option *ngFor="let contratista of listarContratistas" [ngValue]="contratista">{{ contratista.NOM_CONTRATISTA }}</option>
+    </select>
+
+    <div style="text-align: center;">
+      <input type="button" value="Mostrar ordenes" (click)="btnMostrarOrdenes()">
+    </div>
+  </div>
+
+  <div class="cu-contenedor-dos">
+    <label>Buscar orden padre</label>
+    <br><br>
+    <input type="text" [placeholder]="codigoOrdenPadre" [(ngModel)]="codOrdenPadreBuscar" style="width: 100%; margin-bottom: 6%;">
+    <input type="button" value="Buscar" (click)="btnBuscarOrdenPadre()">
+    <input type="button" value="Acercamiento" (click)="btnAcercarOrdenPadre()">
+  </div>
+
+  <div class="cu-contenedor-dos">
+    <label>Acercar orden hija</label>
+    <br><br>
+    <input type="text" [placeholder]="codigoOrdenHija" [(ngModel)]="codOrdenHijaAcercar" style="width: 100%; margin-bottom: 6%;">
+    <input type="button" value="Acercamiento" (click)="btnAcercarOrdenHija()">
+  </div>
+
+</div>
+
+<div class="columna-dos">
+
+  <jqxExpander [width]="'100%'">
+
+    <div>
+      Ordenes padre
+    </div>
+
+    <div>
+      <div class="tablas">
+        <jqxDataTable #dataTable [width]="'99%'" [height]="'97%'" [source]="dataAdapter" [columns]="dataTableColumns"
+          [pageable]="false" [columnsResize]="true" (onRowSelect)="tableOnRowSelect($event)">
+        </jqxDataTable>
+      </div>
+
+      <div class="cuadro-uno">
+        <label>
+          Datos de orden padre <span *ngFor="let ordenPadre of datosOrdenPadre">{{ ordenPadre.COD_ORDEN_PADRE }}</span>
+        </label>
+
+        <br>
+
+        Sector operativo: <br> <span *ngFor="let ordenPadre of datosOrdenPadre">{{ ordenPadre.NOMBRE }}</span>
+
+        <table style="width: 100%;">
+          <tr>
+            <td>Longitud total tubería(m):</td>
+            <td *ngFor="let ordenPadre of datosOrdenPadre" style="text-align: right;">
+
+              <ng-container *ngIf="ordenPadre.LONG_TUBERIA !== null; else elseTemplate">
+                {{ ordenPadre.LONG_TUBERIA | currency : ' ' }}
+              </ng-container>
+              <ng-template #elseTemplate>
+                0.00
+              </ng-template>
+
+            </td>
+          </tr>
+
+          <tr>
+            <td>Longitud patrullada(m):</td>
+            <td *ngFor="let ordenPadre of datosOrdenPadre" style="text-align: right;">
+
+              <ng-container *ngIf="ordenPadre.LONG_PATRULLADA !== null; else elseTemplate">
+                {{ ordenPadre.LONG_PATRULLADA | currency : ' ' }}
+              </ng-container>
+              <ng-template #elseTemplate>
+                0.00
+              </ng-template>
+
+            </td>
+          </tr>
+
+          <tr>
+            <td>Porcentaje de avance:</td>
+            <td *ngFor="let ordenPadre of datosOrdenPadre" style="text-align: right;">
+
+              <ng-container *ngIf="ordenPadre.PORCENTAJE !== null; else elseTemplate">
+                {{ ordenPadre.PORCENTAJE }}%
+              </ng-container>
+              <ng-template #elseTemplate>
+                0.00%
+              </ng-template>
+
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+  </jqxExpander>
+
+  <jqxExpander [width]="'100%'">
+
+    <div>
+      Ordenes hija
+    </div>
+
+    <div>
+      <div class="tablas">
+        <jqxDataTable #dataTable [width]="'99%'" [height]="'97%'" [source]="dataAdapterOrdenesHija"
+          [columns]="dataTableColumnsOrdenesHija" [pageable]="false" [columnsResize]="true" (onRowSelect)="tableOnRowSelectOrdenesHija($event)">
+        </jqxDataTable>
+      </div>
+
+      <div class="cuadro-dos">
+        <label>
+          Datos de orden hija <span *ngFor="let ordenHija of datosOrdenHija">{{ ordenHija.COD_ORDEN_HIJA }}</span>
+        </label>
+
+        <table style="width: 100%;">
+          <tr>
+            <td>Serial de equipo:</td>
+            <td *ngFor="let ordenHija of datosOrdenHija" style="text-align: right;">
+
+              <ng-container *ngIf="ordenHija.SERIAL_EQUIPO !== null; else elseTemplate">
+                {{ ordenHija.SERIAL_EQUIPO }}
+              </ng-container>
+              <ng-template #elseTemplate>
+                -
+              </ng-template>
+
+            </td>
+          </tr>
+
+          <tr>
+            <td>Vigencia de calibración:</td>
+            <td *ngFor="let ordenHija of datosOrdenHija" style="text-align: right;">
+
+              <ng-container *ngIf="ordenHija.VIGENCIA_CALIB !== null; else elseTemplate">
+                {{ ordenHija.VIGENCIA_CALIB }}
+              </ng-container>
+              <ng-template #elseTemplate>
+                -
+              </ng-template>
+
+            </td>
+          </tr>
+
+          <tr>
+            <td>Código patrullero:</td>
+            <td *ngFor="let ordenHija of datosOrdenHija" style="text-align: right;">
+
+              <ng-container *ngIf="ordenHija.COD_PATRULLERO !== null; else elseTemplate">
+                {{ ordenHija.COD_PATRULLERO }}
+              </ng-container>
+              <ng-template #elseTemplate>
+                -
+              </ng-template>
+
+            </td>
+          </tr>
+
+          <tr>
+            <td>Longitud tubería(m):</td>
+            <td *ngFor="let ordenHija of datosOrdenHija" style="text-align: right;">
+
+              <ng-container *ngIf="ordenHija.LONG_TUBERIA !== null; else elseTemplate">
+                {{ ordenHija.LONG_TUBERIA | currency : ' ' }}
+              </ng-container>
+              <ng-template #elseTemplate>
+                0.00
+              </ng-template>
+
+            </td>
+          </tr>
+
+          <tr>
+            <td>Longitud patrullada(m):</td>
+            <td *ngFor="let ordenHija of datosOrdenHija" style="text-align: right;">
+
+              <ng-container *ngIf="ordenHija.LONG_RECORRIDA !== null; else elseTemplate">
+                {{ ordenHija.LONG_RECORRIDA | currency : ' ' }}
+              </ng-container>
+              <ng-template #elseTemplate>
+                0.00
+              </ng-template>
+
+            </td>
+          </tr>
+
+          <tr>
+            <td>Porcentaje de avance:</td>
+            <td *ngFor="let ordenHija of datosOrdenHija" style="text-align: right;">
+
+              <ng-container *ngIf="ordenHija.PORCENTAJE_AVANCE !== null; else elseTemplate">
+                {{ ordenHija.PORCENTAJE_AVANCE }}%
+              </ng-container>
+              <ng-template #elseTemplate>
+                0.00%
+              </ng-template>
+
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+  </jqxExpander>
+
+  <jqxExpander [width]="'100%'" [expanded]="false">
+
+    <div>
+      Ordenes correctivas
+    </div>
+
+    <div>
+
+      <div class="tablas">
+        <jqxDataTable #dataTable [width]="'99%'" [height]="'97%'" [source]="dataAdapterOrdenesCorrectivas"
+          [columns]="dataTableColumnsOrdenesCorrectivas" [pageable]="false" [columnsResize]="true" (onRowSelect)="tableOnRowSelectOrdenesCorrectivas($event)">
+        </jqxDataTable>
+      </div>
+
+    </div>
+
+  </jqxExpander>
+
+</div>
+
+<div class="columna-tres">
+
+  <div class="ct-contenedor-uno">
+    <label>Datos de la orden de correctivo <span *ngFor="let ordenCorrectiva of datosOrdenCorrectiva">{{ ordenCorrectiva.COD_ORDEN_CORR }}</span></label>
+
+    <table style="width: 100%;">
+      <tr>
+        <td>Nro. orden hija:</td>
+        <td *ngFor="let ordenCorrectiva of datosOrdenCorrectiva" style="text-align: right;">{{ ordenCorrectiva.COD_ORDEN_HIJA }}</td>
+      </tr>
+
+      <tr>
+        <td>Fecha:</td>
+        <td *ngFor="let ordenCorrectiva of datosOrdenCorrectiva" style="text-align: right;">{{ ordenCorrectiva.FECHA_CREACION }}</td>
+      </tr>
+
+      <tr>
+        <td>Tipo de correctivo:</td>
+        <td *ngFor="let ordenCorrectiva of datosOrdenCorrectiva" style="text-align: right;">{{ ordenCorrectiva.DESCRIPCION }}</td>
+      </tr>
+
+      <tr>
+        <td>Causa probable:</td>
+        <td *ngFor="let ordenCorrectiva of datosOrdenCorrectiva" style="text-align: right;">{{ ordenCorrectiva.CAUSA_PROBABLE }}</td>
+      </tr>
+
+      <tr>
+        <td>Estado:</td>
+        <td *ngFor="let ordenCorrectiva of datosOrdenCorrectiva" style="text-align: right;">{{ ordenCorrectiva.ESTADO }}</td>
+      </tr>
+
+      <tr>
+        <td>Causa final:</td>
+        <td *ngFor="let ordenCorrectiva of datosOrdenCorrectiva" style="text-align: right;">{{ ordenCorrectiva.CAUSA_FINAL }}</td>
+      </tr>
+
+      <tr>
+        <td>Tipo de elemento:</td>
+        <td *ngFor="let ordenCorrectiva of datosOrdenCorrectiva" style="text-align: right;">{{ ordenCorrectiva.TIP_ELEMENTO }}</td>
+      </tr>
+
+      <tr>
+        <td>Tipo tuberia:</td>
+        <td *ngFor="let ordenCorrectiva of datosOrdenCorrectiva" style="text-align: right;">{{ ordenCorrectiva.TIP_TUBERIA }}</td>
+      </tr>
+
+      <tr>
+        <td>Contrato:</td>
+        <td *ngFor="let ordenCorrectiva of datosOrdenCorrectiva" style="text-align: right;">{{ ordenCorrectiva.NUM_CONTRATO }}</td>
+      </tr>
+
+      <tr>
+        <td>Num. medidor:</td>
+        <td *ngFor="let ordenCorrectiva of datosOrdenCorrectiva" style="text-align: right;">{{ ordenCorrectiva.COD_MEDIDOR }}</td>
+      </tr>
+
+      <tr>
+        <td>ID_ADDRESS:</td>
+        <td *ngFor="let ordenCorrectiva of datosOrdenCorrectiva" style="text-align: right;">{{ ordenCorrectiva.ID_ADDRESS }}</td>
+      </tr>
+
+      <tr>
+        <td>Dir. genérica:</td>
+        <td *ngFor="let ordenCorrectiva of datosOrdenCorrectiva" style="text-align: right;">{{ ordenCorrectiva.DIR_GENERICA }}</td>
+      </tr>
+
+      <tr>
+        <td>Observación:</td>
+        <td *ngFor="let ordenCorrectiva of datosOrdenCorrectiva" style="text-align: right;">{{ ordenCorrectiva.OBSERVACION }}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="ct-contenedor-dos">
+    <label style="display: block; text-align: center;">Lista de fotografías</label>
+    
+    <div *ngIf="imagenes.length > 0">
+
+      <ng-container *ngIf="imagenes.length === 1; else elseTemplate">
+        <div style="width: 222px;">
+          <div id="slider">
+  
+            <input checked type="radio" name="slider" id="slide1" />
+  
+            <div id="slides">
+              <div id="overflow">
+                <div class="inner">
+  
+                  <article *ngFor="let imagen of imagenes">
+                    <img src="http://testlab.g-gis.com/FotosIncidentes/{{ imagen }}" />
+                  </article>
+  
+                </div>
+              </div>
+            </div>
+  
+            <div id="controls">
+              <label for="slide1"></label>
+            </div>
+  
+            <div id="active">
+              <label for="slide1"></label>
+            </div>
+  
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-template #elseTemplate>
+        <ng-container *ngIf="imagenes.length === 2; else elseTemplateOne">
+          <div style="width: 222px;">
+            <div id="slider">
+    
+              <input checked type="radio" name="slider" id="slide1" />
+              <input type="radio" name="slider" id="slide2" />
+    
+              <div id="slides">
+                <div id="overflow">
+                  <div class="inner">
+    
+                    <article *ngFor="let imagen of imagenes">
+                      <img src="http://testlab.g-gis.com/FotosIncidentes/{{ imagen }}" />
+                    </article>
+    
+                  </div>
+                </div>
+              </div>
+    
+              <div id="controls">
+                <label for="slide1"></label>
+                <label for="slide2"></label>
+              </div>
+    
+              <div id="active">
+                <label for="slide1"></label>
+                <label for="slide2"></label>
+              </div>
+    
+            </div>
+          </div>
+        </ng-container>
+      </ng-template>
+
+      <ng-template #elseTemplateOne>
+        <ng-container *ngIf="imagenes.length === 3; else elseTemplateTwo">
+          <div style="width: 222px;">
+            <div id="slider">
+    
+              <input checked type="radio" name="slider" id="slide1" />
+              <input type="radio" name="slider" id="slide2" />
+              <input type="radio" name="slider" id="slide3" />
+    
+              <div id="slides">
+                <div id="overflow">
+                  <div class="inner">
+    
+                    <article *ngFor="let imagen of imagenes">
+                      <img src="http://testlab.g-gis.com/FotosIncidentes/{{ imagen }}" />
+                    </article>
+    
+                  </div>
+                </div>
+              </div>
+    
+              <div id="controls">
+                <label for="slide1"></label>
+                <label for="slide2"></label>
+                <label for="slide3"></label>
+              </div>
+    
+              <div id="active">
+                <label for="slide1"></label>
+                <label for="slide2"></label>
+                <label for="slide3"></label>
+              </div>
+    
+            </div>
+          </div>
+        </ng-container>
+      </ng-template>
+
+      <ng-template #elseTemplateTwo>
+        <ng-container *ngIf="imagenes.length === 4">
+          <div style="width: 222px;">
+            <div id="slider">
+    
+              <input checked type="radio" name="slider" id="slide1" />
+              <input type="radio" name="slider" id="slide2" />
+              <input type="radio" name="slider" id="slide3" />
+              <input type="radio" name="slider" id="slide4" />
+    
+              <div id="slides">
+                <div id="overflow">
+                  <div class="inner">
+    
+                    <article *ngFor="let imagen of imagenes">
+                      <img src="http://testlab.g-gis.com/FotosIncidentes/{{ imagen }}" />
+                    </article>
+    
+                  </div>
+                </div>
+              </div>
+    
+              <div id="controls">
+                <label for="slide1"></label>
+                <label for="slide2"></label>
+                <label for="slide3"></label>
+                <label for="slide4"></label>
+              </div>
+    
+              <div id="active">
+                <label for="slide1"></label>
+                <label for="slide2"></label>
+                <label for="slide3"></label>
+                <label for="slide4"></label>
+              </div>
+    
+            </div>
+          </div>
+        </ng-container>
+      </ng-template>
+
+    </div>
+  </div>
+
+</div>

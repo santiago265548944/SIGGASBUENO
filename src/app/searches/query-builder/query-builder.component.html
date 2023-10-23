@@ -1,0 +1,206 @@
+<div>
+   <label style="width: 30%">Servicio:</label>
+   <select
+      style="width: 65%"
+      [(ngModel)]="selectedMapService"
+      (ngModelChange)="onMapServiceChange($event)"
+   >
+      <option *ngFor="let mapService of mapServices" [ngValue]="mapService">
+         {{ mapService.id }}
+      </option>
+   </select>
+</div>
+<div>
+   <label style="width: 30%">Capa:</label>
+   <select
+      style="width: 65%"
+      #selectLayers
+      [(ngModel)]="layerIdSelected"
+      (ngModelChange)="onLayerIndexChange($event)"
+   ></select>
+</div>
+<div>
+   <select style="width: 95%" size="4" [(ngModel)]="fieldSelected" (dblclick)="onFieldDblClick()">
+      <option *ngFor="let field of fields" [ngValue]="field">{{ field.value }}</option>
+   </select>
+</div>
+<div>
+   <table style="width: 55%; float: left">
+      <tr>
+         <td style="width: 40%">
+            <input
+               type="button"
+               class="app-qb-operator-button"
+               value="="
+               (click)="onButtonOperationClick($event)"
+            />
+         </td>
+         <td style="width: 30%">
+            <input
+               type="button"
+               class="app-qb-operator-button"
+               value="&lt;&gt;"
+               (click)="onButtonOperationClick($event)"
+            />
+         </td>
+         <td style="width: 30%">
+            <input
+               type="button"
+               class="app-qb-operator-button"
+               value="Like"
+               (click)="onButtonOperationClick($event)"
+            />
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <input
+               type="button"
+               class="app-qb-operator-button"
+               value="&gt;"
+               (click)="onButtonOperationClick($event)"
+            />
+         </td>
+         <td>
+            <input
+               type="button"
+               class="app-qb-operator-button"
+               value="&gt;="
+               (click)="onButtonOperationClick($event)"
+            />
+         </td>
+         <td>
+            <input
+               type="button"
+               class="app-qb-operator-button"
+               value="And"
+               (click)="onButtonOperationClick($event)"
+            />
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <input
+               type="button"
+               class="app-qb-operator-button"
+               value="&lt;"
+               (click)="onButtonOperationClick($event)"
+            />
+         </td>
+         <td>
+            <input
+               type="button"
+               class="app-qb-operator-button"
+               value="&lt;="
+               (click)="onButtonOperationClick($event)"
+            />
+         </td>
+         <td>
+            <input
+               type="button"
+               class="app-qb-operator-button"
+               value="Or"
+               (click)="onButtonOperationClick($event)"
+            />
+         </td>
+      </tr>
+      <tr>
+         <td>
+            <table style="width: 100%">
+               <tr>
+                  <td style="width: 50%">
+                     <input
+                        type="button"
+                        class="app-qb-operator-button"
+                        style="width: 100%"
+                        value="("
+                        (click)="onButtonOperationClick($event)"
+                     />
+                  </td>
+                  <td style="width: 50%">
+                     <input
+                        type="button"
+                        class="app-qb-operator-button"
+                        style="width: 100%"
+                        value=")"
+                        (click)="onButtonOperationClick($event)"
+                     />
+                  </td>
+               </tr>
+            </table>
+         </td>
+         <td>
+            <input
+               type="button"
+               class="app-qb-operator-button"
+               value="Null"
+               (click)="onButtonOperationClick($event)"
+            />
+         </td>
+         <td>
+            <input
+               type="button"
+               class="app-qb-operator-button"
+               value="Not"
+               (click)="onButtonOperationClick($event)"
+            />
+         </td>
+      </tr>
+   </table>
+   <select
+      style="width: 40%"
+      size="5"
+      [(ngModel)]="uniqueValueSelected"
+      (dblclick)="onUniqueValueDblClick()"
+   >
+      <option *ngFor="let uniqueValue of uniqueValues" [ngValue]="uniqueValue">
+         {{ uniqueValue }}
+      </option>
+   </select>
+</div>
+<div style="text-align: right; width: 95%">
+   <input
+      type="button"
+      style="width: 45%"
+      value="Obtener Valores Únicos"
+      (click)="getUniqueFieldValues()"
+   />
+</div>
+<div>
+   <span>select * from {{ layerTextSelected }} where</span>
+</div>
+<div>
+   <textarea
+      style="width: 95%"
+      rows="5"
+      [(ngModel)]="whereClause"
+      (blur)="onWhereClauseBlur($event)"
+   ></textarea>
+</div>
+<div>
+   <input type="button" value="Limpiar" (click)="onCleanWhereClauseClick()" />
+   <input type="button" value="Verificar" (click)="onVerifyButtonClick()" />
+</div>
+
+<div style="width: 95%; text-align: right">
+   <input
+      type="button"
+      value="Ver en tabla"
+      [disabled]="!isQueryApplied"
+      (click)="onViewTableButtonClick()"
+   />
+   <input
+      type="button"
+      value="Aceptar"
+      [disabled]="!isQueryVerified"
+      (click)="onAcceptButtonClick()"
+   />
+   <input
+      type="button"
+      value="Aplicar"
+      [disabled]="!isQueryVerified"
+      (click)="onApplyButtonClick()"
+   />
+</div>
+<jqxLoader #jqxLoader [imagePosition]="'top'" [width]="80" [height]="50" [text]="'Cargando...'">
+</jqxLoader>

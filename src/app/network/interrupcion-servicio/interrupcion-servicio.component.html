@@ -1,0 +1,53 @@
+<div>
+  <label>Tipo Falla</label>
+  <select [(ngModel)]="model.TipoFalla">
+    <option *ngFor="let item of faultTypes" [ngValue]="item">{{item.text}}</option>
+  </select>
+</div>
+<div>
+  <label>No. Orden</label>
+  <input type="number" [(ngModel)]="model.NumeroOrden"/>
+</div>
+<div>
+  <label>Programada</label>
+  <span>SI</span>
+  <input type="radio" [(ngModel)]="model.Programada" name="programada" value="Y" (ngModelChange)="programadaChangeHandler($event)"/>
+  <span>NO</span>
+  <input type="radio" [(ngModel)]="model.Programada" name="programada" value="N" (ngModelChange)="programadaChangeHandler($event)"/>
+</div>
+<div *ngIf="showDivProgramadaDependent" class="app-interrupcionservicio-divprogramada">
+  <div>
+    <label>Origen de Suspensión</label>
+    <select [(ngModel)]="model.OrigenSuspension">
+      <option *ngFor="let item of origenesSuspension" [ngValue]="item">{{item.text}}</option>
+    </select>
+  </div>
+  <div>
+    <label>Medio de Comunicación</label>
+    <select [(ngModel)]="model.MedioComunicacion">
+      <option *ngFor="let item of mediosComunicacion" [ngValue]="item">{{item.text}}</option>
+    </select>
+  </div>
+  <div>
+    <label>Fecha Programada Suspensión</label>
+    <input type="date" [(ngModel)]="model.FechaProgramadaSuspension"/>
+    <input type="time" [(ngModel)]="model.HoraProgramadaSuspension"/>
+  </div>
+  <div>
+    <label>Duración Programada Suspensión (Horas)</label>
+    <input type="number" [(ngModel)]="model.DuracionProgramadaSuspension"/>
+  </div>
+</div>
+<div>
+  <label>Tiempo Estimado Suspensión (Minutos)</label>
+  <input type="number" [(ngModel)]="model.TiempoEstimadoSuspension"/>
+</div>
+<div>
+  <label>Observacion</label>
+  <textarea [(ngModel)]="model.Observacion"></textarea>
+</div>
+<div class="app-interrupcionservicio-buttons">
+  <input type="button" value="Aceptar" (click)="onAceptarClickHandler()"/>
+  <input type="button" value="Cancelar" (click)="onCancelarClickHandler()"/>
+</div>
+<jqxLoader #jqxLoader [imagePosition]="'top'" [width]="80" [height]="50" [text]="'Cargando...'"></jqxLoader>

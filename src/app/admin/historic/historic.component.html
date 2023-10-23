@@ -1,0 +1,75 @@
+<div class="container-center">
+  <div class="inline-form-text">
+    Nombre de la tabla
+  </div>
+  <div class="inline-form-control">
+    <select style="width: 160px;" [(ngModel)]="model.TABLENAME" (change)="loadHistoricFields()">
+      <option *ngFor="let tableValue of tableValues" [ngValue]="tableValue.Code">{{tableValue.Value}}</option>
+    </select>
+  </div>
+</div>
+
+<div class="container-center">
+  <div class="inline-form-text">
+    Campo
+  </div>
+  <div class="inline-form-control">
+    <select style="width: 160px;" [(ngModel)]="model.FIELDNAME">
+      <option *ngFor="let historicFieldValue of historicFieldValues" [ngValue]="historicFieldValue.Code">{{historicFieldValue.Value}}</option>
+    </select>
+  </div>
+</div>
+
+<div class="container-center">
+  <div class="inline-form-text">
+    Tabla historica
+  </div>
+  <div class="inline-form-control">
+    <input type="text" style="width: 160px;" [(ngModel)]="historicTable" disabled>
+  </div>
+</div>
+
+<div class="container-center">
+  <div class="inline-form-text">
+    Campo historico
+  </div>
+  <div class="inline-form-control">
+    <select style="width: 160px;" [(ngModel)]="historicField">
+      <option *ngFor="let fieldValue of fieldValues" [ngValue]="fieldValue.Code">{{fieldValue.Value}}</option>
+    </select>
+  </div>
+</div>
+
+<div class="container-center">
+  <div class="inline-form-text">
+    Creación
+  </div>
+  <div class="inline-form-control">
+    <input type="checkbox" [(ngModel)]="model.ON_CREATE" />
+  </div>
+</div>
+
+<div class="container-center">
+  <div class="inline-form-text">
+    Cambio
+  </div>
+  <div class="inline-form-control">
+    <input type="checkbox" [(ngModel)]="model.ON_CHANGE" />
+  </div>
+</div>
+
+<div class="container-center">
+  <div class="inline-form-text">
+    Eliminación
+  </div>
+  <div class="inline-form-control">
+    <input type="checkbox" [(ngModel)]="model.ON_DELETE" />
+  </div>
+</div>
+
+<div class="container-fluid-modal" style="height: 30px;">
+  <div class="form-row" style="text-align: center; align-content:center; margin-bottom: 5px; margin-top: 5px">
+    <button type="button" (click)="executeSave()">Aceptar</button>
+    <button type="button" (click)="executeCancel()">Cancelar</button>
+  </div>
+</div>

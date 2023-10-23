@@ -1,0 +1,71 @@
+.contenedor{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media(max-width: 400px){
+    .contenedor{
+        width: 90%;
+    }
+}
+
+.login{
+    width: 400px;
+    padding: 3% 8%;
+    background-color: #EAEAEA;
+    border: 1px #D0D4DC solid;
+    border-radius: 2%;
+}
+
+.texto{
+    color: #214B97;
+}
+
+.splash{
+    width: 280px;
+    height: 150px;
+    /* width:230px;
+    height:100px; */
+}
+
+.icono{
+    width: 13%;
+    display: inline-block;
+    padding-bottom: 1px;
+}
+
+.imagen{
+    width: 36px;
+    height: 36px;
+}
+
+.campo{
+    width: 85%;
+    display: inline-block;
+    padding-top: 3px;
+}
+
+.mostrar{
+    float: right;
+    margin-right: 2%;
+}
+
+.boton{
+    width: 80px;
+    height: 30px;
+    color: #214B97;
+    background-color: white;
+    border: 1px #214B97 solid;
+    border-radius: 4px;
+}
+
+.boton:hover{
+    color: white;
+    background-color: #214B97;
+}
+
+.boton{
+    transition: color 0.02s, background-color 0.02s linear 0.08s;
+}

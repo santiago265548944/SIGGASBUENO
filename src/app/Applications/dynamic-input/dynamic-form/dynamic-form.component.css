@@ -1,0 +1,10 @@
+label {
+  font-weight: normal;
+  width: 39%;
+  font-size: small;
+}
+
+input, select {
+  width: 59%;
+}
+

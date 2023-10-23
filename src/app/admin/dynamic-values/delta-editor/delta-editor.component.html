@@ -1,0 +1,39 @@
+<div class="container-center">
+  <div class="inline-form-text">
+    Tabla
+  </div>
+  <div class="inline-form-control">
+    <jqxListBox #jqxListBox [source]='tableValues' (onSelect)="selectTableName($event)" [checkboxes]="true" [width]="200" [height]="200">
+    </jqxListBox>
+
+  </div>
+</div>
+
+<div class="container-center">
+  <div class="inline-form-text">
+    Campo
+  </div>
+  <div class="inline-form-control">
+    <select style="width: 200px;" [(ngModel)]="fieldNameValue">
+      <option *ngFor="let fielValue of fielNameValues" [ngValue]="fielValue.Code">{{fielValue.Value}}</option>
+    </select>
+  </div>
+</div>
+
+<div class="container-center">
+  <div class="inline-form-text">
+    Angulo
+  </div>
+  <div class="inline-form-control">
+    <jqxNumberInput [inputMode]="'simple'" [width]="198" [height]="20" [(ngModel)]='distanceValue' [decimalDigits]="0">
+    </jqxNumberInput>
+  </div>
+</div>
+
+
+<div class="container-fluid-modal" style="height: 30px;">
+  <div class="form-row" style="text-align: center; align-content:center; margin-bottom: 5px; margin-top: 5px">
+    <button type="button" (click)="executeSave()">Aceptar</button>
+    <button type="button" (click)="executeCancel()">Cancelar</button>
+  </div>
+</div>

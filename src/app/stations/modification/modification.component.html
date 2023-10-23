@@ -1,0 +1,108 @@
+<div style="width: 100%;">
+  <jqxExpander #expSelectTool [width]="'100%'" [height]="'100%'">
+    <div>
+      Herramienta de selección
+    </div>
+    <div>
+      <app-embedded-selection [ownerTool]='modificationSelectType'></app-embedded-selection>
+    </div>
+  </jqxExpander>
+</div>
+<div style="width: 100%;">
+  <jqxExpander [width]="'100%'" [height]="'100%'">
+    <div>
+      Modificaciones
+    </div>
+    <div>
+      <div id="divControlsModificacion">
+        <div class="container-center">
+          <div class="inline-form-text">
+            Departamento
+          </div>
+          <div class="inline-form-control">
+            <select style="width: 150px;" [(ngModel)]="modificationModel.departamento" (ngModelChange)="onDepartmentChange($event)">
+              <option *ngFor="let departmentValue of departmentValues" [ngValue]="departmentValue.Code">{{departmentValue.Value}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Municipio
+          </div>
+          <div class="inline-form-control">
+            <select style="width: 150px;" [(ngModel)]="modificationModel.municipio">
+              <option *ngFor="let cityValue of cityValues" [ngValue]="cityValue.Code">{{cityValue.Value}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Fecha modificacion
+          </div>
+          <div class="inline-form-control">
+            <input type="date" style="width: 150px" [(ngModel)]="modificationModel.fechamodificacion" />
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Descripcion
+          </div>
+          <div class="inline-form-control">
+            <textarea type="" style="width: 150px" [(ngModel)]="modificationModel.descripcion"></textarea>
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Motivo Cambio
+          </div>
+          <div class="inline-form-control">
+            <input type="text" style="width: 150px" [(ngModel)]="modificationModel.motivocambio" />
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Orden Trabajo
+          </div>
+          <div class="inline-form-control">
+            <input type="number" style="width: 150px" [(ngModel)]="modificationModel.ordentrabajo" />
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Realizado Por
+          </div>
+          <div class="inline-form-control">
+            <input type="text" style="width: 150px" [(ngModel)]="modificationModel.realizadapor" />
+          </div>
+        </div>
+
+
+
+      </div>
+      <div class="container-fluid-modal" style="height: 30px;">
+        <div class="form-row" style="text-align: center; align-content:center; margin-bottom: 5px; margin-top: 5px">
+          <span class="glyphicon glyphicon-fast-backward" title="Primer registro" (click)="executeFirstRow()"></span>
+          <span class="glyphicon glyphicon-chevron-left" title="Registro Anterior" (click)="executePreviousRow()"></span>
+          <input [(ngModel)]="countResult" type="text" value="1 de 10" style="width: 80px; font-size: 10px" disabled>
+          <span class="glyphicon glyphicon-chevron-right" title="Registro siguiente" (click)="executeNextRow()"></span>
+          <span class="glyphicon glyphicon-fast-forward" title="Ultimo registro" (click)="executeLastRow()"></span>
+          <span class="glyphicon glyphicon-minus" title="Eliminar registro" (click)="executeDeleteRow()"></span>
+          <span class="glyphicon glyphicon-plus" title="Agregar registro" (click)="executeAddRow()"></span>
+          <span class="glyphicon glyphicon-edit" title="Editar registro" (click)="executeEditRow()"></span>
+          <span class="glyphicon glyphicon-floppy-disk" title="Guardar registro" (click)="executeSaveRow()"></span>
+          <span class="glyphicon glyphicon-remove" title="Cancelar Accion" (click)="executeCancel()"></span>
+        </div>
+      </div>
+
+    </div>
+
+  </jqxExpander>
+</div>
+<jqxLoader #jqxLoader [imagePosition]="'top'" [width]="80" [height]="50" [text]="'Cargando...'">
+</jqxLoader>

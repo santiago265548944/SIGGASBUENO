@@ -1,0 +1,38 @@
+<div class="cuadro1">
+   <div class="row-1">
+      <div class="row-1-col1">
+         <label for="order_number" class="row1-label">Numero de Orden:</label>
+         <input
+            type="text"
+            placeholder="Buscar.."
+            id="searchInput"
+            [(ngModel)]="searchTerm"
+            (input)="filterOptions()"
+         />
+
+         <select class="row1-select" [(ngModel)]="orderSelected">
+            <option *ngFor="let numeroOrden of numeroDeOrdenes" [ngValue]="numeroOrden">
+               {{ numeroOrden }}
+            </option>
+         </select>
+      </div>
+
+      <div class="row-1-col2">
+         <button (click)="agregarElementos()">Agregar</button>
+      </div>
+   </div>
+   <br />
+   <div class="cuadro3">
+      <div class="row-2">
+         <div class="tabla">
+            <jqxDataTable
+               #myDataTable
+               [source]="dataAdapter"
+               [columns]="dataTableColumns"
+               [pageable]="false"
+               [columnsResize]="true"
+            ></jqxDataTable>
+         </div>
+      </div>
+   </div>
+</div>

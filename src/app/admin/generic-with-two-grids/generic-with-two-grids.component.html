@@ -1,0 +1,26 @@
+<div>
+  <div>
+    <app-admin-editable-grid
+      [config]="config1stGrid"
+      [data]="gridData1stGrid"
+      [tranformDataFunction]="tranformModel1stGridFunction"
+      (rowDoubleClickHandler)="initialGridRowDoubleClickHandler($event)"
+      (saveNewEvent)="saveNewOn1stGrid($event)"
+      (saveModifiedEvent)="saveEditedOn1stGrid($event)"
+      (deleteEvent)="deleteOn1stGrid($event)">
+    </app-admin-editable-grid>
+  </div>
+
+  <div>
+    <app-admin-editable-grid
+      [config]="config2ndGrid"
+      [data]="gridData2ndGrid"
+      [tranformDataFunction]="tranformModel2ndGridFunction"
+      (saveNewEvent)="saveNewOnSecondGrid($event)"
+      (saveModifiedEvent)="saveEditedOnSecondGrid($event)"
+      (deleteEvent)="deleteOnSecondGrid($event)">
+    </app-admin-editable-grid>
+  </div>
+</div>
+<jqxLoader #jqxLoader [imagePosition]="'top'" [width]="80" [height]="50" [text]="'Cargando...'">
+</jqxLoader>

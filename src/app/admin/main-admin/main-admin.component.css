@@ -1,0 +1,47 @@
+.main-admin-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.main-admin-left-panel {
+  width: 180px;
+  height: 100%;
+  overflow: auto;
+  float: left;
+  margin-right: 3px;
+}
+
+.main-admin-right-panel {
+  width: calc(100% - 183px);
+  height: 100%;
+  overflow: auto;
+}
+
+.main-admin-img-header {
+  width: 15px;
+  height: 15px;
+}
+
+.main-admin-item-container{
+
+}
+
+.main-admin-item-container > div{
+  font-size: smaller;
+  margin-right: 2px;
+  width: 100%;
+  padding: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.main-admin-item-container > div:hover {
+  background-color: rgba(0, 255, 255, 0.1);
+}
+
+.main-admin-item-container > div > img {
+  width: 12px;
+  height: 12px;
+}

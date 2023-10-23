@@ -1,0 +1,38 @@
+<table border="0">
+  <tr>
+    <td colspan="2">
+      Escriba el nombre del marcador
+    </td>
+  </tr>
+  <tr>
+    <td style="width: 65%">
+      <input type="text" style="width: 95%" [(ngModel)]="bookmarkName"/>
+    </td>
+    <td style="width: 35%">
+      <button style="width: 100%" (click)="addBookmark()">Agregar</button>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+    <td rowspan="3">
+      <select size="3" style="width: 95%" [(ngModel)]="selectedBookmark">
+        <option *ngFor="let item of bookmarks" [ngValue]="item">{{item.name}}</option>
+      </select>
+    </td>
+    <td>
+      <button style="width: 100%" (click)="zoomToBookmark()">Acercar a</button>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <button style="width: 100%" (click)="deleteBookmark()">Borrar</button>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <button style="width: 100%" (click)="deleteAllBookmarks()">Borrar todo</button>
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,48 @@
+.app-address-search-tipo-via {
+  width: 28%;
+}
+
+.app-address-search-no-via {
+  width: 18%;
+}
+
+.app-address-search-inline-div > * {
+  display: inline-block;
+  width: 24%;
+}
+
+.app-address-search-container {
+  position: relative;
+  height: 90%;
+  width: 100%;
+}
+
+.app-address-search-body {
+  height: 100%;
+  overflow: auto;
+  padding-bottom: 30px;
+}
+
+.app-address-search-buttons {
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 30px;
+}
+
+.contenedor {
+  margin-bottom: 1%;
+}
+
+.ubicacion, .datosC {
+  padding: 2%;
+}
+
+.datosV, .lugar1, .lugar2, .lugar3 {
+  padding: 2% 1%;
+}
+
+.tabla2 {
+  padding-top: 2% !important;
+}

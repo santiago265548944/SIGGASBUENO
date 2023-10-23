@@ -1,0 +1,28 @@
+input[type=text], input[type=number], textarea, select {
+  width: 59%;
+}
+
+input[type='date'] {
+  width: 35%;
+}
+
+input[type='time'] {
+  width: 23%;
+}
+
+label {
+  font-size: small;
+  font-weight: normal;
+  vertical-align: middle;
+  width: 39%;
+}
+div {
+  vertical-align: middle;
+}
+.app-interrupcionservicio-buttons {
+  text-align: right;
+}
+
+.app-interrupcionservicio-divprogramada {
+  border: black 1px solid ;
+}

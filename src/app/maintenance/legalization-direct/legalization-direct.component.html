@@ -1,0 +1,100 @@
+<!-- Fila 1 -->
+<jqxExpander [width]="'100%'" [height]="'25%'">
+   <div>Información de la orden</div>
+
+   <div class="row-1">
+      <div class="row-1-col1">
+         <label for="order_number" class="row1-label">Número de orden:</label>
+         <select id="order_number" class="row1-select">
+            <option></option>
+         </select>
+         <span class="glyphicon glyphicon-search modify-span"></span>
+
+         <label for="date_generation" class="row1-label">Fecha de generación:</label>
+         <input type="date" id="date_generation" class="row1-input" />
+
+         <label for="date_programming" class="row1-label">Fecha de programación:</label>
+         <input type="date" id="date_programming" class="row1-input" />
+
+         <label for="date_legalization" class="row1-label">Fecha de legalización:</label>
+         <input type="date" id="date_legalization" class="row1-input" />
+      </div>
+
+      <div class="row-1-col2">
+         <input type="checkbox" id="ot_legalized" />
+         <label for="ot_legalized" class="row1-label">OT. legalizadas</label>
+
+         <label for="activity" class="row1-label">Actividad:</label>
+         <input type="text" id="activity" class="row1-input" />
+
+         <label for="main_activity" class="row1-label">Actividad principal OSF:</label>
+         <input type="text" id="main_activity" class="row1-input" />
+
+         <label for="assigned_gang" class="row1-label">Cuadrilla asignada:</label>
+         <input type="text" id="assigned_gang" class="row1-input" />
+      </div>
+   </div>
+</jqxExpander>
+<!-- Fin Fila 1 -->
+
+<!-- Fila 2 -->
+<div class="row-2">
+   <div class="row-2-col1">
+      <jqxExpander [width]="'100%'">
+         <div>Preventivo</div>
+
+         <div></div>
+      </jqxExpander>
+
+      <jqxExpander [width]="'100%'">
+         <div>Correctivo</div>
+
+         <div></div>
+      </jqxExpander>
+   </div>
+
+   <div class="row-2-col2">
+      <div class="row2-bottomContainer">
+         <input type="button" value="Datos adicionales" class="row2-button1" />
+      </div>
+
+      <input type="checkbox" id="additional_work" />
+      <label for="additional_work" class="additional_work-margin">Crear trabajo adicional</label>
+
+      <label for="commentary_new_order">Comentario nueva orden:</label>
+      <select id="commentary_new_order" class="row2-select">
+         <option></option>
+      </select>
+
+      <label for="main_legalization">Causa de legalización principal:</label>
+      <select id="main_legalization" class="row2-select">
+         <option></option>
+      </select>
+
+      <label for="responsable">Responsable:</label>
+      <select id="responsable" class="row2-select">
+         <option></option>
+      </select>
+
+      <label for="commentary">Comentario:</label>
+      <textarea id="commentary" rows="3" class="row2-textarea"></textarea>
+
+      <label for="start">Inicio:</label>
+      <select id="start" class="row2-select">
+         <option></option>
+      </select>
+
+      <label for="end">Fin:</label>
+      <select id="end" class="row2-select">
+         <option></option>
+      </select>
+
+      <div class="row2-bottomContainer">
+         <input type="button" value="Fecha de ejecución" class="row2-button1" />
+         <input type="button" value="Incluir elementos" class="row2-button1" />
+         <input type="button" value="Guardar" class="row2-button2" />
+         <input type="button" value="Legalizar" class="row2-button2" />
+      </div>
+   </div>
+</div>
+<!-- Fin Fila -->

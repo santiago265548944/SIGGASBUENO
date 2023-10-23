@@ -1,0 +1,43 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ]
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "files": [
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxwindow.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxbuttons.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxtooltip.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxdropdownbutton.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxcolorpicker.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxdropdownlist.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxtogglebutton.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxribbon.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxsplitter.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxnavigationbar.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxnumberinput.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxexpander.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxdatatable.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxloader.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxtabs.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxgrid.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxlistbox.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxchart.ts",
+    "node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxbargauge.ts"
+  ]
+}

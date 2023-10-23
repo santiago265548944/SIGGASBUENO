@@ -1,0 +1,28 @@
+<div class="container-center">
+  <div class="inline-form-text">
+    Nombre de la tabla
+  </div>
+  <div class="inline-form-control">
+    <select style="width: 160px;" [(ngModel)]="tableNameValue" (change)="onTableChange()">
+      <option *ngFor="let tableValue of tableValues" [ngValue]="tableValue.Code">{{tableValue.Value}}</option>
+    </select>
+  </div>
+</div>
+
+<div class="container-center">
+  <div class="inline-form-text">
+    Campo
+  </div>
+  <div class="inline-form-control">
+    <select style="width: 160px;" [(ngModel)]="fieldNameValue">
+      <option *ngFor="let fielValue of fielNameValues" [ngValue]="fielValue.Code">{{fielValue.Value}}</option>
+    </select>
+  </div>
+</div>
+
+<div class="container-fluid-modal" style="height: 30px;">
+  <div class="form-row" style="text-align: center; align-content:center; margin-bottom: 5px; margin-top: 5px">
+    <button type="button" (click)="executeSave()">Aceptar</button>
+    <button type="button" (click)="executeCancel()">Cancelar</button>
+  </div>
+</div>

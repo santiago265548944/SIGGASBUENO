@@ -1,0 +1,42 @@
+.fila-uno {
+    width: 99%;
+    height: 38%;
+    margin: 0.5%;
+    overflow: hidden;
+}
+
+.fila-dos {
+    width: 99%;
+    height: 16%;
+    margin: 0.5%;
+    overflow: hidden;
+}
+
+.fila-tres {
+    width: 99%;
+    height: 26%;
+    margin: 0.5%;
+    overflow: hidden;
+}
+
+.fila-cuatro {
+    width: 99%;
+    height: 16%;
+    margin: 0.5%;
+    overflow: hidden;
+}
+
+.fila-uno-contenedor-uno {
+    text-align: center;
+    margin-bottom: 1%;
+}
+
+.fila-uno-contenedor-dos {
+    width: 50%;
+    height: 100%;
+    margin: 0px auto;
+}
+
+.encabezado th, td {
+    text-align: center;
+}

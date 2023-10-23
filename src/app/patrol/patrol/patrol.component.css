@@ -1,0 +1,42 @@
+.contenedor-patrulleros {
+    width: 40%;
+    height: 80%;
+    display: inline-block;
+    border: 1px solid #cccccc;
+    overflow: auto;
+}
+
+.patrulleros {
+    padding: 3%;
+}
+
+.contenedor {
+    width: 59%;
+    height: 80%;
+    display: inline-block;
+    padding: 1%;
+    overflow: hidden;
+}
+
+.espacio {
+    margin-bottom: 1%;
+}
+
+table {
+    width: 100%;
+    height: 100%;
+}
+
+tr {
+    width: 100%;
+    height: 19px;
+}
+
+tr:hover {
+    background-color: #E4E4E4;
+    cursor: pointer;
+}
+
+tr:focus {
+    background-color: #d1d1d1;
+}

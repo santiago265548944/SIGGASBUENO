@@ -1,0 +1,256 @@
+<div style="width: 100%;">
+  <jqxExpander #expSelectTool [width]="'100%'" [height]="'100%'">
+    <div>
+      Herramienta de selección
+    </div>
+    <div>
+      <app-embedded-selection [ownerTool]='pneumaticTestSelectType'></app-embedded-selection>
+    </div>
+  </jqxExpander>
+</div>
+<div style="width: 100%;">
+  <jqxExpander [width]="'100%'" [height]="'100%'">
+    <div>
+      Pruebas Neumaticas
+    </div>
+    <div>
+      <div id="divControlsPneumatic">
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Tipo Prueba
+          </div>
+          <div class="inline-form-control">
+            Neumatica
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Contratista
+          </div>
+          <div class="inline-form-control">
+            <select style="width: 150px;" [(ngModel)]="pNeumaticModel.contratista">
+              <option *ngFor="let contractorValue of contractorValues" [ngValue]="contractorValue.Code">{{contractorValue.Value}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Municipio
+          </div>
+          <div class="inline-form-control">
+            <input type="text" style="width: 150px" [(ngModel)]="pNeumaticModel.municipio" />
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Contrato
+          </div>
+          <div class="inline-form-control">
+            <input type="text" style="width: 150px" [(ngModel)]="pNeumaticModel.contrato" />
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Fabricante
+          </div>
+          <div class="inline-form-control">
+            <select style="width: 150px;" [(ngModel)]="pNeumaticModel.fabricante">
+              <option *ngFor="let manufacturerValue of manufacturerValues" [ngValue]="manufacturerValue.Code">{{manufacturerValue.Value}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            longitud
+          </div>
+          <div class="inline-form-control">
+            <input type="text" style="width: 150px" [(ngModel)]="pNeumaticModel.longitud" />
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Obra
+          </div>
+          <div class="inline-form-control">
+            <input type="text" style="width: 150px" [(ngModel)]="pNeumaticModel.obra" />
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Tuberia
+          </div>
+          <div class="inline-form-control">
+            <select style="width: 150px;" [(ngModel)]="pNeumaticModel.tuberia">
+              <option *ngFor="let pipelineValue of pipelineValues" [ngValue]="pipelineValue.Code">{{pipelineValue.Value}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Calidad
+          </div>
+          <div class="inline-form-control">
+            <select style="width: 150px;" [(ngModel)]="pNeumaticModel.calidad">
+              <option *ngFor="let qualityValue of qualityValues" [ngValue]="qualityValue.Code">{{qualityValue.Value}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Pulgadas
+          </div>
+          <div class="inline-form-control">
+            <input type="text" style="width: 150px" [(ngModel)]="pNeumaticModel.pulgadas" />
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Medio Prueba
+          </div>
+          <div class="inline-form-control">
+            <select style="width: 150px;" [(ngModel)]="pNeumaticModel.medioprueba">
+              <option *ngFor="let testValue of testValues" [ngValue]="testValue.Code">{{testValue.Value}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Presion Inicial
+          </div>
+          <div class="inline-form-control">
+            <input type="text" style="width: 150px" [(ngModel)]="pNeumaticModel.presioninicial" />
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Presion Final
+          </div>
+          <div class="inline-form-control">
+            <input type="text" style="width: 150px" [(ngModel)]="pNeumaticModel.presionfinal" />
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Duracion
+          </div>
+          <div class="inline-form-control">
+            <input type="text" style="width: 150px" [(ngModel)]="pNeumaticModel.duracion" />
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Temperatura Inicial
+          </div>
+          <div class="inline-form-control">
+            <input type="text" style="width: 150px" [(ngModel)]="pNeumaticModel.temperaturainicial" />
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Temperatura Final
+          </div>
+          <div class="inline-form-control">
+            <input type="text" style="width: 150px" [(ngModel)]="pNeumaticModel.temperaturafinal" />
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Fecha Iniciacion
+          </div>
+          <div class="inline-form-control">
+            <input type="date" style="width: 150px" [(ngModel)]="pNeumaticModel.fechainiciacion" />
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Fecha Finalizacion
+          </div>
+          <div class="inline-form-control">
+            <input type="date" style="width: 150px" [(ngModel)]="pNeumaticModel.fechafinalizacion" (ngModelChange)="pNeumaticModel.fechafinalizacion = $event">
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Contratante
+          </div>
+          <div class="inline-form-control">
+            <select style="width: 150px;" [(ngModel)]="pNeumaticModel.contratante">
+              <option *ngFor="let contratanteValue of contratanteValues" [ngValue]="contratanteValue.Code">{{contratanteValue.Value}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Interventor
+          </div>
+          <div class="inline-form-control">
+            <select style="width: 150px;" [(ngModel)]="pNeumaticModel.interventor">
+              <option *ngFor="let inspectorValue of inspectorValues" [ngValue]="inspectorValue.Code">{{inspectorValue.Value}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Soldador
+          </div>
+          <div class="inline-form-control">
+            <select style="width: 150px;" [(ngModel)]="pNeumaticModel.soldador">
+              <option *ngFor="let welderValue of welderValues" [ngValue]="welderValue.Code">{{welderValue.Value}}</option>
+            </select>
+          </div>
+        </div>
+
+
+        <div class="container-center">
+          <div class="inline-form-text">
+            Observaciones
+          </div>
+          <div class="inline-form-control">
+            <textarea type="" style="width: 150px" [(ngModel)]="pNeumaticModel.observaciones"></textarea>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="container-fluid-modal" style="height: 30px;">
+        <div class="form-row" style="text-align: center; align-content:center; margin-bottom: 5px; margin-top: 5px">
+          <span class="glyphicon glyphicon-fast-backward" title="Primer registro" (click)="executeFirstRow()"></span>
+          <span class="glyphicon glyphicon-chevron-left" title="Registro Anterior" (click)="executePreviousRow()"></span>
+          <input [(ngModel)]="countResult" type="text" value="1 de 10" style="width: 80px; font-size: 10px" disabled>
+          <span class="glyphicon glyphicon-chevron-right" title="Registro siguiente" (click)="executeNextRow()"></span>
+          <span class="glyphicon glyphicon-fast-forward" title="Ultimo registro" (click)="executeLastRow()"></span>
+          <span class="glyphicon glyphicon-minus" title="Eliminar registro" (click)="executeDeleteRow()"></span>
+          <span class="glyphicon glyphicon-plus" title="Agregar registro" (click)="executeAddRow()"></span>
+          <span class="glyphicon glyphicon-edit" title="Editar registro" (click)="executeEditRow()"></span>
+          <span class="glyphicon glyphicon-floppy-disk" title="Guardar registro" (click)="executeSaveRow()"></span>
+          <span class="glyphicon glyphicon-remove" title="Cancelar Accion" (click)="executeCancel()"></span>
+        </div>
+      </div>
+
+    </div>
+
+  </jqxExpander>
+</div>
+<jqxLoader #jqxLoader [imagePosition]="'top'" [width]="80" [height]="50" [text]="'Cargando...'">
+</jqxLoader>

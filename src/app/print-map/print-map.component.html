@@ -1,0 +1,44 @@
+<div class="container-fluid-modal">
+
+  <div class="container-center">
+    <div class="inline-form-text">
+      Extensión Imagen
+    </div>
+    <div class="inline-form-control">
+      <select style="width: 100px" [(ngModel)]="selectImageOption">
+        <option>pdf</option>
+        <option>png32</option>
+        <option>png8</option>
+        <option>jpg</option>
+        <option>gif</option>
+        <option>eps</option>
+        <option>svg</option>
+        <option>svgz</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="container-center">
+    <div class="inline-form-text">
+      Formato Impresión
+    </div>
+    <div class="inline-form-control">
+      <select style="width: 100px" [(ngModel)]="selectPrintFormatOption">
+        <option>MAP_ONLY</option>
+        <option>A3 Landscape</option>
+        <option>A3 Portrait</option>
+        <option>A4 Landscape</option>
+        <option>A4 Portrait</option>
+        <option>Letter ANSI A Landscape</option>
+        <option>Letter ANSI A Portrait</option>
+        <option>Tabloid ANSI B Landscape</option>
+        <option>Tabloid ANSI B Portrait</option>
+      </select>
+    </div>
+  </div>
+
+
+  <div class="form-row" style="text-align: center; align-content:center; margin-bottom: 5px; margin-top: 5px">
+    <button type="button" (click)="executePrint()">Generar Mapa</button>
+  </div>
+</div>
